@@ -1,0 +1,5 @@
+# Ambiente virtual Python
+env_IA/
+__pycache__/
+*.pyc
+*.pkl
