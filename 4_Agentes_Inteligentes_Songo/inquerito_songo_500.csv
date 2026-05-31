@@ -1,0 +1,501 @@
+ID,Categoria,Presenciou_Acidente,Frequencia_Acidentes,Principal_Causa,Conhece_IA,Experiencia_com_IA,IA_Pode_Reduzir_Acidentes,Apoia_Modernizacao_Transito,Sugestao_Modernizacao
+1,Motorista,Sim,Muito frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Melhorar a sinalização nas estradas
+2,Motorista,Sim,Muito frequente,Excesso de velocidade,Sim,Aplicações de reconhecimento facial,Sim,Sim,Mais agentes de trânsito nas ruas
+3,Mototaxista,Sim,Frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Fiscalização mais rigorosa
+4,Mototaxista,Sim,Muito frequente,Falta de sinalização,Sim,Nunca ouvi falar antes,Sim,Sim,Instalar câmeras de vigilância
+5,Motorista,Não,Muito frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Construir passadeiras elevadas
+6,Mototaxista,Sim,Frequente,Condução imprudente,Não,Nenhuma,Não,Sim,Criar faixas de pedestres
+7,Mototaxista,Sim,Muito frequente,Falta de sinalização,Sim,Nunca usei IA,Sim,Não,
+8,Motorista,Sim,Frequente,Excesso de velocidade,Sim,Interação com chatbots de atendimento,Não,Sim,Mais agentes de trânsito nas ruas
+9,Motorista,Sim,Frequente,Excesso de velocidade,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Educação para o trânsito nas escolas
+10,Mototaxista,Sim,Raro,Condução imprudente,Sim,Vi notícias sobre carros autónomos,Sim,Sim,Mais agentes de trânsito nas ruas
+11,Motorista,Sim,Frequente,Falta de sinalização,Não,Nenhuma,Sim,Sim,Instalar câmeras de vigilância
+12,Peão,Sim,Muito frequente,Condução imprudente,Sim,Vi notícias sobre carros autónomos,Sim,Sim,Usar tecnologia de IA no trânsito
+13,Peão,Não,Muito frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Aumentar a iluminação pública
+14,Mototaxista,Sim,Frequente,Consumo de álcool,Não,Nenhuma,Sim,Sim,Fiscalização mais rigorosa
+15,Motorista,Sim,Frequente,Consumo de álcool,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Fiscalização mais rigorosa
+16,Motorista,Sim,Muito frequente,Falta de sinalização,Não,Nenhuma,Sim,Sim,Educação para o trânsito nas escolas
+17,Peão,Não,Muito frequente,Condução imprudente,Sim,Nunca ouvi falar antes,Sim,Sim,Fiscalização mais rigorosa
+18,Peão,Sim,Frequente,Condução imprudente,Não,Nenhuma,Não,Sim,Educação para o trânsito nas escolas
+19,Motorista,Sim,Frequente,Falta de sinalização,Não,Nenhuma,Sim,Sim,Melhorar a sinalização nas estradas
+20,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Instalar câmeras de vigilância
+21,Mototaxista,Sim,Frequente,Excesso de velocidade,Sim,Interação com chatbots de atendimento,Não,Sim,Usar tecnologia de IA no trânsito
+22,Motorista,Sim,Muito frequente,Excesso de velocidade,Sim,Nunca usei IA,Sim,Sim,Instalar câmeras de vigilância
+23,Mototaxista,Sim,Frequente,Excesso de velocidade,Sim,Vi notícias sobre carros autónomos,Sim,Sim,Fiscalização mais rigorosa
+24,Mototaxista,Não,Muito frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Mais agentes de trânsito nas ruas
+25,Motorista,Não,Raro,Consumo de álcool,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Criar faixas de pedestres
+26,Mototaxista,Sim,Muito frequente,Consumo de álcool,Não,Nenhuma,Sim,Sim,Mais agentes de trânsito nas ruas
+27,Motorista,Sim,Muito frequente,Excesso de velocidade,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Aumentar a iluminação pública
+28,Mototaxista,Sim,Raro,Condução imprudente,Sim,Nunca usei IA,Sim,Sim,Melhorar a sinalização nas estradas
+29,Motorista,Sim,Muito frequente,Consumo de álcool,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Criar faixas de pedestres
+30,Peão,Sim,Frequente,Excesso de velocidade,Sim,Nunca usei IA,Sim,Sim,Aumentar a iluminação pública
+31,Mototaxista,Sim,Frequente,Excesso de velocidade,Sim,Nunca usei IA,Sim,Sim,Aumentar a iluminação pública
+32,Peão,Sim,Muito frequente,Consumo de álcool,Não,Nenhuma,Sim,Não,
+33,Motorista,Sim,Frequente,Excesso de velocidade,Não,Nenhuma,Não,Sim,Melhorar a sinalização nas estradas
+34,Peão,Sim,Muito frequente,Excesso de velocidade,Sim,Nunca ouvi falar antes,Sim,Sim,Implementar semáforos inteligentes
+35,Mototaxista,Não,Muito frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Fiscalização mais rigorosa
+36,Motorista,Sim,Frequente,Condução imprudente,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Fiscalização mais rigorosa
+37,Motorista,Sim,Muito frequente,Excesso de velocidade,Sim,Uso de filtros no Instagram com IA,Não,Sim,Instalar câmeras de vigilância
+38,Mototaxista,Sim,Muito frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Fiscalização mais rigorosa
+39,Peão,Sim,Muito frequente,Condução imprudente,Sim,Aplicações de reconhecimento facial,Sim,Sim,Aumentar a iluminação pública
+40,Motorista,Não,Frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Usar tecnologia de IA no trânsito
+41,Mototaxista,Sim,Frequente,Falta de sinalização,Não,Nenhuma,Sim,Sim,Educação para o trânsito nas escolas
+42,Mototaxista,Sim,Muito frequente,Condução imprudente,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Mais agentes de trânsito nas ruas
+43,Peão,Sim,Raro,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Criar faixas de pedestres
+44,Mototaxista,Sim,Muito frequente,Consumo de álcool,Sim,Aplicações de reconhecimento facial,Não,Sim,Instalar câmeras de vigilância
+45,Mototaxista,Não,Frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Melhorar a sinalização nas estradas
+46,Peão,Não,Frequente,Condução imprudente,Sim,Uso de filtros no Instagram com IA,Não,Sim,Criar faixas de pedestres
+47,Mototaxista,Sim,Muito frequente,Falta de sinalização,Não,Nenhuma,Sim,Não,
+48,Motorista,Sim,Frequente,Excesso de velocidade,Sim,Nunca ouvi falar antes,Sim,Sim,Aumentar a iluminação pública
+49,Mototaxista,Sim,Frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Implementar semáforos inteligentes
+50,Motorista,Sim,Muito frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Educação para o trânsito nas escolas
+51,Mototaxista,Sim,Raro,Condução imprudente,Não,Nenhuma,Sim,Sim,Construir passadeiras elevadas
+52,Mototaxista,Sim,Frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Melhorar a sinalização nas estradas
+53,Motorista,Sim,Frequente,Condução imprudente,Sim,Nunca usei IA,Sim,Não,
+54,Mototaxista,Sim,Frequente,Consumo de álcool,Sim,Aplicações de reconhecimento facial,Não,Sim,Construir passadeiras elevadas
+55,Motorista,Sim,Raro,Condução imprudente,Sim,Nunca ouvi falar antes,Sim,Sim,Implementar semáforos inteligentes
+56,Motorista,Sim,Muito frequente,Excesso de velocidade,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Fiscalização mais rigorosa
+57,Mototaxista,Sim,Frequente,Excesso de velocidade,Sim,Aplicações de reconhecimento facial,Sim,Sim,Educação para o trânsito nas escolas
+58,Mototaxista,Sim,Raro,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Aumentar a iluminação pública
+59,Mototaxista,Sim,Raro,Consumo de álcool,Sim,Nunca ouvi falar antes,Sim,Sim,Educação para o trânsito nas escolas
+60,Mototaxista,Sim,Muito frequente,Falta de sinalização,Não,Nenhuma,Sim,Sim,Usar tecnologia de IA no trânsito
+61,Peão,Não,Frequente,Consumo de álcool,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Criar faixas de pedestres
+62,Peão,Sim,Muito frequente,Falta de sinalização,Sim,Aplicações de reconhecimento facial,Sim,Sim,Implementar semáforos inteligentes
+63,Mototaxista,Sim,Muito frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Instalar câmeras de vigilância
+64,Motorista,Não,Muito frequente,Excesso de velocidade,Sim,Interação com chatbots de atendimento,Sim,Sim,Construir passadeiras elevadas
+65,Mototaxista,Sim,Muito frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Fiscalização mais rigorosa
+66,Peão,Sim,Muito frequente,Falta de sinalização,Não,Nenhuma,Não,Sim,Educação para o trânsito nas escolas
+67,Mototaxista,Sim,Frequente,Excesso de velocidade,Não,Nenhuma,Não,Sim,Melhorar a sinalização nas estradas
+68,Motorista,Sim,Muito frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Instalar câmeras de vigilância
+69,Motorista,Sim,Muito frequente,Consumo de álcool,Sim,Uso de Google Maps com navegação inteligente,Não,Sim,Criar faixas de pedestres
+70,Motorista,Não,Muito frequente,Condução imprudente,Sim,Vi notícias sobre carros autónomos,Sim,Sim,Construir passadeiras elevadas
+71,Mototaxista,Sim,Raro,Excesso de velocidade,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Criar faixas de pedestres
+72,Mototaxista,Não,Muito frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Implementar semáforos inteligentes
+73,Motorista,Sim,Muito frequente,Excesso de velocidade,Sim,Nunca ouvi falar antes,Sim,Sim,Usar tecnologia de IA no trânsito
+74,Mototaxista,Sim,Muito frequente,Falta de sinalização,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Mais agentes de trânsito nas ruas
+75,Mototaxista,Sim,Muito frequente,Condução imprudente,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Educação para o trânsito nas escolas
+76,Mototaxista,Sim,Frequente,Excesso de velocidade,Sim,Vi notícias sobre carros autónomos,Sim,Sim,Mais agentes de trânsito nas ruas
+77,Peão,Sim,Muito frequente,Falta de sinalização,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Instalar câmeras de vigilância
+78,Motorista,Sim,Muito frequente,Consumo de álcool,Sim,Nunca ouvi falar antes,Não,Sim,Usar tecnologia de IA no trânsito
+79,Mototaxista,Sim,Muito frequente,Consumo de álcool,Sim,Uso de assistentes virtuais como Siri ou Alexa,Não,Sim,Melhorar a sinalização nas estradas
+80,Mototaxista,Sim,Raro,Excesso de velocidade,Sim,Interação com chatbots de atendimento,Sim,Sim,Construir passadeiras elevadas
+81,Motorista,Sim,Raro,Excesso de velocidade,Sim,Nunca usei IA,Sim,Sim,Instalar câmeras de vigilância
+82,Peão,Sim,Muito frequente,Condução imprudente,Sim,Aplicações de reconhecimento facial,Sim,Sim,Instalar câmeras de vigilância
+83,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Educação para o trânsito nas escolas
+84,Peão,Sim,Frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Fiscalização mais rigorosa
+85,Peão,Sim,Muito frequente,Excesso de velocidade,Sim,Nunca ouvi falar antes,Sim,Sim,Implementar semáforos inteligentes
+86,Mototaxista,Sim,Frequente,Consumo de álcool,Sim,Aplicações de reconhecimento facial,Sim,Sim,Instalar câmeras de vigilância
+87,Motorista,Sim,Muito frequente,Excesso de velocidade,Não,Nenhuma,Não,Sim,Instalar câmeras de vigilância
+88,Peão,Sim,Muito frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Implementar semáforos inteligentes
+89,Mototaxista,Sim,Frequente,Condução imprudente,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Melhorar a sinalização nas estradas
+90,Mototaxista,Sim,Muito frequente,Consumo de álcool,Não,Nenhuma,Sim,Sim,Aumentar a iluminação pública
+91,Mototaxista,Sim,Frequente,Consumo de álcool,Não,Nenhuma,Sim,Sim,Usar tecnologia de IA no trânsito
+92,Mototaxista,Sim,Muito frequente,Condução imprudente,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Mais agentes de trânsito nas ruas
+93,Peão,Sim,Frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Fiscalização mais rigorosa
+94,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Não,Nenhuma,Sim,Não,
+95,Motorista,Sim,Raro,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Usar tecnologia de IA no trânsito
+96,Mototaxista,Sim,Muito frequente,Consumo de álcool,Sim,Aplicações de reconhecimento facial,Não,Sim,Implementar semáforos inteligentes
+97,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Não,Nenhuma,Não,Sim,Usar tecnologia de IA no trânsito
+98,Peão,Sim,Frequente,Falta de sinalização,Não,Nenhuma,Sim,Não,
+99,Peão,Não,Muito frequente,Falta de sinalização,Não,Nenhuma,Sim,Sim,Usar tecnologia de IA no trânsito
+100,Motorista,Sim,Muito frequente,Condução imprudente,Não,Nenhuma,Não,Sim,Instalar câmeras de vigilância
+101,Mototaxista,Não,Muito frequente,Excesso de velocidade,Não,Nenhuma,Sim,Não,
+102,Mototaxista,Sim,Frequente,Consumo de álcool,Sim,Aplicações de reconhecimento facial,Sim,Sim,Construir passadeiras elevadas
+103,Motorista,Não,Frequente,Consumo de álcool,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Usar tecnologia de IA no trânsito
+104,Motorista,Sim,Frequente,Excesso de velocidade,Sim,Nunca usei IA,Sim,Não,
+105,Mototaxista,Sim,Raro,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Fiscalização mais rigorosa
+106,Mototaxista,Sim,Frequente,Excesso de velocidade,Sim,Nunca ouvi falar antes,Sim,Sim,Educação para o trânsito nas escolas
+107,Peão,Sim,Frequente,Excesso de velocidade,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Implementar semáforos inteligentes
+108,Mototaxista,Não,Raro,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Implementar semáforos inteligentes
+109,Mototaxista,Sim,Frequente,Excesso de velocidade,Sim,Vi notícias sobre carros autónomos,Sim,Não,
+110,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Não,Nenhuma,Sim,Não,
+111,Peão,Sim,Frequente,Consumo de álcool,Não,Nenhuma,Sim,Sim,Educação para o trânsito nas escolas
+112,Motorista,Sim,Frequente,Condução imprudente,Não,Nenhuma,Não,Sim,Instalar câmeras de vigilância
+113,Mototaxista,Sim,Frequente,Condução imprudente,Sim,Interação com chatbots de atendimento,Sim,Sim,Fiscalização mais rigorosa
+114,Mototaxista,Sim,Raro,Condução imprudente,Não,Nenhuma,Não,Sim,Usar tecnologia de IA no trânsito
+115,Peão,Sim,Frequente,Condução imprudente,Sim,Aplicações de reconhecimento facial,Sim,Sim,Educação para o trânsito nas escolas
+116,Peão,Sim,Muito frequente,Condução imprudente,Sim,Aplicações de reconhecimento facial,Sim,Sim,Implementar semáforos inteligentes
+117,Motorista,Não,Muito frequente,Excesso de velocidade,Sim,Interação com chatbots de atendimento,Não,Sim,Construir passadeiras elevadas
+118,Motorista,Sim,Frequente,Condução imprudente,Sim,Vi notícias sobre carros autónomos,Sim,Sim,Instalar câmeras de vigilância
+119,Peão,Sim,Muito frequente,Condução imprudente,Sim,Aplicações de reconhecimento facial,Sim,Não,
+120,Motorista,Sim,Raro,Condução imprudente,Não,Nenhuma,Sim,Não,
+121,Mototaxista,Sim,Muito frequente,Falta de sinalização,Sim,Uso de filtros no Instagram com IA,Sim,Não,
+122,Motorista,Não,Muito frequente,Falta de sinalização,Sim,Nunca usei IA,Sim,Sim,Usar tecnologia de IA no trânsito
+123,Motorista,Sim,Frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Construir passadeiras elevadas
+124,Mototaxista,Sim,Frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Construir passadeiras elevadas
+125,Mototaxista,Não,Muito frequente,Excesso de velocidade,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Instalar câmeras de vigilância
+126,Mototaxista,Sim,Muito frequente,Falta de sinalização,Sim,Nunca usei IA,Sim,Sim,Mais agentes de trânsito nas ruas
+127,Motorista,Sim,Frequente,Condução imprudente,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Não,
+128,Motorista,Não,Frequente,Falta de sinalização,Sim,Aplicações de reconhecimento facial,Sim,Não,
+129,Mototaxista,Sim,Frequente,Falta de sinalização,Não,Nenhuma,Sim,Sim,Fiscalização mais rigorosa
+130,Mototaxista,Sim,Frequente,Falta de sinalização,Não,Nenhuma,Sim,Sim,Construir passadeiras elevadas
+131,Mototaxista,Sim,Muito frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Criar faixas de pedestres
+132,Mototaxista,Sim,Muito frequente,Condução imprudente,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Implementar semáforos inteligentes
+133,Peão,Sim,Frequente,Excesso de velocidade,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Aumentar a iluminação pública
+134,Motorista,Sim,Frequente,Falta de sinalização,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Criar faixas de pedestres
+135,Peão,Sim,Muito frequente,Condução imprudente,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Melhorar a sinalização nas estradas
+136,Motorista,Sim,Frequente,Condução imprudente,Não,Nenhuma,Não,Não,
+137,Motorista,Sim,Frequente,Excesso de velocidade,Não,Nenhuma,Não,Sim,Fiscalização mais rigorosa
+138,Mototaxista,Sim,Raro,Falta de sinalização,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Melhorar a sinalização nas estradas
+139,Motorista,Não,Muito frequente,Condução imprudente,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Implementar semáforos inteligentes
+140,Motorista,Sim,Muito frequente,Excesso de velocidade,Sim,Nunca ouvi falar antes,Sim,Sim,Implementar semáforos inteligentes
+141,Motorista,Sim,Muito frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Implementar semáforos inteligentes
+142,Motorista,Sim,Frequente,Falta de sinalização,Sim,Vi notícias sobre carros autónomos,Não,Sim,Educação para o trânsito nas escolas
+143,Peão,Sim,Frequente,Excesso de velocidade,Sim,Aplicações de reconhecimento facial,Sim,Sim,Fiscalização mais rigorosa
+144,Motorista,Sim,Frequente,Condução imprudente,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Criar faixas de pedestres
+145,Mototaxista,Sim,Muito frequente,Falta de sinalização,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Criar faixas de pedestres
+146,Peão,Sim,Raro,Condução imprudente,Não,Nenhuma,Sim,Sim,Melhorar a sinalização nas estradas
+147,Mototaxista,Sim,Frequente,Falta de sinalização,Sim,Nunca usei IA,Sim,Sim,Fiscalização mais rigorosa
+148,Motorista,Sim,Frequente,Consumo de álcool,Sim,Interação com chatbots de atendimento,Sim,Sim,Fiscalização mais rigorosa
+149,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Não,Nenhuma,Sim,Não,
+150,Motorista,Sim,Frequente,Condução imprudente,Não,Nenhuma,Não,Sim,Construir passadeiras elevadas
+151,Mototaxista,Não,Muito frequente,Falta de sinalização,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Construir passadeiras elevadas
+152,Mototaxista,Sim,Frequente,Excesso de velocidade,Sim,Aplicações de reconhecimento facial,Sim,Sim,Melhorar a sinalização nas estradas
+153,Mototaxista,Sim,Frequente,Consumo de álcool,Sim,Nunca ouvi falar antes,Sim,Sim,Aumentar a iluminação pública
+154,Motorista,Não,Frequente,Condução imprudente,Não,Nenhuma,Não,Sim,Fiscalização mais rigorosa
+155,Mototaxista,Sim,Raro,Condução imprudente,Sim,Aplicações de reconhecimento facial,Sim,Não,
+156,Mototaxista,Sim,Frequente,Condução imprudente,Sim,Vi notícias sobre carros autónomos,Sim,Sim,Criar faixas de pedestres
+157,Mototaxista,Não,Raro,Condução imprudente,Sim,Vi notícias sobre carros autónomos,Sim,Sim,Aumentar a iluminação pública
+158,Peão,Sim,Muito frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Aumentar a iluminação pública
+159,Motorista,Sim,Frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Criar faixas de pedestres
+160,Motorista,Sim,Muito frequente,Consumo de álcool,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Fiscalização mais rigorosa
+161,Mototaxista,Sim,Muito frequente,Condução imprudente,Não,Nenhuma,Não,Sim,Aumentar a iluminação pública
+162,Peão,Sim,Frequente,Excesso de velocidade,Sim,Nunca ouvi falar antes,Sim,Sim,Fiscalização mais rigorosa
+163,Mototaxista,Sim,Frequente,Consumo de álcool,Sim,Interação com chatbots de atendimento,Sim,Sim,Educação para o trânsito nas escolas
+164,Mototaxista,Sim,Frequente,Consumo de álcool,Sim,Nunca ouvi falar antes,Não,Não,
+165,Motorista,Sim,Frequente,Falta de sinalização,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Implementar semáforos inteligentes
+166,Motorista,Não,Frequente,Excesso de velocidade,Não,Nenhuma,Não,Sim,Fiscalização mais rigorosa
+167,Mototaxista,Não,Muito frequente,Falta de sinalização,Não,Nenhuma,Sim,Sim,Aumentar a iluminação pública
+168,Peão,Sim,Muito frequente,Falta de sinalização,Sim,Nunca usei IA,Sim,Sim,Aumentar a iluminação pública
+169,Motorista,Sim,Frequente,Excesso de velocidade,Sim,Nunca ouvi falar antes,Não,Sim,Fiscalização mais rigorosa
+170,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Mais agentes de trânsito nas ruas
+171,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Sim,Nunca usei IA,Sim,Sim,Melhorar a sinalização nas estradas
+172,Motorista,Sim,Frequente,Condução imprudente,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Instalar câmeras de vigilância
+173,Mototaxista,Sim,Frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Mais agentes de trânsito nas ruas
+174,Motorista,Sim,Muito frequente,Consumo de álcool,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Instalar câmeras de vigilância
+175,Motorista,Sim,Frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Instalar câmeras de vigilância
+176,Mototaxista,Sim,Frequente,Consumo de álcool,Não,Nenhuma,Não,Sim,Fiscalização mais rigorosa
+177,Motorista,Sim,Frequente,Condução imprudente,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Instalar câmeras de vigilância
+178,Peão,Sim,Raro,Condução imprudente,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Aumentar a iluminação pública
+179,Peão,Sim,Muito frequente,Falta de sinalização,Não,Nenhuma,Sim,Sim,Criar faixas de pedestres
+180,Mototaxista,Sim,Frequente,Falta de sinalização,Não,Nenhuma,Sim,Sim,Criar faixas de pedestres
+181,Mototaxista,Sim,Frequente,Condução imprudente,Sim,Nunca ouvi falar antes,Sim,Sim,Implementar semáforos inteligentes
+182,Motorista,Sim,Frequente,Falta de sinalização,Sim,Vi notícias sobre carros autónomos,Não,Sim,Criar faixas de pedestres
+183,Motorista,Sim,Muito frequente,Condução imprudente,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Fiscalização mais rigorosa
+184,Mototaxista,Sim,Frequente,Excesso de velocidade,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Criar faixas de pedestres
+185,Motorista,Sim,Raro,Falta de sinalização,Não,Nenhuma,Sim,Sim,Criar faixas de pedestres
+186,Mototaxista,Sim,Raro,Excesso de velocidade,Sim,Nunca usei IA,Sim,Não,
+187,Mototaxista,Sim,Muito frequente,Consumo de álcool,Sim,Uso de Google Maps com navegação inteligente,Não,Sim,Melhorar a sinalização nas estradas
+188,Peão,Sim,Raro,Falta de sinalização,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Aumentar a iluminação pública
+189,Motorista,Sim,Muito frequente,Excesso de velocidade,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Fiscalização mais rigorosa
+190,Motorista,Sim,Muito frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Aumentar a iluminação pública
+191,Mototaxista,Não,Muito frequente,Consumo de álcool,Sim,Aplicações de reconhecimento facial,Sim,Sim,Usar tecnologia de IA no trânsito
+192,Motorista,Sim,Muito frequente,Consumo de álcool,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Aumentar a iluminação pública
+193,Peão,Sim,Frequente,Excesso de velocidade,Não,Nenhuma,Sim,Não,
+194,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Sim,Vi notícias sobre carros autónomos,Sim,Sim,Mais agentes de trânsito nas ruas
+195,Motorista,Sim,Frequente,Condução imprudente,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Mais agentes de trânsito nas ruas
+196,Motorista,Sim,Muito frequente,Condução imprudente,Não,Nenhuma,Sim,Não,
+197,Mototaxista,Não,Muito frequente,Consumo de álcool,Não,Nenhuma,Sim,Sim,Construir passadeiras elevadas
+198,Mototaxista,Sim,Frequente,Condução imprudente,Sim,Vi notícias sobre carros autónomos,Não,Sim,Criar faixas de pedestres
+199,Mototaxista,Sim,Muito frequente,Falta de sinalização,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Aumentar a iluminação pública
+200,Peão,Sim,Muito frequente,Condução imprudente,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Educação para o trânsito nas escolas
+201,Mototaxista,Sim,Muito frequente,Condução imprudente,Sim,Uso de filtros no Instagram com IA,Não,Sim,Aumentar a iluminação pública
+202,Mototaxista,Sim,Raro,Condução imprudente,Não,Nenhuma,Sim,Sim,Criar faixas de pedestres
+203,Motorista,Não,Muito frequente,Falta de sinalização,Sim,Vi notícias sobre carros autónomos,Sim,Sim,Usar tecnologia de IA no trânsito
+204,Motorista,Sim,Muito frequente,Consumo de álcool,Não,Nenhuma,Sim,Sim,Criar faixas de pedestres
+205,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Sim,Nunca usei IA,Sim,Sim,Construir passadeiras elevadas
+206,Mototaxista,Sim,Muito frequente,Consumo de álcool,Sim,Aplicações de reconhecimento facial,Sim,Sim,Construir passadeiras elevadas
+207,Motorista,Sim,Muito frequente,Falta de sinalização,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Mais agentes de trânsito nas ruas
+208,Mototaxista,Sim,Muito frequente,Consumo de álcool,Não,Nenhuma,Sim,Sim,Mais agentes de trânsito nas ruas
+209,Motorista,Sim,Muito frequente,Condução imprudente,Sim,Vi notícias sobre carros autónomos,Sim,Não,
+210,Motorista,Sim,Frequente,Excesso de velocidade,Sim,Interação com chatbots de atendimento,Não,Sim,Construir passadeiras elevadas
+211,Motorista,Sim,Muito frequente,Condução imprudente,Sim,Uso de assistentes virtuais como Siri ou Alexa,Não,Sim,Educação para o trânsito nas escolas
+212,Motorista,Sim,Muito frequente,Falta de sinalização,Sim,Nunca ouvi falar antes,Sim,Sim,Mais agentes de trânsito nas ruas
+213,Peão,Sim,Muito frequente,Excesso de velocidade,Sim,Aplicações de reconhecimento facial,Sim,Sim,Mais agentes de trânsito nas ruas
+214,Mototaxista,Sim,Raro,Falta de sinalização,Sim,Nunca ouvi falar antes,Sim,Sim,Implementar semáforos inteligentes
+215,Mototaxista,Sim,Frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Educação para o trânsito nas escolas
+216,Motorista,Sim,Frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Construir passadeiras elevadas
+217,Motorista,Sim,Raro,Condução imprudente,Não,Nenhuma,Sim,Sim,Implementar semáforos inteligentes
+218,Peão,Sim,Raro,Condução imprudente,Não,Nenhuma,Sim,Sim,Implementar semáforos inteligentes
+219,Peão,Sim,Muito frequente,Condução imprudente,Sim,Interação com chatbots de atendimento,Sim,Sim,Mais agentes de trânsito nas ruas
+220,Motorista,Sim,Muito frequente,Condução imprudente,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Mais agentes de trânsito nas ruas
+221,Mototaxista,Não,Frequente,Condução imprudente,Sim,Nunca usei IA,Não,Sim,Instalar câmeras de vigilância
+222,Motorista,Sim,Frequente,Consumo de álcool,Sim,Uso de assistentes virtuais como Siri ou Alexa,Não,Sim,Fiscalização mais rigorosa
+223,Peão,Sim,Frequente,Consumo de álcool,Não,Nenhuma,Não,Sim,Instalar câmeras de vigilância
+224,Mototaxista,Sim,Raro,Falta de sinalização,Sim,Nunca ouvi falar antes,Sim,Sim,Fiscalização mais rigorosa
+225,Mototaxista,Sim,Muito frequente,Condução imprudente,Sim,Vi notícias sobre carros autónomos,Sim,Sim,Aumentar a iluminação pública
+226,Motorista,Sim,Muito frequente,Consumo de álcool,Não,Nenhuma,Não,Sim,Melhorar a sinalização nas estradas
+227,Mototaxista,Sim,Raro,Condução imprudente,Não,Nenhuma,Sim,Sim,Usar tecnologia de IA no trânsito
+228,Motorista,Não,Muito frequente,Condução imprudente,Sim,Nunca usei IA,Sim,Sim,Instalar câmeras de vigilância
+229,Mototaxista,Sim,Frequente,Consumo de álcool,Não,Nenhuma,Sim,Sim,Implementar semáforos inteligentes
+230,Mototaxista,Sim,Raro,Condução imprudente,Sim,Nunca ouvi falar antes,Não,Sim,Mais agentes de trânsito nas ruas
+231,Motorista,Sim,Frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Mais agentes de trânsito nas ruas
+232,Mototaxista,Sim,Muito frequente,Condução imprudente,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Construir passadeiras elevadas
+233,Mototaxista,Não,Muito frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Usar tecnologia de IA no trânsito
+234,Motorista,Sim,Frequente,Condução imprudente,Sim,Aplicações de reconhecimento facial,Sim,Sim,Instalar câmeras de vigilância
+235,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Sim,Nunca usei IA,Sim,Sim,Instalar câmeras de vigilância
+236,Peão,Sim,Muito frequente,Excesso de velocidade,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Criar faixas de pedestres
+237,Peão,Sim,Frequente,Consumo de álcool,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Mais agentes de trânsito nas ruas
+238,Motorista,Sim,Muito frequente,Condução imprudente,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Instalar câmeras de vigilância
+239,Peão,Sim,Frequente,Falta de sinalização,Sim,Vi notícias sobre carros autónomos,Sim,Sim,Fiscalização mais rigorosa
+240,Mototaxista,Não,Frequente,Excesso de velocidade,Não,Nenhuma,Sim,Não,
+241,Peão,Sim,Muito frequente,Condução imprudente,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Educação para o trânsito nas escolas
+242,Mototaxista,Sim,Muito frequente,Consumo de álcool,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Construir passadeiras elevadas
+243,Motorista,Sim,Frequente,Excesso de velocidade,Não,Nenhuma,Não,Sim,Criar faixas de pedestres
+244,Mototaxista,Sim,Raro,Consumo de álcool,Não,Nenhuma,Sim,Sim,Usar tecnologia de IA no trânsito
+245,Mototaxista,Sim,Frequente,Falta de sinalização,Sim,Aplicações de reconhecimento facial,Sim,Sim,Implementar semáforos inteligentes
+246,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Instalar câmeras de vigilância
+247,Motorista,Não,Frequente,Excesso de velocidade,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Usar tecnologia de IA no trânsito
+248,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Educação para o trânsito nas escolas
+249,Motorista,Sim,Frequente,Excesso de velocidade,Sim,Interação com chatbots de atendimento,Não,Sim,Instalar câmeras de vigilância
+250,Peão,Não,Muito frequente,Consumo de álcool,Sim,Aplicações de reconhecimento facial,Sim,Sim,Educação para o trânsito nas escolas
+251,Peão,Sim,Frequente,Falta de sinalização,Sim,Nunca ouvi falar antes,Sim,Sim,Mais agentes de trânsito nas ruas
+252,Mototaxista,Sim,Frequente,Condução imprudente,Sim,Interação com chatbots de atendimento,Sim,Sim,Instalar câmeras de vigilância
+253,Motorista,Sim,Frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Educação para o trânsito nas escolas
+254,Mototaxista,Sim,Frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Usar tecnologia de IA no trânsito
+255,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Instalar câmeras de vigilância
+256,Motorista,Sim,Frequente,Excesso de velocidade,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Melhorar a sinalização nas estradas
+257,Mototaxista,Sim,Muito frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Usar tecnologia de IA no trânsito
+258,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Mais agentes de trânsito nas ruas
+259,Motorista,Sim,Frequente,Consumo de álcool,Sim,Vi notícias sobre carros autónomos,Sim,Sim,Educação para o trânsito nas escolas
+260,Motorista,Sim,Muito frequente,Falta de sinalização,Sim,Interação com chatbots de atendimento,Sim,Não,
+261,Mototaxista,Sim,Muito frequente,Consumo de álcool,Sim,Nunca ouvi falar antes,Sim,Sim,Criar faixas de pedestres
+262,Mototaxista,Sim,Muito frequente,Condução imprudente,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Melhorar a sinalização nas estradas
+263,Mototaxista,Não,Frequente,Condução imprudente,Sim,Uso de assistentes virtuais como Siri ou Alexa,Não,Sim,Implementar semáforos inteligentes
+264,Mototaxista,Não,Muito frequente,Excesso de velocidade,Sim,Vi notícias sobre carros autónomos,Não,Sim,Melhorar a sinalização nas estradas
+265,Mototaxista,Sim,Frequente,Falta de sinalização,Não,Nenhuma,Sim,Sim,Fiscalização mais rigorosa
+266,Motorista,Sim,Muito frequente,Condução imprudente,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Melhorar a sinalização nas estradas
+267,Motorista,Sim,Frequente,Consumo de álcool,Sim,Nunca ouvi falar antes,Sim,Sim,Usar tecnologia de IA no trânsito
+268,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Sim,Interação com chatbots de atendimento,Sim,Sim,Implementar semáforos inteligentes
+269,Motorista,Sim,Muito frequente,Condução imprudente,Sim,Nunca usei IA,Sim,Sim,Melhorar a sinalização nas estradas
+270,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Sim,Aplicações de reconhecimento facial,Sim,Sim,Mais agentes de trânsito nas ruas
+271,Mototaxista,Sim,Frequente,Condução imprudente,Não,Nenhuma,Não,Sim,Criar faixas de pedestres
+272,Mototaxista,Sim,Raro,Consumo de álcool,Não,Nenhuma,Sim,Sim,Criar faixas de pedestres
+273,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Melhorar a sinalização nas estradas
+274,Mototaxista,Sim,Frequente,Condução imprudente,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Criar faixas de pedestres
+275,Motorista,Sim,Frequente,Falta de sinalização,Sim,Uso de Google Maps com navegação inteligente,Não,Sim,Construir passadeiras elevadas
+276,Mototaxista,Sim,Frequente,Condução imprudente,Sim,Interação com chatbots de atendimento,Sim,Sim,Usar tecnologia de IA no trânsito
+277,Mototaxista,Sim,Frequente,Falta de sinalização,Não,Nenhuma,Sim,Não,
+278,Mototaxista,Sim,Muito frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Melhorar a sinalização nas estradas
+279,Motorista,Sim,Muito frequente,Condução imprudente,Sim,Aplicações de reconhecimento facial,Sim,Sim,Criar faixas de pedestres
+280,Mototaxista,Não,Frequente,Falta de sinalização,Sim,Uso de assistentes virtuais como Siri ou Alexa,Não,Sim,Mais agentes de trânsito nas ruas
+281,Motorista,Sim,Raro,Condução imprudente,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Aumentar a iluminação pública
+282,Motorista,Sim,Raro,Condução imprudente,Sim,Aplicações de reconhecimento facial,Sim,Não,
+283,Mototaxista,Sim,Muito frequente,Condução imprudente,Sim,Aplicações de reconhecimento facial,Sim,Sim,Aumentar a iluminação pública
+284,Mototaxista,Sim,Frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Melhorar a sinalização nas estradas
+285,Mototaxista,Não,Muito frequente,Falta de sinalização,Sim,Nunca usei IA,Sim,Sim,Usar tecnologia de IA no trânsito
+286,Mototaxista,Sim,Muito frequente,Falta de sinalização,Não,Nenhuma,Sim,Sim,Melhorar a sinalização nas estradas
+287,Motorista,Sim,Raro,Excesso de velocidade,Sim,Interação com chatbots de atendimento,Sim,Sim,Usar tecnologia de IA no trânsito
+288,Motorista,Sim,Muito frequente,Condução imprudente,Sim,Aplicações de reconhecimento facial,Sim,Sim,Usar tecnologia de IA no trânsito
+289,Mototaxista,Sim,Muito frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Mais agentes de trânsito nas ruas
+290,Mototaxista,Sim,Frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Construir passadeiras elevadas
+291,Mototaxista,Sim,Muito frequente,Falta de sinalização,Sim,Nunca usei IA,Sim,Sim,Implementar semáforos inteligentes
+292,Motorista,Sim,Muito frequente,Excesso de velocidade,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Construir passadeiras elevadas
+293,Motorista,Sim,Frequente,Condução imprudente,Não,Nenhuma,Não,Sim,Fiscalização mais rigorosa
+294,Motorista,Sim,Muito frequente,Condução imprudente,Sim,Interação com chatbots de atendimento,Sim,Sim,Fiscalização mais rigorosa
+295,Motorista,Não,Frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Usar tecnologia de IA no trânsito
+296,Mototaxista,Sim,Frequente,Excesso de velocidade,Sim,Nunca ouvi falar antes,Sim,Sim,Usar tecnologia de IA no trânsito
+297,Motorista,Sim,Muito frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Instalar câmeras de vigilância
+298,Motorista,Sim,Muito frequente,Falta de sinalização,Não,Nenhuma,Sim,Sim,Instalar câmeras de vigilância
+299,Mototaxista,Sim,Frequente,Falta de sinalização,Não,Nenhuma,Sim,Sim,Construir passadeiras elevadas
+300,Motorista,Não,Frequente,Falta de sinalização,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Instalar câmeras de vigilância
+301,Motorista,Sim,Muito frequente,Consumo de álcool,Sim,Nunca usei IA,Sim,Não,
+302,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Sim,Interação com chatbots de atendimento,Sim,Sim,Fiscalização mais rigorosa
+303,Mototaxista,Sim,Muito frequente,Consumo de álcool,Sim,Aplicações de reconhecimento facial,Sim,Sim,Criar faixas de pedestres
+304,Mototaxista,Sim,Raro,Excesso de velocidade,Sim,Uso de filtros no Instagram com IA,Sim,Não,
+305,Mototaxista,Sim,Frequente,Consumo de álcool,Não,Nenhuma,Sim,Não,
+306,Motorista,Sim,Frequente,Condução imprudente,Sim,Vi notícias sobre carros autónomos,Não,Sim,Usar tecnologia de IA no trânsito
+307,Mototaxista,Sim,Frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Instalar câmeras de vigilância
+308,Mototaxista,Sim,Frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Criar faixas de pedestres
+309,Mototaxista,Sim,Muito frequente,Condução imprudente,Sim,Vi notícias sobre carros autónomos,Não,Sim,Aumentar a iluminação pública
+310,Mototaxista,Sim,Frequente,Excesso de velocidade,Sim,Nunca usei IA,Sim,Sim,Criar faixas de pedestres
+311,Motorista,Sim,Frequente,Excesso de velocidade,Sim,Nunca usei IA,Sim,Sim,Aumentar a iluminação pública
+312,Peão,Sim,Muito frequente,Excesso de velocidade,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Aumentar a iluminação pública
+313,Peão,Sim,Frequente,Condução imprudente,Sim,Uso de assistentes virtuais como Siri ou Alexa,Não,Sim,Mais agentes de trânsito nas ruas
+314,Motorista,Sim,Muito frequente,Excesso de velocidade,Não,Nenhuma,Não,Sim,Usar tecnologia de IA no trânsito
+315,Peão,Sim,Muito frequente,Condução imprudente,Sim,Uso de filtros no Instagram com IA,Sim,Não,
+316,Motorista,Sim,Frequente,Excesso de velocidade,Sim,Vi notícias sobre carros autónomos,Sim,Sim,Instalar câmeras de vigilância
+317,Mototaxista,Sim,Muito frequente,Falta de sinalização,Sim,Nunca ouvi falar antes,Sim,Sim,Educação para o trânsito nas escolas
+318,Mototaxista,Sim,Frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Aumentar a iluminação pública
+319,Mototaxista,Não,Frequente,Falta de sinalização,Não,Nenhuma,Sim,Não,
+320,Motorista,Sim,Muito frequente,Excesso de velocidade,Sim,Vi notícias sobre carros autónomos,Sim,Sim,Mais agentes de trânsito nas ruas
+321,Motorista,Sim,Muito frequente,Condução imprudente,Sim,Nunca usei IA,Sim,Sim,Implementar semáforos inteligentes
+322,Mototaxista,Sim,Muito frequente,Condução imprudente,Sim,Vi notícias sobre carros autónomos,Sim,Sim,Melhorar a sinalização nas estradas
+323,Motorista,Sim,Frequente,Excesso de velocidade,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Construir passadeiras elevadas
+324,Mototaxista,Sim,Frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Aumentar a iluminação pública
+325,Motorista,Sim,Frequente,Excesso de velocidade,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Melhorar a sinalização nas estradas
+326,Mototaxista,Sim,Frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Mais agentes de trânsito nas ruas
+327,Mototaxista,Sim,Frequente,Falta de sinalização,Sim,Interação com chatbots de atendimento,Sim,Sim,Melhorar a sinalização nas estradas
+328,Motorista,Sim,Frequente,Excesso de velocidade,Sim,Uso de Google Maps com navegação inteligente,Sim,Não,
+329,Peão,Não,Frequente,Consumo de álcool,Não,Nenhuma,Sim,Sim,Criar faixas de pedestres
+330,Peão,Sim,Frequente,Condução imprudente,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Educação para o trânsito nas escolas
+331,Peão,Sim,Frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Instalar câmeras de vigilância
+332,Mototaxista,Sim,Frequente,Condução imprudente,Sim,Interação com chatbots de atendimento,Sim,Não,
+333,Motorista,Sim,Frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Instalar câmeras de vigilância
+334,Peão,Sim,Frequente,Consumo de álcool,Não,Nenhuma,Sim,Sim,Educação para o trânsito nas escolas
+335,Mototaxista,Não,Raro,Excesso de velocidade,Sim,Aplicações de reconhecimento facial,Sim,Sim,Mais agentes de trânsito nas ruas
+336,Motorista,Sim,Raro,Excesso de velocidade,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Melhorar a sinalização nas estradas
+337,Mototaxista,Não,Muito frequente,Excesso de velocidade,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Aumentar a iluminação pública
+338,Mototaxista,Sim,Raro,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Usar tecnologia de IA no trânsito
+339,Mototaxista,Sim,Frequente,Consumo de álcool,Sim,Nunca usei IA,Sim,Sim,Melhorar a sinalização nas estradas
+340,Mototaxista,Sim,Frequente,Condução imprudente,Sim,Interação com chatbots de atendimento,Não,Sim,Melhorar a sinalização nas estradas
+341,Peão,Sim,Muito frequente,Excesso de velocidade,Não,Nenhuma,Sim,Não,
+342,Peão,Sim,Frequente,Excesso de velocidade,Sim,Interação com chatbots de atendimento,Sim,Sim,Instalar câmeras de vigilância
+343,Mototaxista,Sim,Muito frequente,Condução imprudente,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Melhorar a sinalização nas estradas
+344,Peão,Sim,Frequente,Condução imprudente,Sim,Uso de assistentes virtuais como Siri ou Alexa,Não,Sim,Melhorar a sinalização nas estradas
+345,Peão,Sim,Raro,Falta de sinalização,Não,Nenhuma,Sim,Sim,Criar faixas de pedestres
+346,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Educação para o trânsito nas escolas
+347,Motorista,Sim,Raro,Condução imprudente,Sim,Interação com chatbots de atendimento,Sim,Sim,Mais agentes de trânsito nas ruas
+348,Motorista,Sim,Frequente,Consumo de álcool,Não,Nenhuma,Sim,Sim,Usar tecnologia de IA no trânsito
+349,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Implementar semáforos inteligentes
+350,Motorista,Sim,Muito frequente,Condução imprudente,Sim,Vi notícias sobre carros autónomos,Sim,Sim,Educação para o trânsito nas escolas
+351,Motorista,Sim,Frequente,Condução imprudente,Não,Nenhuma,Sim,Não,
+352,Mototaxista,Não,Raro,Excesso de velocidade,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Aumentar a iluminação pública
+353,Motorista,Sim,Frequente,Excesso de velocidade,Não,Nenhuma,Não,Sim,Usar tecnologia de IA no trânsito
+354,Motorista,Sim,Muito frequente,Excesso de velocidade,Sim,Interação com chatbots de atendimento,Sim,Sim,Aumentar a iluminação pública
+355,Motorista,Sim,Muito frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Fiscalização mais rigorosa
+356,Motorista,Sim,Frequente,Consumo de álcool,Sim,Uso de filtros no Instagram com IA,Não,Sim,Melhorar a sinalização nas estradas
+357,Mototaxista,Sim,Muito frequente,Consumo de álcool,Não,Nenhuma,Não,Sim,Fiscalização mais rigorosa
+358,Motorista,Sim,Raro,Condução imprudente,Sim,Vi notícias sobre carros autónomos,Sim,Sim,Criar faixas de pedestres
+359,Motorista,Sim,Muito frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Construir passadeiras elevadas
+360,Mototaxista,Sim,Raro,Consumo de álcool,Sim,Uso de Google Maps com navegação inteligente,Sim,Não,
+361,Mototaxista,Sim,Muito frequente,Falta de sinalização,Sim,Nunca ouvi falar antes,Não,Sim,Aumentar a iluminação pública
+362,Mototaxista,Sim,Frequente,Falta de sinalização,Não,Nenhuma,Sim,Sim,Usar tecnologia de IA no trânsito
+363,Motorista,Não,Raro,Condução imprudente,Sim,Interação com chatbots de atendimento,Sim,Sim,Usar tecnologia de IA no trânsito
+364,Mototaxista,Sim,Frequente,Excesso de velocidade,Sim,Aplicações de reconhecimento facial,Não,Sim,Fiscalização mais rigorosa
+365,Mototaxista,Sim,Raro,Consumo de álcool,Sim,Aplicações de reconhecimento facial,Não,Sim,Instalar câmeras de vigilância
+366,Peão,Sim,Raro,Excesso de velocidade,Sim,Vi notícias sobre carros autónomos,Sim,Sim,Mais agentes de trânsito nas ruas
+367,Motorista,Sim,Muito frequente,Falta de sinalização,Sim,Aplicações de reconhecimento facial,Sim,Sim,Instalar câmeras de vigilância
+368,Mototaxista,Sim,Frequente,Condução imprudente,Sim,Nunca ouvi falar antes,Sim,Sim,Melhorar a sinalização nas estradas
+369,Motorista,Sim,Muito frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Fiscalização mais rigorosa
+370,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Construir passadeiras elevadas
+371,Mototaxista,Sim,Muito frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Educação para o trânsito nas escolas
+372,Motorista,Sim,Frequente,Falta de sinalização,Sim,Nunca ouvi falar antes,Não,Sim,Educação para o trânsito nas escolas
+373,Mototaxista,Sim,Frequente,Excesso de velocidade,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Construir passadeiras elevadas
+374,Mototaxista,Sim,Muito frequente,Consumo de álcool,Não,Nenhuma,Sim,Sim,Criar faixas de pedestres
+375,Mototaxista,Sim,Muito frequente,Condução imprudente,Sim,Nunca usei IA,Sim,Sim,Melhorar a sinalização nas estradas
+376,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Sim,Aplicações de reconhecimento facial,Não,Sim,Construir passadeiras elevadas
+377,Mototaxista,Sim,Frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Melhorar a sinalização nas estradas
+378,Motorista,Não,Raro,Consumo de álcool,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Usar tecnologia de IA no trânsito
+379,Mototaxista,Sim,Frequente,Condução imprudente,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Educação para o trânsito nas escolas
+380,Motorista,Não,Raro,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Usar tecnologia de IA no trânsito
+381,Peão,Sim,Raro,Excesso de velocidade,Sim,Vi notícias sobre carros autónomos,Sim,Sim,Aumentar a iluminação pública
+382,Motorista,Sim,Muito frequente,Falta de sinalização,Não,Nenhuma,Sim,Sim,Mais agentes de trânsito nas ruas
+383,Peão,Sim,Frequente,Excesso de velocidade,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Mais agentes de trânsito nas ruas
+384,Mototaxista,Não,Muito frequente,Excesso de velocidade,Sim,Vi notícias sobre carros autónomos,Sim,Sim,Educação para o trânsito nas escolas
+385,Mototaxista,Sim,Muito frequente,Consumo de álcool,Não,Nenhuma,Sim,Sim,Usar tecnologia de IA no trânsito
+386,Mototaxista,Não,Frequente,Falta de sinalização,Sim,Vi notícias sobre carros autónomos,Não,Sim,Melhorar a sinalização nas estradas
+387,Mototaxista,Sim,Frequente,Condução imprudente,Sim,Vi notícias sobre carros autónomos,Sim,Sim,Educação para o trânsito nas escolas
+388,Motorista,Sim,Frequente,Consumo de álcool,Não,Nenhuma,Sim,Sim,Fiscalização mais rigorosa
+389,Motorista,Sim,Muito frequente,Condução imprudente,Sim,Aplicações de reconhecimento facial,Não,Sim,Criar faixas de pedestres
+390,Peão,Sim,Muito frequente,Falta de sinalização,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Instalar câmeras de vigilância
+391,Motorista,Sim,Muito frequente,Condução imprudente,Sim,Vi notícias sobre carros autónomos,Sim,Sim,Aumentar a iluminação pública
+392,Mototaxista,Sim,Raro,Excesso de velocidade,Sim,Aplicações de reconhecimento facial,Sim,Sim,Construir passadeiras elevadas
+393,Motorista,Sim,Frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Criar faixas de pedestres
+394,Motorista,Sim,Raro,Condução imprudente,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Usar tecnologia de IA no trânsito
+395,Motorista,Sim,Frequente,Consumo de álcool,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Implementar semáforos inteligentes
+396,Peão,Não,Frequente,Excesso de velocidade,Sim,Uso de filtros no Instagram com IA,Não,Sim,Aumentar a iluminação pública
+397,Mototaxista,Sim,Frequente,Condução imprudente,Não,Nenhuma,Sim,Não,
+398,Mototaxista,Não,Frequente,Consumo de álcool,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Fiscalização mais rigorosa
+399,Peão,Sim,Raro,Consumo de álcool,Não,Nenhuma,Sim,Sim,Fiscalização mais rigorosa
+400,Motorista,Sim,Frequente,Excesso de velocidade,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Fiscalização mais rigorosa
+401,Motorista,Sim,Muito frequente,Condução imprudente,Sim,Aplicações de reconhecimento facial,Sim,Não,
+402,Mototaxista,Sim,Frequente,Consumo de álcool,Não,Nenhuma,Sim,Sim,Instalar câmeras de vigilância
+403,Motorista,Sim,Muito frequente,Condução imprudente,Sim,Vi notícias sobre carros autónomos,Sim,Sim,Construir passadeiras elevadas
+404,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Fiscalização mais rigorosa
+405,Mototaxista,Não,Muito frequente,Excesso de velocidade,Não,Nenhuma,Não,Sim,Educação para o trânsito nas escolas
+406,Mototaxista,Não,Muito frequente,Excesso de velocidade,Sim,Aplicações de reconhecimento facial,Sim,Sim,Instalar câmeras de vigilância
+407,Peão,Sim,Frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Instalar câmeras de vigilância
+408,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Sim,Vi notícias sobre carros autónomos,Sim,Sim,Instalar câmeras de vigilância
+409,Mototaxista,Sim,Frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Mais agentes de trânsito nas ruas
+410,Motorista,Sim,Muito frequente,Excesso de velocidade,Sim,Interação com chatbots de atendimento,Sim,Sim,Mais agentes de trânsito nas ruas
+411,Mototaxista,Sim,Muito frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Educação para o trânsito nas escolas
+412,Mototaxista,Sim,Raro,Consumo de álcool,Não,Nenhuma,Sim,Sim,Mais agentes de trânsito nas ruas
+413,Mototaxista,Sim,Raro,Condução imprudente,Sim,Nunca usei IA,Não,Sim,Instalar câmeras de vigilância
+414,Motorista,Não,Frequente,Falta de sinalização,Não,Nenhuma,Sim,Sim,Instalar câmeras de vigilância
+415,Mototaxista,Sim,Frequente,Falta de sinalização,Não,Nenhuma,Não,Sim,Melhorar a sinalização nas estradas
+416,Mototaxista,Sim,Muito frequente,Falta de sinalização,Sim,Aplicações de reconhecimento facial,Não,Sim,Usar tecnologia de IA no trânsito
+417,Motorista,Sim,Muito frequente,Condução imprudente,Sim,Nunca ouvi falar antes,Não,Sim,Criar faixas de pedestres
+418,Motorista,Sim,Muito frequente,Falta de sinalização,Sim,Nunca ouvi falar antes,Sim,Sim,Fiscalização mais rigorosa
+419,Peão,Sim,Muito frequente,Excesso de velocidade,Sim,Interação com chatbots de atendimento,Sim,Sim,Mais agentes de trânsito nas ruas
+420,Peão,Sim,Muito frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Educação para o trânsito nas escolas
+421,Motorista,Sim,Frequente,Excesso de velocidade,Não,Nenhuma,Não,Sim,Instalar câmeras de vigilância
+422,Motorista,Sim,Frequente,Consumo de álcool,Não,Nenhuma,Sim,Sim,Educação para o trânsito nas escolas
+423,Mototaxista,Sim,Frequente,Condução imprudente,Sim,Nunca ouvi falar antes,Sim,Sim,Usar tecnologia de IA no trânsito
+424,Mototaxista,Sim,Muito frequente,Consumo de álcool,Não,Nenhuma,Sim,Sim,Instalar câmeras de vigilância
+425,Motorista,Sim,Muito frequente,Condução imprudente,Sim,Nunca ouvi falar antes,Sim,Sim,Educação para o trânsito nas escolas
+426,Peão,Sim,Muito frequente,Excesso de velocidade,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Usar tecnologia de IA no trânsito
+427,Motorista,Sim,Frequente,Excesso de velocidade,Sim,Vi notícias sobre carros autónomos,Não,Não,
+428,Motorista,Sim,Muito frequente,Consumo de álcool,Sim,Nunca usei IA,Não,Sim,Criar faixas de pedestres
+429,Mototaxista,Sim,Muito frequente,Consumo de álcool,Sim,Nunca usei IA,Não,Sim,Aumentar a iluminação pública
+430,Motorista,Sim,Frequente,Condução imprudente,Sim,Uso de Google Maps com navegação inteligente,Não,Sim,Construir passadeiras elevadas
+431,Peão,Sim,Frequente,Condução imprudente,Sim,Uso de Google Maps com navegação inteligente,Sim,Não,
+432,Motorista,Sim,Frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Criar faixas de pedestres
+433,Mototaxista,Sim,Frequente,Excesso de velocidade,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Fiscalização mais rigorosa
+434,Mototaxista,Sim,Frequente,Excesso de velocidade,Não,Nenhuma,Não,Sim,Mais agentes de trânsito nas ruas
+435,Motorista,Sim,Frequente,Excesso de velocidade,Sim,Uso de Google Maps com navegação inteligente,Sim,Não,
+436,Motorista,Sim,Muito frequente,Excesso de velocidade,Sim,Vi notícias sobre carros autónomos,Sim,Sim,Criar faixas de pedestres
+437,Peão,Sim,Muito frequente,Excesso de velocidade,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Implementar semáforos inteligentes
+438,Peão,Sim,Muito frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Aumentar a iluminação pública
+439,Motorista,Sim,Frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Educação para o trânsito nas escolas
+440,Motorista,Sim,Frequente,Condução imprudente,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Aumentar a iluminação pública
+441,Mototaxista,Sim,Frequente,Condução imprudente,Não,Nenhuma,Não,Não,
+442,Motorista,Sim,Frequente,Condução imprudente,Sim,Vi notícias sobre carros autónomos,Sim,Não,
+443,Mototaxista,Não,Muito frequente,Consumo de álcool,Não,Nenhuma,Sim,Sim,Implementar semáforos inteligentes
+444,Motorista,Sim,Frequente,Excesso de velocidade,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Fiscalização mais rigorosa
+445,Motorista,Sim,Frequente,Consumo de álcool,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Melhorar a sinalização nas estradas
+446,Motorista,Não,Frequente,Condução imprudente,Sim,Interação com chatbots de atendimento,Sim,Sim,Aumentar a iluminação pública
+447,Peão,Sim,Muito frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Mais agentes de trânsito nas ruas
+448,Motorista,Não,Muito frequente,Condução imprudente,Sim,Interação com chatbots de atendimento,Não,Sim,Construir passadeiras elevadas
+449,Peão,Sim,Muito frequente,Consumo de álcool,Não,Nenhuma,Sim,Sim,Implementar semáforos inteligentes
+450,Mototaxista,Sim,Frequente,Condução imprudente,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Educação para o trânsito nas escolas
+451,Motorista,Não,Muito frequente,Consumo de álcool,Sim,Aplicações de reconhecimento facial,Sim,Sim,Educação para o trânsito nas escolas
+452,Motorista,Sim,Frequente,Consumo de álcool,Não,Nenhuma,Sim,Sim,Melhorar a sinalização nas estradas
+453,Motorista,Sim,Frequente,Falta de sinalização,Sim,Nunca usei IA,Sim,Sim,Mais agentes de trânsito nas ruas
+454,Motorista,Sim,Muito frequente,Falta de sinalização,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Melhorar a sinalização nas estradas
+455,Motorista,Sim,Frequente,Condução imprudente,Não,Nenhuma,Sim,Não,
+456,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Instalar câmeras de vigilância
+457,Mototaxista,Sim,Muito frequente,Falta de sinalização,Não,Nenhuma,Sim,Não,
+458,Mototaxista,Sim,Raro,Condução imprudente,Não,Nenhuma,Sim,Não,
+459,Motorista,Sim,Muito frequente,Excesso de velocidade,Sim,Vi notícias sobre carros autónomos,Sim,Não,
+460,Mototaxista,Sim,Frequente,Excesso de velocidade,Não,Nenhuma,Não,Sim,Fiscalização mais rigorosa
+461,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Não,Nenhuma,Não,Sim,Mais agentes de trânsito nas ruas
+462,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Aumentar a iluminação pública
+463,Mototaxista,Sim,Muito frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Construir passadeiras elevadas
+464,Motorista,Sim,Muito frequente,Condução imprudente,Não,Nenhuma,Não,Sim,Aumentar a iluminação pública
+465,Mototaxista,Sim,Frequente,Falta de sinalização,Não,Nenhuma,Sim,Sim,Usar tecnologia de IA no trânsito
+466,Mototaxista,Sim,Muito frequente,Condução imprudente,Sim,Interação com chatbots de atendimento,Sim,Sim,Fiscalização mais rigorosa
+467,Mototaxista,Não,Muito frequente,Excesso de velocidade,Sim,Aplicações de reconhecimento facial,Sim,Sim,Construir passadeiras elevadas
+468,Motorista,Sim,Muito frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Fiscalização mais rigorosa
+469,Mototaxista,Sim,Frequente,Condução imprudente,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Criar faixas de pedestres
+470,Motorista,Sim,Frequente,Condução imprudente,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Usar tecnologia de IA no trânsito
+471,Mototaxista,Não,Frequente,Consumo de álcool,Não,Nenhuma,Sim,Sim,Educação para o trânsito nas escolas
+472,Motorista,Sim,Muito frequente,Excesso de velocidade,Não,Nenhuma,Sim,Sim,Criar faixas de pedestres
+473,Mototaxista,Sim,Muito frequente,Consumo de álcool,Sim,Vi notícias sobre carros autónomos,Sim,Sim,Implementar semáforos inteligentes
+474,Motorista,Sim,Muito frequente,Falta de sinalização,Sim,Aplicações de reconhecimento facial,Não,Sim,Implementar semáforos inteligentes
+475,Peão,Sim,Muito frequente,Condução imprudente,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Instalar câmeras de vigilância
+476,Mototaxista,Sim,Frequente,Excesso de velocidade,Sim,Interação com chatbots de atendimento,Sim,Sim,Melhorar a sinalização nas estradas
+477,Mototaxista,Sim,Muito frequente,Condução imprudente,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Criar faixas de pedestres
+478,Mototaxista,Sim,Frequente,Excesso de velocidade,Sim,Vi notícias sobre carros autónomos,Não,Sim,Fiscalização mais rigorosa
+479,Peão,Sim,Muito frequente,Consumo de álcool,Sim,Nunca usei IA,Não,Sim,Implementar semáforos inteligentes
+480,Mototaxista,Sim,Frequente,Condução imprudente,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Construir passadeiras elevadas
+481,Motorista,Sim,Muito frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Criar faixas de pedestres
+482,Mototaxista,Sim,Muito frequente,Consumo de álcool,Sim,Uso de Google Maps com navegação inteligente,Sim,Sim,Melhorar a sinalização nas estradas
+483,Motorista,Sim,Muito frequente,Condução imprudente,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Fiscalização mais rigorosa
+484,Peão,Sim,Frequente,Condução imprudente,Sim,Nunca ouvi falar antes,Sim,Sim,Educação para o trânsito nas escolas
+485,Motorista,Sim,Frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Fiscalização mais rigorosa
+486,Mototaxista,Sim,Raro,Excesso de velocidade,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Instalar câmeras de vigilância
+487,Motorista,Sim,Muito frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Fiscalização mais rigorosa
+488,Mototaxista,Sim,Muito frequente,Condução imprudente,Sim,Aplicações de reconhecimento facial,Sim,Não,
+489,Motorista,Sim,Frequente,Condução imprudente,Sim,Uso de filtros no Instagram com IA,Sim,Sim,Implementar semáforos inteligentes
+490,Motorista,Sim,Muito frequente,Consumo de álcool,Sim,Nunca usei IA,Sim,Sim,Fiscalização mais rigorosa
+491,Mototaxista,Sim,Muito frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Instalar câmeras de vigilância
+492,Motorista,Sim,Frequente,Condução imprudente,Sim,Uso de assistentes virtuais como Siri ou Alexa,Sim,Sim,Construir passadeiras elevadas
+493,Motorista,Não,Muito frequente,Condução imprudente,Sim,Nunca ouvi falar antes,Não,Sim,Fiscalização mais rigorosa
+494,Mototaxista,Sim,Frequente,Condução imprudente,Sim,Interação com chatbots de atendimento,Sim,Sim,Mais agentes de trânsito nas ruas
+495,Motorista,Sim,Muito frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Criar faixas de pedestres
+496,Mototaxista,Sim,Frequente,Condução imprudente,Não,Nenhuma,Sim,Sim,Implementar semáforos inteligentes
+497,Motorista,Sim,Frequente,Falta de sinalização,Não,Nenhuma,Sim,Não,
+498,Mototaxista,Sim,Muito frequente,Excesso de velocidade,Sim,Nunca usei IA,Sim,Sim,Aumentar a iluminação pública
+499,Motorista,Não,Frequente,Condução imprudente,Sim,Nunca ouvi falar antes,Sim,Não,
+500,Motorista,Sim,Raro,Condução imprudente,Sim,Vi notícias sobre carros autónomos,Sim,Sim,Melhorar a sinalização nas estradas
