@@ -5,7 +5,7 @@ Módulos: Treino Geral (CSV) + Visão Computacional (CNN)
 ================================================================
 Execute com:  streamlit run app.py
 Dependências: pip install streamlit pandas numpy matplotlib scikit-learn pillow
-Opcional:     pip install tensorflow opencv-python-headless
+Opcional:     pip install torch torchvision
 ================================================================
 """
 
@@ -998,14 +998,13 @@ elif modulo == "👁  Visão Computacional":
 
     tf_available = False
     try:
-        import tensorflow as tf
-        from tensorflow import keras
-        from tensorflow.keras import layers, models
-        from tensorflow.keras.preprocessing.image import img_to_array
-        from tensorflow.keras.utils import to_categorical
+        import torch
+        import torch.nn as nn
+        import torch.optim as optim
+        from torch.utils.data import DataLoader, TensorDataset
         tf_available = True
     except ImportError:
-        st.error("TensorFlow não está instalado. Execute: `pip install tensorflow pillow`")
+        st.error("PyTorch não está instalado. Execute: `pip install torch torchvision pillow`")
 
     if tf_available:
         section("1 · definir classes e carregar imagens")
@@ -1069,215 +1068,272 @@ elif modulo == "👁  Visão Computacional":
                             try:
                                 pil_img = Image.open(img_file).convert('RGB')
                                 pil_img = pil_img.resize((img_size, img_size))
-                                arr = img_to_array(pil_img) / 255.0
+                                arr = np.array(pil_img, dtype=np.float32) / 255.0
                                 X_all.append(arr)
                                 y_all.append(label_map[cls_name])
                             except Exception as e:
                                 st.warning(f"Erro ao carregar {img_file.name}: {e}")
 
-                X_arr = np.array(X_all, dtype=np.float32)
-                y_arr = np.array(y_all, dtype=np.int32)
-                n_classes_actual = len(classes_with_data)
+                    X_arr = np.array(X_all, dtype=np.float32)
+                    y_arr = np.array(y_all, dtype=np.int64)
+                    n_classes_actual = len(classes_with_data)
 
-                st.success(f"✔ {len(X_arr)} imagens processadas — shape: {X_arr.shape}")
+                    st.success(f"✔ {len(X_arr)} imagens processadas — shape: {X_arr.shape}")
 
-                if len(X_arr) < 4:
-                    st.error("❌ São necessárias pelo menos 4 imagens para treinar.")
-                else:
-                    X_tr_cnn, X_te_cnn, y_tr_cnn, y_te_cnn = train_test_split(
-                        X_arr, y_arr, test_size=test_split, random_state=42,
-                        stratify=y_arr if len(set(y_arr)) > 1 else None
-                    )
-
-                    y_tr_cat = to_categorical(y_tr_cnn, n_classes_actual)
-                    y_te_cat = to_categorical(y_te_cnn, n_classes_actual)
-
-                    model_cnn = models.Sequential()
-
-                    if augment:
-                        model_cnn.add(layers.RandomFlip("horizontal", input_shape=(img_size, img_size, 3)))
-                        model_cnn.add(layers.RandomRotation(0.1))
-                        model_cnn.add(layers.RandomZoom(0.1))
-                        first_conv_input = False
+                    if len(X_arr) < 4:
+                        st.error("❌ São necessárias pelo menos 4 imagens para treinar.")
                     else:
-                        first_conv_input = True
+                        X_tr_cnn, X_te_cnn, y_tr_cnn, y_te_cnn = train_test_split(
+                            X_arr, y_arr, test_size=test_split, random_state=42,
+                            stratify=y_arr if len(set(y_arr)) > 1 else None
+                        )
 
-                    for block in range(n_conv_blocks):
-                        n_filters = filters_base * (2 ** block)
-                        if block == 0 and first_conv_input:
-                            model_cnn.add(layers.Conv2D(n_filters, (3, 3), activation='relu',
-                                                         padding='same',
-                                                         input_shape=(img_size, img_size, 3)))
-                        else:
-                            model_cnn.add(layers.Conv2D(n_filters, (3, 3), activation='relu', padding='same'))
-                        model_cnn.add(layers.BatchNormalization())
-                        model_cnn.add(layers.Conv2D(n_filters, (3, 3), activation='relu', padding='same'))
-                        model_cnn.add(layers.MaxPooling2D((2, 2)))
-                        model_cnn.add(layers.Dropout(dropout * 0.5))
+                        # PyTorch espera (N, C, H, W)
+                        X_tr_t = torch.from_numpy(X_tr_cnn.transpose(0, 3, 1, 2))
+                        X_te_t = torch.from_numpy(X_te_cnn.transpose(0, 3, 1, 2))
+                        y_tr_t = torch.from_numpy(y_tr_cnn)
+                        y_te_t = torch.from_numpy(y_te_cnn)
 
-                    model_cnn.add(layers.GlobalAveragePooling2D())
-                    model_cnn.add(layers.Dense(dense_units, activation='relu'))
-                    model_cnn.add(layers.Dropout(dropout))
+                        # Data augmentation inline (flip horizontal aleatório)
+                        def augment_batch(x):
+                            if augment and torch.rand(1).item() > 0.5:
+                                x = torch.flip(x, dims=[3])
+                            return x
 
-                    if n_classes_actual == 2:
-                        model_cnn.add(layers.Dense(1, activation='sigmoid'))
-                        loss_fn = 'binary_crossentropy'
-                        y_tr_fit = y_tr_cnn
-                        y_te_fit = y_te_cnn
-                    else:
-                        model_cnn.add(layers.Dense(n_classes_actual, activation='softmax'))
-                        loss_fn = 'categorical_crossentropy'
-                        y_tr_fit = y_tr_cat
-                        y_te_fit = y_te_cat
+                        train_ds = TensorDataset(X_tr_t, y_tr_t)
+                        test_ds  = TensorDataset(X_te_t,  y_te_t)
+                        train_loader = DataLoader(train_ds, batch_size=batch_size, shuffle=True)
+                        test_loader  = DataLoader(test_ds,  batch_size=batch_size)
 
-                    model_cnn.compile(
-                        optimizer=keras.optimizers.Adam(learning_rate=lr),
-                        loss=loss_fn,
-                        metrics=['accuracy']
-                    )
+                        # ── Definir arquitectura CNN ──────────────────────
+                        class CNNModel(nn.Module):
+                            def __init__(self):
+                                super().__init__()
+                                self.conv_blocks = nn.ModuleList()
+                                in_ch = 3
+                                for block in range(n_conv_blocks):
+                                    out_ch = filters_base * (2 ** block)
+                                    self.conv_blocks.append(nn.Sequential(
+                                        nn.Conv2d(in_ch, out_ch, 3, padding=1),
+                                        nn.BatchNorm2d(out_ch),
+                                        nn.ReLU(inplace=True),
+                                        nn.Conv2d(out_ch, out_ch, 3, padding=1),
+                                        nn.ReLU(inplace=True),
+                                        nn.MaxPool2d(2),
+                                        nn.Dropout2d(dropout * 0.5),
+                                    ))
+                                    in_ch = out_ch
+                                self.gap = nn.AdaptiveAvgPool2d(1)
+                                self.fc  = nn.Sequential(
+                                    nn.Flatten(),
+                                    nn.Linear(in_ch, dense_units),
+                                    nn.ReLU(inplace=True),
+                                    nn.Dropout(dropout),
+                                    nn.Linear(dense_units, n_classes_actual),
+                                )
+                            def forward(self, x):
+                                for blk in self.conv_blocks:
+                                    x = blk(x)
+                                x = self.gap(x)
+                                return self.fc(x)
 
-                    with st.expander("🔎 Arquitectura do modelo"):
-                        summary_lines = []
-                        model_cnn.summary(print_fn=lambda x: summary_lines.append(x))
-                        st.code('\n'.join(summary_lines), language='text')
+                        device = torch.device("cpu")
+                        model_cnn = CNNModel().to(device)
 
-                    prog_cnn = st.progress(0, text="A treinar CNN...")
-                    history_data = {'loss': [], 'val_loss': [], 'accuracy': [], 'val_accuracy': []}
+                        criterion = nn.CrossEntropyLoss()
+                        optimizer_cnn = optim.Adam(model_cnn.parameters(), lr=lr)
+                        scheduler = optim.lr_scheduler.ReduceLROnPlateau(
+                            optimizer_cnn, factor=0.5, patience=5)
 
-                    class StreamlitCallback(keras.callbacks.Callback):
-                        def on_epoch_end(self, epoch, logs=None):
-                            prog_cnn.progress((epoch + 1) / epochs,
-                                              text=f"Época {epoch+1}/{epochs} — "
-                                                   f"loss: {logs.get('loss', 0):.4f} — "
-                                                   f"acc: {logs.get('accuracy', 0):.4f} — "
-                                                   f"val_acc: {logs.get('val_accuracy', 0):.4f}")
-                            for k in history_data:
-                                if k in logs:
-                                    history_data[k].append(logs[k])
+                        with st.expander("🔎 Arquitectura do modelo"):
+                            st.code(str(model_cnn), language='text')
 
-                    early_stop = keras.callbacks.EarlyStopping(
-                        monitor='val_accuracy', patience=10, restore_best_weights=True)
-                    reduce_lr = keras.callbacks.ReduceLROnPlateau(
-                        monitor='val_loss', factor=0.5, patience=5, min_lr=1e-6)
+                        prog_cnn = st.progress(0, text="A treinar CNN...")
+                        history_data = {'loss': [], 'val_loss': [],
+                                        'accuracy': [], 'val_accuracy': []}
 
-                    hist = model_cnn.fit(
-                        X_tr_cnn, y_tr_fit,
-                        epochs=epochs,
-                        batch_size=batch_size,
-                        validation_data=(X_te_cnn, y_te_fit),
-                        callbacks=[StreamlitCallback(), early_stop, reduce_lr],
-                        verbose=0
-                    )
-                    prog_cnn.progress(1.0, text="Treino concluído ✔")
+                        best_val_acc = -1
+                        best_weights = None
+                        patience_count = 0
+                        early_stop_patience = 10
 
-                    eval_results = model_cnn.evaluate(X_te_cnn, y_te_fit, verbose=0)
-                    test_loss = eval_results[0]
-                    test_acc = eval_results[1]
+                        for epoch in range(epochs):
+                            # ── treino ──
+                            model_cnn.train()
+                            ep_loss, ep_correct, ep_total = 0.0, 0, 0
+                            for xb, yb in train_loader:
+                                xb = augment_batch(xb.to(device))
+                                yb = yb.to(device)
+                                optimizer_cnn.zero_grad()
+                                out = model_cnn(xb)
+                                loss = criterion(out, yb)
+                                loss.backward()
+                                optimizer_cnn.step()
+                                ep_loss   += loss.item() * xb.size(0)
+                                ep_correct += (out.argmax(1) == yb).sum().item()
+                                ep_total   += xb.size(0)
+                            train_loss = ep_loss / ep_total
+                            train_acc  = ep_correct / ep_total
 
-                    preds_raw = model_cnn.predict(X_te_cnn, verbose=0)
-                    if n_classes_actual == 2:
-                        y_pred_cnn = (preds_raw[:, 0] > 0.5).astype(int)
-                    else:
-                        y_pred_cnn = np.argmax(preds_raw, axis=1)
+                            # ── validação ──
+                            model_cnn.eval()
+                            val_loss, val_correct, val_total = 0.0, 0, 0
+                            with torch.no_grad():
+                                for xb, yb in test_loader:
+                                    xb, yb = xb.to(device), yb.to(device)
+                                    out = model_cnn(xb)
+                                    val_loss    += criterion(out, yb).item() * xb.size(0)
+                                    val_correct += (out.argmax(1) == yb).sum().item()
+                                    val_total   += xb.size(0)
+                            val_loss /= val_total
+                            val_acc   = val_correct / val_total
 
-                    f1_cnn = f1_score(y_te_cnn, y_pred_cnn, average='weighted', zero_division=0)
-                    prec_cnn = precision_score(y_te_cnn, y_pred_cnn, average='weighted', zero_division=0)
-                    rec_cnn = recall_score(y_te_cnn, y_pred_cnn, average='weighted', zero_division=0)
+                            history_data['loss'].append(train_loss)
+                            history_data['val_loss'].append(val_loss)
+                            history_data['accuracy'].append(train_acc)
+                            history_data['val_accuracy'].append(val_acc)
 
-                    section("métricas finais")
-                    metrics_row([
-                        ("Acurácia Teste", f"{test_acc:.4f}"),
-                        ("F1-Score", f"{f1_cnn:.4f}"),
-                        ("Precisão", f"{prec_cnn:.4f}"),
-                        ("Recall", f"{rec_cnn:.4f}"),
-                        ("Loss Teste", f"{test_loss:.4f}"),
-                    ])
+                            scheduler.step(val_loss)
 
-                    section("curvas de aprendizagem")
-                    col_loss, col_acc = st.columns(2)
-                    h = hist.history
+                            prog_cnn.progress(
+                                (epoch + 1) / epochs,
+                                text=f"Época {epoch+1}/{epochs} — "
+                                     f"loss: {train_loss:.4f} — "
+                                     f"acc: {train_acc:.4f} — "
+                                     f"val_acc: {val_acc:.4f}"
+                            )
 
-                    with col_loss:
-                        fig, ax = plt.subplots(figsize=(5, 4))
-                        ax.plot(h['loss'], color=C_ACCENT, lw=2, label='Treino')
-                        ax.plot(h['val_loss'], color=C_RED, lw=2, linestyle='--', label='Validação')
-                        ax.set_xlabel("Época"); ax.set_ylabel("Loss")
-                        ax.set_title("Curva de Loss", fontsize=14, fontweight='bold')
-                        ax.legend(fontsize=12); ax.grid(True, alpha=0.3)
+                            # early stopping
+                            if val_acc > best_val_acc:
+                                best_val_acc = val_acc
+                                best_weights = {k: v.clone() for k, v in model_cnn.state_dict().items()}
+                                patience_count = 0
+                            else:
+                                patience_count += 1
+                                if patience_count >= early_stop_patience:
+                                    break
+
+                        if best_weights:
+                            model_cnn.load_state_dict(best_weights)
+
+                        prog_cnn.progress(1.0, text="Treino concluído ✔")
+
+                        # ── métricas finais ──
+                        model_cnn.eval()
+                        all_preds, all_probs = [], []
+                        test_loss_total, test_correct, test_total = 0.0, 0, 0
+                        with torch.no_grad():
+                            for xb, yb in test_loader:
+                                xb, yb = xb.to(device), yb.to(device)
+                                out = model_cnn(xb)
+                                test_loss_total += criterion(out, yb).item() * xb.size(0)
+                                test_correct    += (out.argmax(1) == yb).sum().item()
+                                test_total      += xb.size(0)
+                                all_preds.extend(out.argmax(1).cpu().numpy())
+                                all_probs.extend(torch.softmax(out, 1).cpu().numpy())
+                        test_loss = test_loss_total / test_total
+                        test_acc  = test_correct / test_total
+                        y_pred_cnn = np.array(all_preds)
+                        preds_raw  = np.array(all_probs)
+
+                        f1_cnn   = f1_score(y_te_cnn, y_pred_cnn, average='weighted', zero_division=0)
+                        prec_cnn = precision_score(y_te_cnn, y_pred_cnn, average='weighted', zero_division=0)
+                        rec_cnn  = recall_score(y_te_cnn, y_pred_cnn, average='weighted', zero_division=0)
+
+                        section("métricas finais")
+                        metrics_row([
+                            ("Acurácia Teste", f"{test_acc:.4f}"),
+                            ("F1-Score", f"{f1_cnn:.4f}"),
+                            ("Precisão", f"{prec_cnn:.4f}"),
+                            ("Recall", f"{rec_cnn:.4f}"),
+                            ("Loss Teste", f"{test_loss:.4f}"),
+                        ])
+
+                        section("curvas de aprendizagem")
+                        col_loss, col_acc = st.columns(2)
+                        h = history_data
+
+                        with col_loss:
+                            fig, ax = plt.subplots(figsize=(5, 4))
+                            ax.plot(h['loss'], color=C_ACCENT, lw=2, label='Treino')
+                            ax.plot(h['val_loss'], color=C_RED, lw=2, linestyle='--', label='Validação')
+                            ax.set_xlabel("Época"); ax.set_ylabel("Loss")
+                            ax.set_title("Curva de Loss", fontsize=14, fontweight='bold')
+                            ax.legend(fontsize=12); ax.grid(True, alpha=0.3)
+                            fig.tight_layout(); st.pyplot(fig); plt.close()
+
+                        with col_acc:
+                            fig, ax = plt.subplots(figsize=(5, 4))
+                            ax.plot(h['accuracy'], color=C_GREEN, lw=2, label='Treino')
+                            ax.plot(h['val_accuracy'], color=C_AMBER, lw=2, linestyle='--', label='Validação')
+                            ax.set_xlabel("Época"); ax.set_ylabel("Acurácia")
+                            ax.set_title("Curva de Acurácia", fontsize=14, fontweight='bold')
+                            ax.legend(fontsize=12); ax.grid(True, alpha=0.3)
+                            fig.tight_layout(); st.pyplot(fig); plt.close()
+
+                        section("matriz de confusão")
+                        cm_cnn = confusion_matrix(y_te_cnn, y_pred_cnn)
+                        fig = plot_confusion_matrix(cm_cnn, classes_with_data, "CNN")
+                        st.pyplot(fig); plt.close()
+
+                        section("relatório de classificação")
+                        report_cnn = classification_report(y_te_cnn, y_pred_cnn,
+                                                            target_names=classes_with_data,
+                                                            output_dict=True, zero_division=0)
+                        st.dataframe(pd.DataFrame(report_cnn).T.round(3), use_container_width=True)
+
+                        section("amostras do conjunto de teste")
+                        n_show = min(12, len(X_te_cnn))
+                        indices_show = np.random.choice(len(X_te_cnn), n_show, replace=False)
+                        n_cols_show = min(6, n_show)
+                        n_rows_show = (n_show + n_cols_show - 1) // n_cols_show
+                        fig, axes = plt.subplots(n_rows_show, n_cols_show,
+                                                 figsize=(n_cols_show * 2.5, n_rows_show * 2.8))
+                        if n_rows_show == 1 and n_cols_show == 1:
+                            axes = np.array([[axes]])
+                        elif n_rows_show == 1:
+                            axes = axes[np.newaxis, :]
+                        elif n_cols_show == 1:
+                            axes = axes[:, np.newaxis]
+
+                        for idx_plot, idx_data in enumerate(indices_show):
+                            r_p = idx_plot // n_cols_show
+                            c_p = idx_plot % n_cols_show
+                            ax = axes[r_p, c_p]
+                            ax.imshow(X_te_cnn[idx_data])
+                            true_cls = classes_with_data[y_te_cnn[idx_data]]
+                            pred_cls = classes_with_data[y_pred_cnn[idx_data]]
+                            correct = true_cls == pred_cls
+                            for spine in ax.spines.values():
+                                spine.set_edgecolor(C_GREEN if correct else C_RED)
+                                spine.set_linewidth(3)
+                            ax.set_title(f"Real: {true_cls}\nPrev: {pred_cls}",
+                                         fontsize=9,
+                                         color=C_GREEN if correct else C_RED,
+                                         fontweight='bold')
+                            ax.axis('off')
+
+                        for idx_extra in range(n_show, n_rows_show * n_cols_show):
+                            r_p = idx_extra // n_cols_show
+                            c_p = idx_extra % n_cols_show
+                            axes[r_p, c_p].axis('off')
+
+                        fig.suptitle("Predições no conjunto de teste",
+                                     fontsize=13, fontweight='bold', color=C_TEXT)
                         fig.tight_layout(); st.pyplot(fig); plt.close()
 
-                    with col_acc:
-                        fig, ax = plt.subplots(figsize=(5, 4))
-                        ax.plot(h['accuracy'], color=C_GREEN, lw=2, label='Treino')
-                        ax.plot(h['val_accuracy'], color=C_AMBER, lw=2, linestyle='--', label='Validação')
-                        ax.set_xlabel("Época"); ax.set_ylabel("Acurácia")
-                        ax.set_title("Curva de Acurácia", fontsize=14, fontweight='bold')
-                        ax.legend(fontsize=12); ax.grid(True, alpha=0.3)
-                        fig.tight_layout(); st.pyplot(fig); plt.close()
+                        st.session_state['cnn_model'] = model_cnn
+                        st.session_state['cnn_classes'] = classes_with_data
+                        st.session_state['cnn_img_size'] = img_size
 
-                    section("matriz de confusão")
-                    cm_cnn = confusion_matrix(y_te_cnn, y_pred_cnn)
-                    fig = plot_confusion_matrix(cm_cnn, classes_with_data, "CNN")
-                    st.pyplot(fig); plt.close()
-
-                    section("relatório de classificação")
-                    report_cnn = classification_report(y_te_cnn, y_pred_cnn,
-                                                        target_names=classes_with_data,
-                                                        output_dict=True, zero_division=0)
-                    st.dataframe(pd.DataFrame(report_cnn).T.round(3), use_container_width=True)
-
-                    section("amostras do conjunto de teste")
-                    n_show = min(12, len(X_te_cnn))
-                    indices_show = np.random.choice(len(X_te_cnn), n_show, replace=False)
-                    n_cols_show = min(6, n_show)
-                    n_rows_show = (n_show + n_cols_show - 1) // n_cols_show
-                    fig, axes = plt.subplots(n_rows_show, n_cols_show,
-                                             figsize=(n_cols_show * 2.5, n_rows_show * 2.8))
-                    if n_rows_show == 1 and n_cols_show == 1:
-                        axes = np.array([[axes]])
-                    elif n_rows_show == 1:
-                        axes = axes[np.newaxis, :]
-                    elif n_cols_show == 1:
-                        axes = axes[:, np.newaxis]
-
-                    for idx_plot, idx_data in enumerate(indices_show):
-                        r_p = idx_plot // n_cols_show
-                        c_p = idx_plot % n_cols_show
-                        ax = axes[r_p, c_p]
-                        ax.imshow(X_te_cnn[idx_data])
-                        true_cls = classes_with_data[y_te_cnn[idx_data]]
-                        pred_cls = classes_with_data[y_pred_cnn[idx_data]]
-                        correct = true_cls == pred_cls
-                        for spine in ax.spines.values():
-                            spine.set_edgecolor(C_GREEN if correct else C_RED)
-                            spine.set_linewidth(3)
-                        ax.set_title(f"Real: {true_cls}\nPrev: {pred_cls}",
-                                     fontsize=9,
-                                     color=C_GREEN if correct else C_RED,
-                                     fontweight='bold')
-                        ax.axis('off')
-
-                    for idx_extra in range(n_show, n_rows_show * n_cols_show):
-                        r_p = idx_extra // n_cols_show
-                        c_p = idx_extra % n_cols_show
-                        axes[r_p, c_p].axis('off')
-
-                    fig.suptitle("Predições no conjunto de teste",
-                                 fontsize=13, fontweight='bold', color=C_TEXT)
-                    fig.tight_layout(); st.pyplot(fig); plt.close()
-
-                    st.session_state['cnn_model'] = model_cnn
-                    st.session_state['cnn_classes'] = classes_with_data
-                    st.session_state['cnn_img_size'] = img_size
-
-                    try:
-                        model_path_cnn = "/tmp/modelo_cnn.keras"
-                        model_cnn.save(model_path_cnn)
-                        with open(model_path_cnn, 'rb') as f:
-                            st.download_button("⬇ Descarregar modelo CNN (.keras)", f.read(),
-                                               "modelo_cnn.keras", mime="application/octet-stream")
-                    except Exception:
-                        pass
+                        try:
+                            model_path_cnn = "/tmp/modelo_cnn.pt"
+                            torch.save(model_cnn.state_dict(), model_path_cnn)
+                            with open(model_path_cnn, 'rb') as f:
+                                st.download_button("⬇ Descarregar modelo CNN (.pt)", f.read(),
+                                                   "modelo_cnn.pt", mime="application/octet-stream")
+                        except Exception:
+                            pass
 
             st.markdown("---")
             section("4 · inferência — classificar nova imagem")
@@ -1295,17 +1351,15 @@ elif modulo == "👁  Visão Computacional":
 
                     pil_inf = Image.open(inf_img).convert('RGB')
                     pil_rs = pil_inf.resize((sz_inf, sz_inf))
-                    arr_inf = img_to_array(pil_rs) / 255.0
-                    arr_inf = np.expand_dims(arr_inf, axis=0)
+                    arr_inf = np.array(pil_rs, dtype=np.float32) / 255.0
+                    # (H,W,C) → (1,C,H,W)
+                    t_inf = torch.from_numpy(arr_inf.transpose(2, 0, 1)).unsqueeze(0)
 
-                    preds_inf = m_inf.predict(arr_inf, verbose=0)
-                    if len(cls_inf) == 2:
-                        prob_inf = float(preds_inf[0][0])
-                        pred_idx = int(prob_inf > 0.5)
-                        probas_inf = [1 - prob_inf, prob_inf]
-                    else:
-                        probas_inf = preds_inf[0].tolist()
-                        pred_idx = int(np.argmax(probas_inf))
+                    m_inf.eval()
+                    with torch.no_grad():
+                        out_inf = m_inf(t_inf)
+                        probas_inf = torch.softmax(out_inf, 1)[0].numpy().tolist()
+                    pred_idx = int(np.argmax(probas_inf))
 
                     col_img_inf, col_res_inf = st.columns([1, 2])
                     with col_img_inf:
