@@ -563,17 +563,17 @@ if modulo == "⚙  Treino Geral — CSV":
             c1, c2 = st.columns(2)
             with c1:
                 st.markdown("**Primeiras linhas**")
-                st.dataframe(df_raw.head(10), use_container_width=True)
+                st.dataframe(df_raw.head(10).astype(str), use_container_width=True)
             with c2:
                 st.markdown("**Tipos e valores em falta**")
                 info_df = pd.DataFrame({
-                    'Tipo': df_raw.dtypes,
+                    'Tipo': df_raw.dtypes.astype(str),
                     'Nulos': df_raw.isnull().sum(),
                     'Únicos': df_raw.nunique()
                 })
                 st.dataframe(info_df, use_container_width=True)
             st.markdown("**Estatísticas descritivas**")
-            st.dataframe(df_raw.describe(include='all').round(3), use_container_width=True)
+            st.dataframe(df_raw.describe(include='all').astype(str), use_container_width=True)
 
         st.markdown("---")
         section("configurar problema")
@@ -759,7 +759,7 @@ if modulo == "⚙  Treino Geral — CSV":
                     if 'Cluster' in numeric_cols:
                         numeric_cols.remove('Cluster')
                     profile_cl = df_work.groupby('Cluster')[numeric_cols].mean().round(3)
-                    st.dataframe(profile_cl, use_container_width=True)
+                    st.dataframe(profile_cl.reset_index(), use_container_width=True)
 
                 # ── CLASSIFICAÇÃO / REGRESSÃO ────────────────────
                 else:
@@ -897,7 +897,7 @@ if modulo == "⚙  Treino Geral — CSV":
                             section("relatório de classificação")
                             report = classification_report(y_te, y_pred, target_names=label_names_g,
                                                            output_dict=True, zero_division=0)
-                            st.dataframe(pd.DataFrame(report).T.round(3), use_container_width=True)
+                            st.dataframe(pd.DataFrame(report).T.round(3).astype(str), use_container_width=True)
 
                         if y.nunique() == 2 and hasattr(model, 'predict_proba'):
                             try:
@@ -1310,7 +1310,7 @@ elif modulo == "👁  Visão Computacional":
                         report_cnn = classification_report(y_te_cnn, y_pred_cnn,
                                                             target_names=classes_with_data,
                                                             output_dict=True, zero_division=0)
-                        st.dataframe(pd.DataFrame(report_cnn).T.round(3), use_container_width=True)
+                        st.dataframe(pd.DataFrame(report_cnn).T.round(3).astype(str), use_container_width=True)
 
                         section("amostras do conjunto de teste")
                         n_show = min(12, len(X_te_cnn))
@@ -1393,7 +1393,7 @@ elif modulo == "👁  Visão Computacional":
 
                     col_img_inf, col_res_inf = st.columns([1, 2])
                     with col_img_inf:
-                        st.image(pil_inf, caption="Imagem carregada", use_container_width=True)
+                        st.image(pil_inf, caption="Imagem carregada", width=None)
                     with col_res_inf:
                         st.markdown(f"""
                         <div style="background:{C_GREEN}15;border:1px solid {C_GREEN}44;
