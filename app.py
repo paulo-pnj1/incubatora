@@ -408,6 +408,35 @@ input:focus {{
     outline: 3px solid {C_ACCENT} !important;
     outline-offset: 2px !important;
 }}
+
+/* ── BOTÃO DE COLAPSO DA SIDEBAR ── */
+[data-testid="collapsedControl"] {{
+    display: flex !important;
+    visibility: visible !important;
+    position: fixed !important;
+    top: 50% !important;
+    left: 0 !important;
+    transform: translateY(-50%) !important;
+    z-index: 9999 !important;
+    background: {C_ACCENT} !important;
+    color: #FFFFFF !important;
+    border-radius: 0 10px 10px 0 !important;
+    width: 28px !important;
+    height: 56px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.18) !important;
+    transition: background .15s ease !important;
+}}
+[data-testid="collapsedControl"]:hover {{
+    background: #1240B0 !important;
+}}
+[data-testid="collapsedControl"] svg {{
+    fill: #FFFFFF !important;
+    width: 16px !important;
+    height: 16px !important;
+}}
 </style>
 """, unsafe_allow_html=True)
 
