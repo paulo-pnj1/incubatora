@@ -651,13 +651,14 @@ if modulo == "⚙  Treino Geral — CSV":
                         if fill_strategy == "Remover linhas com nulos":
                             df_work = df_work.dropna()
                             break
-                        elif df_work[col].dtype == object:
-                            df_work[col].fillna(df_work[col].mode()[0], inplace=True)
+                        elif not pd.api.types.is_numeric_dtype(df_work[col]):
+                            mode_vals = df_work[col].mode()
+                            df_work[col] = df_work[col].fillna(mode_vals[0] if len(mode_vals) > 0 else "")
                         else:
                             if "Mediana" in fill_strategy:
-                                df_work[col].fillna(df_work[col].median(), inplace=True)
+                                df_work[col] = df_work[col].fillna(df_work[col].median())
                             else:
-                                df_work[col].fillna(df_work[col].mean(), inplace=True)
+                                df_work[col] = df_work[col].fillna(df_work[col].mean())
 
                 df_enc, le_dict = encode_dataframe(df_work)
 
@@ -935,7 +936,7 @@ if modulo == "⚙  Treino Geral — CSV":
                     for idx, col_name in enumerate(feat_cols):
                         col_widget = cols_input[idx % len(cols_input)]
                         orig_col = df_raw[col_name] if col_name in df_raw.columns else None
-                        if orig_col is not None and orig_col.dtype == object:
+                        if orig_col is not None and not pd.api.types.is_numeric_dtype(orig_col):
                             options = orig_col.dropna().unique().tolist()
                             val_sel = col_widget.selectbox(col_name, options, key=f"inp_{col_name}")
                             le_c = le_dict.get(col_name)
