@@ -49,18 +49,18 @@ st.set_page_config(
 # ══════════════════════════════════════════════════════════════
 # PALETA — LIGHT / ACESSÍVEL  (contraste WCAG AAA ≥ 7:1)
 # ══════════════════════════════════════════════════════════════
-C_BG        = "#F8F9FC"   # fundo geral — quase branco, sem brilho excessivo
-C_SURFACE   = "#FFFFFF"   # cards e sidebar
-C_SURFACE2  = "#EEF1F8"   # hover suave
-C_BORDER    = "#C2C9D6"   # bordas visíveis mas suaves
-C_ACCENT    = "#1A4FD6"   # azul escuro — contraste 7.3:1 sobre branco
-C_ACCENT2   = "#B5200E"   # vermelho escuro acessível
-C_GREEN     = "#0D6B3B"   # verde escuro — contraste 7.1:1
-C_AMBER     = "#7A4800"   # âmbar escuro — contraste 7.5:1
-C_RED       = "#B5200E"   # vermelho escuro
-C_TEXT      = "#0D1117"   # texto principal — quase preto
-C_TEXT_SEC  = "#2D3A52"   # texto secundário
-C_TEXT_MUTE = "#4A5568"   # texto auxiliar
+C_BG        = "#F8F9FC"
+C_SURFACE   = "#FFFFFF"
+C_SURFACE2  = "#EEF1F8"
+C_BORDER    = "#C2C9D6"
+C_ACCENT    = "#1A4FD6"
+C_ACCENT2   = "#B5200E"
+C_GREEN     = "#0D6B3B"
+C_AMBER     = "#7A4800"
+C_RED       = "#B5200E"
+C_TEXT      = "#0D1117"
+C_TEXT_SEC  = "#2D3A52"
+C_TEXT_MUTE = "#4A5568"
 
 PALETTE_CATS = ["#1A4FD6", "#0D6B3B", "#7A4800", "#B5200E", "#5B2D8E", "#005F73"]
 
@@ -89,17 +89,11 @@ plt.rcParams.update({
 })
 
 # ══════════════════════════════════════════════════════════════
-# CSS — ACESSÍVEL (WCAG AAA, fontes grandes, alto contraste)
+# CSS — ACESSÍVEL
 # ══════════════════════════════════════════════════════════════
 st.markdown(f"""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap');
-
-/*
-  Atkinson Hyperlegible foi criada pela Braille Institute
-  especificamente para pessoas com baixa visão.
-  Cada letra tem forma única para evitar confusão.
-*/
 
 *, *::before, *::after {{ box-sizing: border-box; }}
 
@@ -118,7 +112,6 @@ html, body, [class*="css"], .stApp, .main {{
     max-width: 1300px !important;
 }}
 
-/* ── SIDEBAR ── */
 section[data-testid="stSidebar"] {{
     background: {C_SURFACE} !important;
     border-right: 2px solid {C_BORDER} !important;
@@ -166,7 +159,6 @@ section[data-testid="stSidebar"] > div {{
     padding: 0 4px; margin-bottom: 10px;
 }}
 
-/* ── NAVEGAÇÃO ── */
 div[data-testid="stRadio"] > label {{ display: none !important; }}
 div[data-testid="stRadio"] label[data-baseweb="radio"] {{
     display: flex !important;
@@ -189,7 +181,6 @@ div[data-testid="stRadio"] label[data-baseweb="radio"]:hover {{
     border-color: {C_ACCENT} !important;
 }}
 
-/* ── CABEÇALHO DA PÁGINA ── */
 .page-header {{
     border-bottom: 3px solid {C_BORDER};
     padding-bottom: 1.2rem;
@@ -220,7 +211,6 @@ div[data-testid="stRadio"] label[data-baseweb="radio"]:hover {{
 }}
 .page-title span {{ color: {C_ACCENT}; }}
 
-/* ── CAIXAS INFO / AVISO ── */
 .info-box {{
     background: #E8EEFA;
     border: 2px solid #A0B4E8;
@@ -244,8 +234,21 @@ div[data-testid="stRadio"] label[data-baseweb="radio"]:hover {{
     margin: 10px 0;
     line-height: 1.8;
 }}
+.explain-box {{
+    background: #F0F3FA;
+    border: 2px solid {C_BORDER};
+    border-left: 5px solid {C_GREEN};
+    border-radius: 0 8px 8px 0;
+    padding: 14px 20px;
+    font-size: 15px;
+    color: {C_TEXT_SEC};
+    margin: 15px 0;
+    line-height: 1.7;
+    font-style: normal;
+}}
+.explain-box strong {{ color: {C_TEXT}; font-weight: 700; }}
+.explain-box .emph {{ color: {C_GREEN}; font-weight: 700; }}
 
-/* ── CARTÕES DE MÉTRICAS ── */
 .metric-row {{
     display: flex;
     gap: 12px;
@@ -283,7 +286,6 @@ div[data-testid="stRadio"] label[data-baseweb="radio"]:hover {{
 .metric-card.red {{ border-top-color: {C_RED}; }}
 .metric-card.red .metric-value {{ color: {C_RED}; }}
 
-/* ── TÍTULOS DE SECÇÃO ── */
 .section-title {{
     font-size: 13px;
     font-weight: 700;
@@ -302,7 +304,6 @@ div[data-testid="stRadio"] label[data-baseweb="radio"]:hover {{
     background: {C_BORDER};
 }}
 
-/* ── BOTÕES — alvo mínimo 48px, contraste alto ── */
 .stButton > button {{
     background: {C_ACCENT} !important;
     color: #FFFFFF !important;
@@ -322,10 +323,6 @@ div[data-testid="stRadio"] label[data-baseweb="radio"]:hover {{
     outline: 3px solid {C_ACCENT} !important;
     outline-offset: 2px !important;
 }}
-.stButton > button:focus-visible {{
-    outline: 4px solid {C_ACCENT} !important;
-    outline-offset: 3px !important;
-}}
 
 [data-testid="stDownloadButton"] button {{
     background: {C_GREEN} !important;
@@ -337,35 +334,11 @@ div[data-testid="stRadio"] label[data-baseweb="radio"]:hover {{
     border-radius: 8px !important;
 }}
 
-/* ── UPLOAD, SELECTS, EXPANDERS ── */
 [data-testid="stFileUploader"] {{
     background: {C_SURFACE} !important;
     border: 2px dashed {C_ACCENT} !important;
     border-radius: 10px !important;
     padding: 12px !important;
-}}
-
-[data-testid="stSelectbox"] > div > div {{
-    background: {C_SURFACE} !important;
-    border: 2px solid {C_BORDER} !important;
-    color: {C_TEXT} !important;
-    border-radius: 8px !important;
-    font-size: 17px !important;
-    min-height: 48px !important;
-}}
-
-[data-testid="stExpander"] {{
-    background: {C_SURFACE} !important;
-    border: 2px solid {C_BORDER} !important;
-    border-radius: 10px !important;
-    margin: 8px 0 !important;
-}}
-
-[data-testid="stDataFrame"] {{
-    border: 2px solid {C_BORDER} !important;
-    border-radius: 10px !important;
-    overflow: hidden !important;
-    font-size: 15px !important;
 }}
 
 hr {{
@@ -374,26 +347,6 @@ hr {{
     margin: 1.2rem 0 !important;
 }}
 
-/* ── INPUTS NUMÉRICOS ── */
-input, [data-testid="stNumberInput"] input {{
-    background: {C_SURFACE} !important;
-    color: {C_TEXT} !important;
-    border: 2px solid {C_BORDER} !important;
-    border-radius: 8px !important;
-    font-size: 17px !important;
-    min-height: 48px !important;
-}}
-input:focus {{
-    border-color: {C_ACCENT} !important;
-    outline: 3px solid {C_ACCENT}55 !important;
-}}
-
-/* ── SLIDERS ── */
-[data-testid="stSlider"] > div > div > div {{
-    background: {C_ACCENT} !important;
-}}
-
-/* ── RODAPÉ DA SIDEBAR ── */
 .sidebar-footer {{
     margin-top: 2rem;
     font-size: 13px;
@@ -402,78 +355,8 @@ input:focus {{
     padding-top: 14px;
     line-height: 1.9;
 }}
-
-/* ── FOCO VISÍVEL GLOBAL (acessibilidade teclado) ── */
-*:focus-visible {{
-    outline: 3px solid {C_ACCENT} !important;
-    outline-offset: 2px !important;
-}}
-
-/* ── BOTÃO DE COLAPSO DA SIDEBAR ── */
-[data-testid="collapsedControl"] {{
-    display: flex !important;
-    visibility: visible !important;
-    position: fixed !important;
-    top: 50% !important;
-    left: 0 !important;
-    transform: translateY(-50%) !important;
-    z-index: 9999 !important;
-    background: {C_ACCENT} !important;
-    color: #FFFFFF !important;
-    border-radius: 0 10px 10px 0 !important;
-    width: 28px !important;
-    height: 56px !important;
-    align-items: center !important;
-    justify-content: center !important;
-    cursor: pointer !important;
-    box-shadow: 2px 2px 8px rgba(0,0,0,0.18) !important;
-    transition: background .15s ease !important;
-}}
-[data-testid="collapsedControl"]:hover {{
-    background: #1240B0 !important;
-}}
-[data-testid="collapsedControl"] svg {{
-    fill: #FFFFFF !important;
-    width: 16px !important;
-    height: 16px !important;
-}}
 </style>
 """, unsafe_allow_html=True)
-
-
-# ══════════════════════════════════════════════════════════════
-# SIDEBAR
-# ══════════════════════════════════════════════════════════════
-with st.sidebar:
-    st.markdown(f"""
-    <div class="brand-wrap">
-        <div class="brand-icon">⚡</div>
-        <div>
-            <div class="brand-name">DataForge ML</div>
-            <div class="brand-sub">machine learning platform</div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown('<hr class="sidebar-div">', unsafe_allow_html=True)
-    st.markdown('<div class="nav-label">// módulos</div>', unsafe_allow_html=True)
-
-    modulo = st.radio(
-        "nav",
-        [
-            "⚙  Treino Geral — CSV",
-            "👁  Visão Computacional",
-        ],
-        label_visibility="collapsed"
-    )
-
-    st.markdown('<hr class="sidebar-div">', unsafe_allow_html=True)
-    st.markdown(f"""
-    <div class="sidebar-footer">
-        v1.0.0 · DataForge ML<br>
-        Classificação · Regressão<br>
-        Clustering · CNN · Visão
-    </div>
-    """, unsafe_allow_html=True)
 
 
 # ══════════════════════════════════════════════════════════════
@@ -484,6 +367,14 @@ def info(msg):
 
 def warn(msg):
     st.markdown(f'<div class="warn-box">⚠ {msg}</div>', unsafe_allow_html=True)
+
+def explain(msg, title="📚 Aprenda Machine Learning"):
+    st.markdown(f'''
+    <div class="explain-box">
+        <strong>{title}</strong><br><br>
+        {msg}
+    </div>
+    ''', unsafe_allow_html=True)
 
 def section(title):
     st.markdown(f'<div class="section-title">{title}</div>', unsafe_allow_html=True)
@@ -540,6 +431,41 @@ def plot_confusion_matrix(cm, label_names, title="Matriz de Confusão"):
 
 
 # ══════════════════════════════════════════════════════════════
+# SIDEBAR
+# ══════════════════════════════════════════════════════════════
+with st.sidebar:
+    st.markdown(f"""
+    <div class="brand-wrap">
+        <div class="brand-icon">⚡</div>
+        <div>
+            <div class="brand-name">DataForge ML</div>
+            <div class="brand-sub">machine learning platform</div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown('<hr class="sidebar-div">', unsafe_allow_html=True)
+    st.markdown('<div class="nav-label">// módulos</div>', unsafe_allow_html=True)
+
+    modulo = st.radio(
+        "nav",
+        [
+            "⚙  Treino Geral — CSV",
+            "👁  Visão Computacional",
+        ],
+        label_visibility="collapsed"
+    )
+
+    st.markdown('<hr class="sidebar-div">', unsafe_allow_html=True)
+    st.markdown(f"""
+    <div class="sidebar-footer">
+        v1.0.0 · DataForge ML<br>
+        Classificação · Regressão<br>
+        Clustering · CNN · Visão
+    </div>
+    """, unsafe_allow_html=True)
+
+
+# ══════════════════════════════════════════════════════════════
 # MÓDULO 01 — TREINO GERAL (QUALQUER CSV)
 # ══════════════════════════════════════════════════════════════
 if modulo == "⚙  Treino Geral — CSV":
@@ -584,6 +510,37 @@ if modulo == "⚙  Treino Geral — CSV":
             horizontal=True
         )
 
+        if "🔵" in task_type:
+            explain("""
+            <span class="emph">🔵 Classificação</span> — tarefa de <strong>aprendizagem supervisionada</strong> onde o objetivo é 
+            prever uma <strong>categoria ou classe discreta</strong>. Exemplos: prever se um e-mail é spam ou não, 
+            classificar uma flor como Iris-setosa/versicolor/virginica, ou diagnosticar uma doença como presente/ausente.
+            
+            O modelo aprende a partir de exemplos rotulados (dados de treino) e depois generaliza para novos casos.
+            As métricas principais são: <strong>Acurácia</strong> (percentual de acertos), <strong>Precisão</strong> (qualidade dos positivos),
+            <strong>Recall</strong> (sensibilidade para encontrar todos os positivos) e <strong>F1-Score</strong> (média harmónica entre precisão e recall).
+            """)
+        elif "🟢" in task_type:
+            explain("""
+            <span class="emph">🟢 Regressão</span> — tarefa de <strong>aprendizagem supervisionada</strong> onde o objetivo é 
+            prever um <strong>valor numérico contínuo</strong>. Exemplos: preço de uma casa, temperatura amanhã, 
+            salário de um funcionário, ou tempo de entrega de um pedido.
+            
+            Diferente da classificação (que prevê categorias), aqui a saída é um número real.
+            As métricas principais incluem <strong>R²</strong> (proporção da variância explicada pelo modelo),
+            <strong>RMSE</strong> (raiz do erro quadrático médio) e <strong>MAE</strong> (erro absoluto médio).
+            """)
+        else:
+            explain("""
+            <span class="emph">🟠 Clustering (não supervisionado)</span> — tarefa de <strong>aprendizagem não supervisionada</strong> 
+            onde NÃO existem rótulos pré-definidos. O objetivo é <strong>descobrir grupos naturais</strong> nos dados com base 
+            em similaridades intrínsecas.
+            
+            Exemplos: segmentação de clientes por comportamento de compra, agrupamento de documentos por tema,
+            ou identificação de padrões em dados genéticos. Como não há "resposta certa", avaliamos com métricas
+            internas como <strong>Silhouette Score</strong> (quão coeso e separado cada cluster é).
+            """)
+
         section("pré-processamento")
         pc1, pc2, pc3 = st.columns(3)
 
@@ -600,6 +557,20 @@ if modulo == "⚙  Treino Geral — CSV":
             df_raw.columns.tolist()
         )
 
+        explain("""
+        <strong>Pré-processamento — por que é fundamental?</strong><br><br>
+        
+        • <strong>Valores em falta</strong>: Dados reais frequentemente têm lacunas. Ignorá-los pode enviesar o modelo.
+          - <em>Média/Mediana</em>: substitui valores nulos pela média (ou mediana) da coluna, preservando a distribuição geral.
+          - <em>Remover linhas</em>: elimina observações incompletas, mas perde dados se muitas linhas tiverem nulos.
+        
+        • <strong>Normalização/Escalamento</strong>: Algoritmos como SVM, KNN e redes neurais são sensíveis à escala das variáveis.
+          - <em>StandardScaler</em>: transforma para média 0 e desvio padrão 1. Assume distribuição aproximadamente normal.
+          - <em>MinMaxScaler</em>: redimensiona para o intervalo [0,1]. Útil quando valores precisam estar em limites definidos.
+        
+        • <strong>Remover colunas</strong>: IDs, nomes, ou variáveis irrelevantes devem ser excluídas para não confundir o modelo.
+        """)
+
         if "🔵" in task_type or "🟢" in task_type:
             target_col = st.selectbox(
                 "Coluna alvo (label / variável dependente)",
@@ -613,16 +584,66 @@ if modulo == "⚙  Treino Geral — CSV":
                 "Random Forest", "Árvore de Decisão", "Gradient Boosting",
                 "AdaBoost", "KNN", "Regressão Logística", "SVM (RBF)", "Naive Bayes",
             ])
+            
+            algo_explanations = {
+                "Random Forest": "🌲 <strong>Random Forest</strong>: Conjunto (ensemble) de muitas árvores de decisão. "
+                                "Cada árvore vota, e a classe mais votada vence. Reduz overfitting (sobreajuste) e é muito robusta.",
+                "Árvore de Decisão": "🌳 <strong>Árvore de Decisão</strong>: Modelo hierárquico que faz perguntas sucessivas sobre os dados. "
+                                    "Muito interpretável (pode ser visualizada), mas propensa a overfitting com poucos dados.",
+                "Gradient Boosting": "📈 <strong>Gradient Boosting</strong>: Treina árvores sequencialmente, cada uma corrigindo erros da anterior. "
+                                    "Muito preciso, mas mais lento e sensível a hiperparâmetros.",
+                "AdaBoost": "⚡ <strong>AdaBoost</strong>: Ajusta pesos das amostras, focando nos exemplos mais difíceis. "
+                           "Bom para dados desbalanceados.",
+                "KNN": "👥 <strong>K-Nearest Neighbors</strong>: Classifica baseado nos K vizinhos mais próximos. "
+                      "Simples e não paramétrico, mas computacionalmente intenso para dados grandes.",
+                "Regressão Logística": "📐 <strong>Regressão Logística</strong>: Apesar do nome, é um classificador linear. "
+                                      "Modela a probabilidade logarítmica da classe. Bom baseline.",
+                "SVM (RBF)": "🔮 <strong>SVM com kernel RBF</strong>: Encontra o hiperplano que maximiza a margem entre classes. "
+                            "Muito poderoso para dados de alta dimensionalidade.",
+                "Naive Bayes": "📊 <strong>Naive Bayes</strong>: Baseado no Teorema de Bayes, assume independência entre features. "
+                              "Rápido e funciona bem com texto (classificação de documentos/spam)."
+            }
+            explain(algo_explanations.get(algo, "Algoritmo de classificação supervisionada."))
+            
         elif "🟢" in task_type:
             algo = st.selectbox("Algoritmo de regressão", [
                 "Random Forest Regressor", "Gradient Boosting Regressor",
                 "Regressão Linear", "Ridge Regression", "Lasso Regression",
                 "KNN Regressor", "Árvore de Decisão Regressor",
             ])
+            
+            reg_explanations = {
+                "Random Forest Regressor": "🌲 <strong>Random Forest Regressor</strong>: Ensemble de árvores que calcula a média das previsões individuais. "
+                                          "Lida bem com não-linearidades e outliers.",
+                "Gradient Boosting Regressor": "📈 <strong>Gradient Boosting Regressor</strong>: Sequência de árvores otimizando erro residual. "
+                                              "Excelente para problemas complexos.",
+                "Regressão Linear": "📏 <strong>Regressão Linear</strong>: Assume relação linear entre features e target. "
+                                   "Simples, interpretável, mas limitada para padrões complexos.",
+                "Ridge Regression": "🔄 <strong>Ridge (L2)</strong>: Regressão linear com penalidade L2 (soma dos quadrados dos coeficientes). "
+                                   "Reduz overfitting encolhendo coeficientes, mas nenhum zera.",
+                "Lasso Regression": "✂️ <strong>Lasso (L1)</strong>: Regressão linear com penalidade L1 (soma dos valores absolutos). "
+                                   "Promove esparsidade — pode zerar coeficientes irrelevantes (seleção automática de features).",
+                "KNN Regressor": "👥 <strong>KNN Regressor</strong>: Média dos valores dos K vizinhos mais próximos. "
+                                "Não paramétrico, mas caro para grandes datasets.",
+                "Árvore de Decisão Regressor": "🌳 <strong>Árvore de Decisão Regressor</strong>: Segmenta o espaço em regiões retangulares "
+                                              "e atribui a média dos valores em cada região."
+            }
+            explain(reg_explanations.get(algo, "Algoritmo de regressão supervisionada."))
+            
         else:
             algo = st.selectbox("Algoritmo de clustering", [
                 "K-Means", "DBSCAN", "Agglomerative Clustering",
             ])
+            
+            cluster_explanations = {
+                "K-Means": "🎯 <strong>K-Means</strong>: Particiona os dados em K clusters, minimizando a distância intra-cluster. "
+                          "Rápido e eficiente, mas requer especificar K e assume clusters esféricos.",
+                "DBSCAN": "📍 <strong>DBSCAN</strong>: Agrupa pontos baseado em densidade. Detecta outliers (ruído) e "
+                         "não requer número de clusters. Funciona bem com formas arbitrárias.",
+                "Agglomerative Clustering": "🌱 <strong>Agglomerative Clustering</strong>: Abordagem hierárquica que começa com cada ponto como um cluster "
+                                           "e funde os mais similares iterativamente. Gera uma árvore de clusters (dendrograma)."
+            }
+            explain(cluster_explanations.get(algo, "Algoritmo de clustering não supervisionado."))
 
         section("hiperparâmetros")
         ha, hb, hc = st.columns(3)
@@ -632,39 +653,38 @@ if modulo == "⚙  Treino Geral — CSV":
             hyper['n_estimators'] = ha.slider("Nº de árvores", 10, 500, 100, step=10)
             hyper['max_depth'] = hb.slider("Profundidade máx.", 1, 30, 8)
             hyper['min_samples_split'] = hc.slider("Min. amostras split", 2, 20, 2)
+            explain("""
+            <strong>🌲 Hiperparâmetros do Random Forest:</strong><br><br>
+            • <strong>n_estimators</strong>: Número de árvores na floresta. Mais árvores geralmente melhoram a precisão, mas aumentam o tempo de treino.
+            • <strong>max_depth</strong>: Profundidade máxima de cada árvore. Limitar evita overfitting.
+            • <strong>min_samples_split</strong>: Mínimo de amostras necessárias para dividir um nó. Valores maiores criam árvores mais conservadoras.
+            """)
         elif algo in ["Gradient Boosting", "Gradient Boosting Regressor"]:
             hyper['n_estimators'] = ha.slider("Nº de estimadores", 50, 500, 100, step=50)
             hyper['learning_rate'] = hb.select_slider("Taxa de aprendizagem", [0.01, 0.05, 0.1, 0.2, 0.5], value=0.1)
             hyper['max_depth'] = hc.slider("Profundidade máx.", 1, 10, 3)
-        elif algo == "AdaBoost":
-            hyper['n_estimators'] = ha.slider("Nº de estimadores", 10, 300, 50, step=10)
-            hyper['learning_rate'] = hb.select_slider("Taxa de aprendizagem", [0.01, 0.1, 0.5, 1.0], value=1.0)
-        elif algo in ["KNN", "KNN Regressor"]:
-            hyper['n_neighbors'] = ha.slider("K vizinhos", 1, 31, 5, step=2)
-            hyper['metric'] = hb.selectbox("Métrica", ['euclidean', 'manhattan', 'minkowski'])
-            hyper['weights'] = hc.selectbox("Pesos", ['uniform', 'distance'])
-        elif algo in ["Árvore de Decisão", "Árvore de Decisão Regressor"]:
-            hyper['max_depth'] = ha.slider("Profundidade máx.", 1, 20, 5)
-            hyper['criterion'] = hb.selectbox("Critério", ['gini', 'entropy'] if "🔵" in task_type else ['squared_error', 'friedman_mse'])
-        elif algo == "SVM (RBF)":
-            hyper['C'] = ha.select_slider("C (regularização)", [0.01, 0.1, 1.0, 10.0, 100.0], value=1.0)
-            hyper['gamma'] = hb.selectbox("Gamma", ['scale', 'auto'])
-        elif algo == "Regressão Logística":
-            hyper['C'] = ha.select_slider("C", [0.01, 0.1, 1.0, 10.0], value=1.0)
-            hyper['max_iter'] = hb.slider("Max iterações", 100, 2000, 1000, step=100)
-        elif algo == "Ridge Regression":
-            hyper['alpha'] = ha.select_slider("Alpha", [0.01, 0.1, 1.0, 10.0, 100.0], value=1.0)
-        elif algo == "Lasso Regression":
-            hyper['alpha'] = ha.select_slider("Alpha", [0.001, 0.01, 0.1, 1.0, 10.0], value=0.1)
+            explain("""
+            <strong>📈 Hiperparâmetros do Gradient Boosting:</strong><br><br>
+            • <strong>n_estimators</strong>: Número de árvores sequenciais.
+            • <strong>learning_rate</strong> (taxa de aprendizagem): Controla a contribuição de cada árvore.
+            • <strong>max_depth</strong>: Profundidade de cada árvore. Valores pequenos (3-5) são comuns para evitar overfitting.
+            """)
         elif algo == "K-Means":
             hyper['n_clusters'] = ha.slider("K clusters", 2, 15, 3)
             hyper['n_init'] = hb.slider("N inicializações", 5, 30, 10)
+            explain("""
+            <strong>🎯 Hiperparâmetros do K-Means:</strong><br><br>
+            • <strong>K clusters</strong>: Número de grupos a encontrar.
+            • <strong>N inicializações</strong>: K-Means é sensível à inicialização. Múltiplas inicializações reduzem mínimos locais.
+            """)
         elif algo == "DBSCAN":
             hyper['eps'] = ha.slider("Epsilon (eps)", 0.1, 5.0, 0.5, step=0.1)
             hyper['min_samples'] = hb.slider("Min. amostras", 2, 20, 5)
-        elif algo == "Agglomerative Clustering":
-            hyper['n_clusters'] = ha.slider("K clusters", 2, 15, 3)
-            hyper['linkage'] = hb.selectbox("Ligação", ['ward', 'complete', 'average', 'single'])
+            explain("""
+            <strong>📍 Hiperparâmetros do DBSCAN:</strong><br><br>
+            • <strong>epsilon (eps)</strong>: Raio máximo da vizinhança para considerar dois pontos como conectados.
+            • <strong>min_samples</strong>: Número mínimo de pontos para formar uma região densa.
+            """)
 
         if "🟠" not in task_type:
             test_size_g = st.slider("% dados de teste", 10, 40, 25, key="ts_g") / 100
@@ -672,6 +692,14 @@ if modulo == "⚙  Treino Geral — CSV":
 
         if st.button("▶ Treinar / Executar", key="btn_general"):
             with st.spinner("A pré-processar e treinar..."):
+                explain("""
+                <strong>⚙️ Processo de Treino em Execução:</strong><br><br>
+                1. <strong>Pré-processamento</strong>: Tratamento de valores nulos, remoção de colunas, codificação.
+                2. <strong>Divisão dos dados</strong>: Separação entre treino (aprende padrões) e teste (avalia generalização).
+                3. <strong>Normalização</strong>: Padronização das escalas das features (se selecionada).
+                4. <strong>Treino do modelo</strong>: O algoritmo encontra a melhor função features → target.
+                5. <strong>Avaliação</strong>: Métricas e visualizações para entender o desempenho.
+                """)
 
                 df_work = df_raw.drop(columns=cols_to_drop_user, errors='ignore').copy()
 
@@ -691,7 +719,7 @@ if modulo == "⚙  Treino Geral — CSV":
 
                 df_enc, le_dict = encode_dataframe(df_work)
 
-                # ── CLUSTERING ──────────────────────────────────
+                # CLUSTERING
                 if "🟠" in task_type:
                     X_cl = df_enc.values
                     if scaler_choice != "Nenhum":
@@ -725,6 +753,14 @@ if modulo == "⚙  Treino Geral — CSV":
                         ("Calinski-Harabasz", f"{ch:.1f}" if not np.isnan(ch) else "N/A"),
                         ("Amostras", str(len(labels_cl))),
                     ])
+                    
+                    explain(f"""
+                    <strong>📊 Interpretação dos Resultados — Clustering:</strong><br><br>
+                    • <strong>Silhouette Score = {sil:.4f if not np.isnan(sil) else 'N/A'}</strong>: 
+                      Valores próximos de 1 = clusters bem definidos; próximos de 0 = clusters sobrepostos.
+                    • <strong>Calinski-Harabasz Index = {ch:.1f if not np.isnan(ch) else 'N/A'}</strong>: 
+                      Quanto MAIOR, melhor a separação dos clusters.
+                    """)
 
                     section("distribuição dos clusters")
                     vc_cl = pd.Series(labels_cl).value_counts().sort_index()
@@ -761,7 +797,7 @@ if modulo == "⚙  Treino Geral — CSV":
                     profile_cl = df_work.groupby('Cluster')[numeric_cols].mean().round(3)
                     st.dataframe(profile_cl.reset_index(), use_container_width=True)
 
-                # ── CLASSIFICAÇÃO / REGRESSÃO ────────────────────
+                # CLASSIFICAÇÃO / REGRESSÃO
                 else:
                     X = df_enc.drop(columns=[target_col], errors='ignore')
                     y = df_enc[target_col]
@@ -777,6 +813,7 @@ if modulo == "⚙  Treino Geral — CSV":
                         X_tr = sc.fit_transform(X_tr)
                         X_te = sc.transform(X_te)
 
+                    # Modelo
                     if algo == "Random Forest":
                         model = RandomForestClassifier(**hyper, random_state=42, n_jobs=-1)
                     elif algo == "Random Forest Regressor":
@@ -815,7 +852,7 @@ if modulo == "⚙  Treino Geral — CSV":
                     model.fit(X_tr, y_tr)
                     y_pred = model.predict(X_te)
 
-                    # ── REGRESSÃO ─────────────────────────────
+                    # REGRESSÃO
                     if is_regression:
                         mse = mean_squared_error(y_te, y_pred)
                         rmse = np.sqrt(mse)
@@ -829,6 +866,13 @@ if modulo == "⚙  Treino Geral — CSV":
                             ("MAE", f"{mae:.4f}"),
                             ("MSE", f"{mse:.4f}"),
                         ])
+                        
+                        explain(f"""
+                        <strong>📈 Interpretação das Métricas de Regressão:</strong><br><br>
+                        • <strong>R² Score = {r2:.4f}</strong>: Proporção da variância explicada pelo modelo.
+                        • <strong>RMSE = {rmse:.4f}</strong>: Raiz do Erro Quadrático Médio (dá mais peso a erros grandes).
+                        • <strong>MAE = {mae:.4f}</strong>: Erro Absoluto Médio (robusto a outliers).
+                        """)
 
                         col_r1, col_r2 = st.columns(2)
                         with col_r1:
@@ -869,7 +913,7 @@ if modulo == "⚙  Treino Geral — CSV":
                         fig.tight_layout(); st.pyplot(fig); plt.close()
 
                     else:
-                        # ── CLASSIFICAÇÃO ──────────────────────
+                        # CLASSIFICAÇÃO
                         acc = accuracy_score(y_te, y_pred)
                         f1 = f1_score(y_te, y_pred, average='weighted', zero_division=0)
                         prec = precision_score(y_te, y_pred, average='weighted', zero_division=0)
@@ -882,6 +926,14 @@ if modulo == "⚙  Treino Geral — CSV":
                             ("Precisão", f"{prec:.4f}"),
                             ("Recall", f"{rec:.4f}"),
                         ])
+                        
+                        explain(f"""
+                        <strong>🎯 Interpretação das Métricas de Classificação:</strong><br><br>
+                        • <strong>Acurácia = {acc:.4f}</strong>: Proporção de previsões corretas.
+                        • <strong>Precisão = {prec:.4f}</strong>: Qualidade dos positivos previstos.
+                        • <strong>Recall = {rec:.4f}</strong>: Sensibilidade para encontrar positivos.
+                        • <strong>F1-Score = {f1:.4f}</strong>: Média harmônica entre precisão e recall.
+                        """)
 
                         labels_u = sorted(y.unique())
                         le_t = le_dict.get(target_col)
@@ -1025,6 +1077,16 @@ elif modulo == "👁  Visão Computacional":
 
     info("Treine uma <strong>Rede Neuronal Convolucional (CNN)</strong> com as suas próprias imagens. "
          "Carregue imagens por classe, configure a arquitectura e treine o modelo.")
+    
+    explain("""
+    <strong>👁️ O que é Visão Computacional com CNNs?</strong><br><br>
+    Uma <strong>Rede Neural Convolucional (CNN)</strong> é um tipo especial de rede neural projetada para processar imagens.
+    
+    <strong>🔬 Como funciona:</strong><br>
+    1. <strong>Camadas Convolucionais</strong>: Detectam características como bordas, texturas, padrões.
+    2. <strong>Camadas de Pooling</strong>: Reduzem dimensionalidade mantendo características importantes.
+    3. <strong>Camadas Densas</strong>: Combinam características para classificar a imagem.
+    """)
 
     tf_available = False
     try:
@@ -1118,24 +1180,21 @@ elif modulo == "👁  Visão Computacional":
                             stratify=y_arr if len(set(y_arr)) > 1 else None
                         )
 
-                        # PyTorch espera (N, C, H, W)
                         X_tr_t = torch.from_numpy(X_tr_cnn.transpose(0, 3, 1, 2))
                         X_te_t = torch.from_numpy(X_te_cnn.transpose(0, 3, 1, 2))
                         y_tr_t = torch.from_numpy(y_tr_cnn)
                         y_te_t = torch.from_numpy(y_te_cnn)
 
-                        # Data augmentation inline (flip horizontal aleatório)
                         def augment_batch(x):
                             if augment and torch.rand(1).item() > 0.5:
                                 x = torch.flip(x, dims=[3])
                             return x
 
                         train_ds = TensorDataset(X_tr_t, y_tr_t)
-                        test_ds  = TensorDataset(X_te_t,  y_te_t)
+                        test_ds  = TensorDataset(X_te_t, y_te_t)
                         train_loader = DataLoader(train_ds, batch_size=batch_size, shuffle=True)
                         test_loader  = DataLoader(test_ds,  batch_size=batch_size)
 
-                        # ── Definir arquitectura CNN ──────────────────────
                         class CNNModel(nn.Module):
                             def __init__(self):
                                 super().__init__()
@@ -1188,7 +1247,7 @@ elif modulo == "👁  Visão Computacional":
                         early_stop_patience = 10
 
                         for epoch in range(epochs):
-                            # ── treino ──
+                            # Treino
                             model_cnn.train()
                             ep_loss, ep_correct, ep_total = 0.0, 0, 0
                             for xb, yb in train_loader:
@@ -1205,7 +1264,7 @@ elif modulo == "👁  Visão Computacional":
                             train_loss = ep_loss / ep_total
                             train_acc  = ep_correct / ep_total
 
-                            # ── validação ──
+                            # Validação
                             model_cnn.eval()
                             val_loss, val_correct, val_total = 0.0, 0, 0
                             with torch.no_grad():
@@ -1233,7 +1292,6 @@ elif modulo == "👁  Visão Computacional":
                                      f"val_acc: {val_acc:.4f}"
                             )
 
-                            # early stopping
                             if val_acc > best_val_acc:
                                 best_val_acc = val_acc
                                 best_weights = {k: v.clone() for k, v in model_cnn.state_dict().items()}
@@ -1241,6 +1299,7 @@ elif modulo == "👁  Visão Computacional":
                             else:
                                 patience_count += 1
                                 if patience_count >= early_stop_patience:
+                                    st.info(f"Early stopping na época {epoch+1} — melhor val_acc: {best_val_acc:.4f}")
                                     break
 
                         if best_weights:
@@ -1248,7 +1307,7 @@ elif modulo == "👁  Visão Computacional":
 
                         prog_cnn.progress(1.0, text="Treino concluído ✔")
 
-                        # ── métricas finais ──
+                        # Métricas finais
                         model_cnn.eval()
                         all_preds, all_probs = [], []
                         test_loss_total, test_correct, test_total = 0.0, 0, 0
@@ -1264,7 +1323,6 @@ elif modulo == "👁  Visão Computacional":
                         test_loss = test_loss_total / test_total
                         test_acc  = test_correct / test_total
                         y_pred_cnn = np.array(all_preds)
-                        preds_raw  = np.array(all_probs)
 
                         f1_cnn   = f1_score(y_te_cnn, y_pred_cnn, average='weighted', zero_division=0)
                         prec_cnn = precision_score(y_te_cnn, y_pred_cnn, average='weighted', zero_division=0)
@@ -1326,6 +1384,7 @@ elif modulo == "👁  Visão Computacional":
                         elif n_cols_show == 1:
                             axes = axes[:, np.newaxis]
 
+                        correct_count = 0
                         for idx_plot, idx_data in enumerate(indices_show):
                             r_p = idx_plot // n_cols_show
                             c_p = idx_plot % n_cols_show
@@ -1334,6 +1393,8 @@ elif modulo == "👁  Visão Computacional":
                             true_cls = classes_with_data[y_te_cnn[idx_data]]
                             pred_cls = classes_with_data[y_pred_cnn[idx_data]]
                             correct = true_cls == pred_cls
+                            if correct:
+                                correct_count += 1
                             for spine in ax.spines.values():
                                 spine.set_edgecolor(C_GREEN if correct else C_RED)
                                 spine.set_linewidth(3)
@@ -1348,7 +1409,7 @@ elif modulo == "👁  Visão Computacional":
                             c_p = idx_extra % n_cols_show
                             axes[r_p, c_p].axis('off')
 
-                        fig.suptitle("Predições no conjunto de teste",
+                        fig.suptitle(f"Predições no conjunto de teste — {correct_count}/{n_show} corretas",
                                      fontsize=13, fontweight='bold', color=C_TEXT)
                         fig.tight_layout(); st.pyplot(fig); plt.close()
 
@@ -1382,7 +1443,6 @@ elif modulo == "👁  Visão Computacional":
                     pil_inf = Image.open(inf_img).convert('RGB')
                     pil_rs = pil_inf.resize((sz_inf, sz_inf))
                     arr_inf = np.array(pil_rs, dtype=np.float32) / 255.0
-                    # (H,W,C) → (1,C,H,W)
                     t_inf = torch.from_numpy(arr_inf.transpose(2, 0, 1)).unsqueeze(0)
 
                     m_inf.eval()
