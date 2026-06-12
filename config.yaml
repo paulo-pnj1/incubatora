@@ -1,0 +1,32 @@
+credentials:
+  usernames:
+    admin:
+      email: admin@dataforge.ao
+      name: Administrador
+      password: $2b$12$placeholder_hash_admin
+      role: admin
+      progress: {}
+      completed: []
+    professor:
+      email: prof@dataforge.ao
+      name: Professor Demo
+      password: $2b$12$placeholder_hash_prof
+      role: professor
+      progress: {}
+      completed: []
+    aluno:
+      email: aluno@dataforge.ao
+      name: Aluno Demo
+      password: $2b$12$placeholder_hash_aluno
+      role: aluno
+      progress: {}
+      completed: []
+
+cookie:
+  expiry_days: 7
+  key: dataforge_edu_secret_key_2024
+  name: dataforge_edu_cookie
+
+preauthorized:
+  emails:
+    - novoutilizador@universidade.ao
