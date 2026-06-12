@@ -10,31 +10,9 @@ seaborn>=0.13.0
 scipy>=1.11.0
 joblib>=1.3.0
 
-# ── Deep Learning ──────────────────────────────────────
-torch>=2.0.0
-torchvision>=0.15.0
-
 # ── Boosting ───────────────────────────────────────────
 xgboost>=2.0.0
 lightgbm>=4.1.0
-catboost>=1.2.0
-
-# ── NLP ────────────────────────────────────────────────
-nltk>=3.8.0
-gensim>=4.3.0
-transformers>=4.35.0
-
-# ── Séries Temporais ───────────────────────────────────
-statsmodels>=0.14.0
-
-# ── Reforço ────────────────────────────────────────────
-gymnasium>=0.29.0
-
-# ── Redução de Dimensionalidade ────────────────────────
-umap-learn>=0.5.0
-
-# ── Clustering avançado ────────────────────────────────
-hdbscan>=0.8.0
 
 # ── UI Streamlit ───────────────────────────────────────
 streamlit-authenticator>=0.3.0
