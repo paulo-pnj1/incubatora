@@ -80,56 +80,58 @@ def render_login_page():
     """Renderiza a página de login com design personalizado"""
     inject_css()
 
-    # Hero da página de login
+    # Cabeçalho — HTML completo e fechado, sem widgets dentro
     st.markdown(f"""
-    <div style="min-height:100vh;display:flex;flex-direction:column;align-items:center;
-    justify-content:center;padding:2rem 1rem;">
-
-        <div style="text-align:center;margin-bottom:2.4rem;">
-            <div style="width:72px;height:72px;background:linear-gradient(135deg,{C_ACCENT},{C_SURFACE2});
-            border-radius:20px;display:flex;align-items:center;justify-content:center;
-            font-size:36px;margin:0 auto 1rem;border:1px solid {C_BORDER};">🧠</div>
-            <div style="font-size:30px;font-weight:800;color:{C_TEXT};letter-spacing:-.5px;">DataForge EDU</div>
-            <div style="font-size:15px;color:{C_TEXT_MUTE};margin-top:6px;">
-                Plataforma de Aprendizagem de Machine Learning
-            </div>
+    <div style="text-align:center;margin-bottom:2.4rem;">
+        <div style="width:72px;height:72px;background:linear-gradient(135deg,{C_ACCENT},{C_SURFACE2});
+        border-radius:20px;display:flex;align-items:center;justify-content:center;
+        font-size:36px;margin:0 auto 1rem;border:1px solid {C_BORDER};">🧠</div>
+        <div style="font-size:30px;font-weight:800;color:{C_TEXT};letter-spacing:-.5px;">DataForge EDU</div>
+        <div style="font-size:15px;color:{C_TEXT_MUTE};margin-top:6px;">
+            Plataforma de Aprendizagem de Machine Learning
         </div>
-
-        <div style="width:100%;max-width:400px;background:{C_SURFACE};border:1px solid {C_BORDER};
-        border-radius:18px;padding:2rem;margin-bottom:1.6rem;">
-            <div style="font-size:18px;font-weight:700;color:{C_TEXT};margin-bottom:1.4rem;text-align:center;">
-                Entrar na plataforma
-            </div>
+    </div>
+    <div style="text-align:center;margin-bottom:1.2rem;">
+        <span style="font-size:18px;font-weight:700;color:{C_TEXT};">Entrar na plataforma</span>
+    </div>
     """, unsafe_allow_html=True)
 
+    # Formulário de login — widgets Streamlit directamente, sem HTML em volta
     authenticator, config = get_authenticator()
 
-    try:
-        authenticator.login(location="main", key="login_form")
-    except Exception:
-        authenticator.login(location="main")
+    # Centralizar o formulário com colunas
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        try:
+            authenticator.login(location="main", key="login_form")
+        except Exception:
+            authenticator.login(location="main")
 
     auth_status = st.session_state.get("authentication_status")
     username    = st.session_state.get("username")
 
+    # Mensagens de estado — HTML completo e fechado
     if auth_status is False:
-        st.markdown(f"""
-        <div style="background:rgba(231,76,60,.1);border:1px solid rgba(231,76,60,.3);
-        border-radius:8px;padding:.7rem 1rem;color:#E74C3C;font-size:14px;margin-top:.8rem;">
-        ❌ Utilizador ou palavra-passe incorrectos.</div>
-        """, unsafe_allow_html=True)
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            st.markdown(f"""
+            <div style="background:rgba(231,76,60,.1);border:1px solid rgba(231,76,60,.3);
+            border-radius:8px;padding:.7rem 1rem;color:#E74C3C;font-size:14px;margin-top:.8rem;">
+            ❌ Utilizador ou palavra-passe incorrectos.</div>
+            """, unsafe_allow_html=True)
 
     if auth_status is None:
-        st.markdown(f"""
-        <div style="font-size:13px;color:{C_TEXT_MUTE};text-align:center;margin-top:1rem;">
-        Conta demo: <code>aluno</code> / <code>aluno123</code></div>
-        """, unsafe_allow_html=True)
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            st.markdown(f"""
+            <div style="font-size:13px;color:{C_TEXT_MUTE};text-align:center;margin-top:1rem;">
+            Conta demo: <code>aluno</code> / <code>aluno123</code></div>
+            """, unsafe_allow_html=True)
 
-    st.markdown("</div>", unsafe_allow_html=True)
-
-    # Recursos da plataforma
+    # Recursos da plataforma — HTML completo e fechado
     st.markdown(f"""
-    <div style="width:100%;max-width:400px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8rem;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8rem;
+    max-width:400px;margin:1.6rem auto 0;">
         <div style="background:{C_SURFACE};border:1px solid {C_BORDER};border-radius:12px;
         padding:.8rem;text-align:center;">
             <div style="font-size:22px;">📚</div>
