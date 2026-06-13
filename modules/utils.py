@@ -1,6 +1,7 @@
 """
 DataForge EDU — Utilitários partilhados
 Paleta, CSS, componentes reutilizáveis
+Design acessível: WCAG AA/AAA, Atkinson Hyperlegible, alto contraste
 """
 
 import streamlit as st
@@ -11,80 +12,118 @@ import os
 import datetime
 
 # ══════════════════════════════════════════════════════
-# PALETA DE CORES
+# PALETA DE CORES — WCAG AA/AAA
+# Todos os pares texto/fundo testados ≥ 4.5:1
 # ══════════════════════════════════════════════════════
-C_BG         = "#0F1117"
-C_SURFACE    = "#161B27"
-C_SURFACE2   = "#1E2535"
-C_BORDER     = "#2A3347"
-C_ACCENT     = "#4F8EF7"
-C_ACCENT2    = "#7C5CBF"
-C_GREEN      = "#2ECC71"
-C_AMBER      = "#F39C12"
-C_RED        = "#E74C3C"
-C_TEAL       = "#1ABC9C"
-C_TEXT       = "#E8EBF0"
-C_TEXT_SEC   = "#9BA3B2"
-C_TEXT_MUTE  = "#5C6478"
+C_BG         = "#0F1117"   # fundo principal
+C_SURFACE    = "#161B27"   # cards e painéis
+C_SURFACE2   = "#1E2535"   # inputs e elementos secundários
+C_BORDER     = "#3A4560"   # bordas — mais visíveis que antes
+C_ACCENT     = "#6BA3FF"   # azul acessível — 7.5:1 vs fundo
+C_ACCENT2    = "#A78BFA"   # violeta acessível
+C_GREEN      = "#4ADE80"   # verde — 10.8:1 vs fundo
+C_AMBER      = "#FFC107"   # âmbar — 11.6:1 vs fundo
+C_RED        = "#FF6B6B"   # vermelho — 6.8:1 vs fundo
+C_TEAL       = "#2DD4BF"   # teal acessível
+C_TEXT       = "#F0F4FF"   # texto principal — 17.2:1 vs fundo
+C_TEXT_SEC   = "#B8C4D8"   # texto secundário — 8.1:1 vs fundo
+C_TEXT_MUTE  = "#7A8BA8"   # texto muted — 4.6:1 vs fundo (AA mínimo)
 
 PALETTE = [C_ACCENT, C_TEAL, C_AMBER, C_RED, C_ACCENT2, C_GREEN]
 
 # ══════════════════════════════════════════════════════
-# CSS GLOBAL
+# CSS GLOBAL — Acessibilidade total
 # ══════════════════════════════════════════════════════
 def inject_css():
     st.markdown(f"""
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+    /* ── FONTE: Atkinson Hyperlegible — desenhada para baixa visão ── */
+    @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500&display=swap');
 
     html, body, [class*="css"], .stApp, .main {{
         background-color: {C_BG} !important;
         color: {C_TEXT} !important;
-        font-family: 'Inter', sans-serif !important;
-        font-size: 15px !important;
+        font-family: 'Atkinson Hyperlegible', Arial, sans-serif !important;
+        font-size: 17px !important;         /* maior que o padrão 15px */
+        line-height: 1.7 !important;        /* espaçamento entre linhas */
+        letter-spacing: 0.01em !important;  /* ligeiro espaçamento entre letras */
     }}
 
     #MainMenu, footer, header {{ visibility: hidden; }}
 
     .block-container {{
-        padding-top: 1.5rem !important;
+        padding-top: 1.8rem !important;
         padding-bottom: 3rem !important;
         max-width: 1400px !important;
+    }}
+
+    /* ── FOCO VISÍVEL — essencial para utilizadores de teclado ── */
+    *:focus-visible {{
+        outline: 3px solid {C_ACCENT} !important;
+        outline-offset: 3px !important;
+        border-radius: 4px !important;
     }}
 
     /* ── SIDEBAR ── */
     section[data-testid="stSidebar"] {{
         background: {C_SURFACE} !important;
-        border-right: 1px solid {C_BORDER} !important;
+        border-right: 2px solid {C_BORDER} !important;
     }}
     section[data-testid="stSidebar"] > div {{
-        padding: 1.2rem 1rem 2rem;
+        padding: 1.4rem 1rem 2rem;
     }}
 
-    /* ── INPUTS ── */
+    /* ── INPUTS — bordas mais grossas e visíveis ── */
     .stTextInput > div > div > input,
     .stSelectbox > div > div,
     .stMultiSelect > div > div,
     .stNumberInput > div > div > input,
     .stTextArea > div > div > textarea {{
         background-color: {C_SURFACE2} !important;
-        border: 1px solid {C_BORDER} !important;
+        border: 2px solid {C_BORDER} !important;
         color: {C_TEXT} !important;
         border-radius: 8px !important;
+        font-size: 16px !important;
+        padding: 10px 14px !important;
+        font-family: 'Atkinson Hyperlegible', Arial, sans-serif !important;
+    }}
+    .stTextInput > div > div > input:focus,
+    .stTextArea > div > div > textarea:focus {{
+        border-color: {C_ACCENT} !important;
+        box-shadow: 0 0 0 3px rgba(107,163,255,0.35) !important;
+    }}
+    /* Labels dos inputs maiores */
+    .stTextInput label, .stSelectbox label, .stNumberInput label,
+    .stTextArea label, .stMultiSelect label, .stSlider label {{
+        font-size: 15px !important;
+        font-weight: 700 !important;
+        color: {C_TEXT_SEC} !important;
+        letter-spacing: 0.02em !important;
     }}
 
-    /* ── BOTÕES ── */
+    /* ── BOTÕES — área de clique maior, contraste alto ── */
     .stButton > button {{
         background: {C_ACCENT} !important;
-        color: #fff !important;
-        border: none !important;
-        border-radius: 8px !important;
-        font-weight: 600 !important;
-        font-size: 14px !important;
-        padding: 0.5rem 1.4rem !important;
-        transition: opacity .2s !important;
+        color: #0A0E17 !important;          /* texto escuro sobre azul claro */
+        border: 2px solid transparent !important;
+        border-radius: 10px !important;
+        font-weight: 700 !important;
+        font-size: 16px !important;
+        padding: 0.6rem 1.6rem !important;
+        min-height: 44px !important;        /* WCAG 2.5.5: área de toque ≥44px */
+        transition: all .2s !important;
+        font-family: 'Atkinson Hyperlegible', Arial, sans-serif !important;
+        letter-spacing: 0.02em !important;
     }}
-    .stButton > button:hover {{ opacity: 0.85 !important; }}
+    .stButton > button:hover {{
+        background: #89BAFF !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 4px 14px rgba(107,163,255,0.4) !important;
+    }}
+    .stButton > button:focus-visible {{
+        outline: 3px solid #fff !important;
+        outline-offset: 3px !important;
+    }}
 
     /* ── TABS ── */
     .stTabs [data-baseweb="tab-list"] {{
@@ -92,49 +131,73 @@ def inject_css():
         border-radius: 10px !important;
         padding: 4px !important;
         gap: 4px !important;
-        border: 1px solid {C_BORDER} !important;
+        border: 2px solid {C_BORDER} !important;
     }}
     .stTabs [data-baseweb="tab"] {{
         border-radius: 8px !important;
         color: {C_TEXT_SEC} !important;
-        font-weight: 500 !important;
-        padding: 8px 20px !important;
+        font-weight: 600 !important;
+        font-size: 15px !important;
+        padding: 10px 22px !important;
+        min-height: 44px !important;
     }}
     .stTabs [aria-selected="true"] {{
         background: {C_ACCENT} !important;
-        color: #fff !important;
+        color: #0A0E17 !important;
     }}
 
     /* ── EXPANDER ── */
     .streamlit-expanderHeader {{
         background: {C_SURFACE2} !important;
         border-radius: 8px !important;
-        border: 1px solid {C_BORDER} !important;
+        border: 2px solid {C_BORDER} !important;
         color: {C_TEXT} !important;
-        font-weight: 500 !important;
+        font-weight: 600 !important;
+        font-size: 16px !important;
+        min-height: 44px !important;
     }}
 
     /* ── MÉTRICAS ── */
     [data-testid="metric-container"] {{
         background: {C_SURFACE} !important;
-        border: 1px solid {C_BORDER} !important;
-        border-radius: 12px !important;
-        padding: 1rem !important;
+        border: 2px solid {C_BORDER} !important;
+        border-radius: 14px !important;
+        padding: 1.2rem !important;
+    }}
+    [data-testid="metric-container"] [data-testid="stMetricValue"] {{
+        font-size: 28px !important;
+        font-weight: 700 !important;
+        color: {C_TEXT} !important;
+    }}
+    [data-testid="metric-container"] [data-testid="stMetricLabel"] {{
+        font-size: 14px !important;
+        color: {C_TEXT_SEC} !important;
+        font-weight: 600 !important;
     }}
 
     /* ── DATAFRAME ── */
-    .stDataFrame {{ border: 1px solid {C_BORDER} !important; border-radius: 8px !important; }}
+    .stDataFrame {{
+        border: 2px solid {C_BORDER} !important;
+        border-radius: 10px !important;
+    }}
 
-    /* ── SLIDER ── */
-    .stSlider [data-baseweb="slider"] {{ padding: 0 !important; }}
+    /* ── SLIDER — track mais grosso ── */
+    .stSlider [data-baseweb="slider"] {{ padding: 8px 0 !important; }}
+    .stSlider [data-baseweb="slider"] [data-testid="stThumbValue"] {{
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        color: {C_TEXT} !important;
+    }}
 
-    /* ── RADIO ── */
+    /* ── RADIO — área de clique maior ── */
     div[data-testid="stRadio"] label[data-baseweb="radio"] {{
-        padding: 10px 14px !important;
+        padding: 12px 16px !important;
         border-radius: 8px !important;
-        border: 1px solid transparent !important;
+        border: 2px solid transparent !important;
         transition: all .15s !important;
         color: {C_TEXT_SEC} !important;
+        font-size: 16px !important;
+        min-height: 44px !important;
     }}
     div[data-testid="stRadio"] label[data-baseweb="radio"]:hover {{
         background: {C_SURFACE2} !important;
@@ -142,149 +205,230 @@ def inject_css():
         color: {C_ACCENT} !important;
     }}
 
+    /* ── CHECKBOX ── */
+    div[data-testid="stCheckbox"] label {{
+        font-size: 16px !important;
+        color: {C_TEXT_SEC} !important;
+        min-height: 44px !important;
+        display: flex !important;
+        align-items: center !important;
+    }}
+
     /* ── ALERTAS ── */
-    .stAlert {{ border-radius: 10px !important; }}
+    .stAlert {{ border-radius: 10px !important; font-size: 16px !important; }}
 
     /* ── SCROLLBAR ── */
-    ::-webkit-scrollbar {{ width: 6px; height: 6px; }}
+    ::-webkit-scrollbar {{ width: 8px; height: 8px; }}
     ::-webkit-scrollbar-track {{ background: {C_BG}; }}
-    ::-webkit-scrollbar-thumb {{ background: {C_BORDER}; border-radius: 3px; }}
+    ::-webkit-scrollbar-thumb {{ background: {C_BORDER}; border-radius: 4px; }}
+    ::-webkit-scrollbar-thumb:hover {{ background: {C_ACCENT}; }}
 
-    /* ── COMPONENTES CUSTOM ── */
+    /* ── SELECTBOX ── */
+    .stSelectbox > div > div {{
+        font-size: 16px !important;
+        min-height: 44px !important;
+    }}
+
+    /* ══════════════════════════════════════════════════
+       COMPONENTES CUSTOM
+    ══════════════════════════════════════════════════ */
+
     .df-card {{
         background: {C_SURFACE};
-        border: 1px solid {C_BORDER};
+        border: 2px solid {C_BORDER};
         border-radius: 14px;
-        padding: 1.4rem 1.6rem;
-        margin-bottom: 1rem;
+        padding: 1.6rem 1.8rem;
+        margin-bottom: 1.2rem;
     }}
     .df-card-accent {{
         background: {C_SURFACE};
-        border: 1px solid {C_ACCENT};
-        border-left: 4px solid {C_ACCENT};
+        border: 2px solid {C_ACCENT};
+        border-left: 5px solid {C_ACCENT};
         border-radius: 14px;
-        padding: 1.4rem 1.6rem;
-        margin-bottom: 1rem;
+        padding: 1.6rem 1.8rem;
+        margin-bottom: 1.2rem;
     }}
+
+    /* Badges — texto escuro sobre cor clara para máximo contraste */
     .df-badge {{
         display: inline-block;
-        padding: 3px 10px;
+        padding: 4px 12px;
         border-radius: 20px;
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: .03em;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: .04em;
     }}
-    .df-badge-blue {{ background: rgba(79,142,247,.15); color: {C_ACCENT}; border: 1px solid rgba(79,142,247,.3); }}
-    .df-badge-green {{ background: rgba(46,204,113,.15); color: {C_GREEN}; border: 1px solid rgba(46,204,113,.3); }}
-    .df-badge-amber {{ background: rgba(243,156,18,.15); color: {C_AMBER}; border: 1px solid rgba(243,156,18,.3); }}
-    .df-badge-purple {{ background: rgba(124,92,191,.15); color: {C_ACCENT2}; border: 1px solid rgba(124,92,191,.3); }}
-    .df-badge-red {{ background: rgba(231,76,60,.15); color: {C_RED}; border: 1px solid rgba(231,76,60,.3); }}
+    .df-badge-blue   {{ background: {C_ACCENT};  color: #0A0E17; }}
+    .df-badge-green  {{ background: {C_GREEN};   color: #0A0E17; }}
+    .df-badge-amber  {{ background: {C_AMBER};   color: #0A0E17; }}
+    .df-badge-purple {{ background: {C_ACCENT2}; color: #0A0E17; }}
+    .df-badge-red    {{ background: {C_RED};     color: #0A0E17; }}
+    .df-badge-teal   {{ background: {C_TEAL};    color: #0A0E17; }}
 
     .section-title {{
         font-size: 13px;
         font-weight: 700;
-        letter-spacing: .1em;
+        letter-spacing: .12em;
         text-transform: uppercase;
         color: {C_TEXT_MUTE};
-        padding-bottom: 8px;
-        border-bottom: 1px solid {C_BORDER};
-        margin: 1.6rem 0 1rem;
+        padding-bottom: 10px;
+        border-bottom: 2px solid {C_BORDER};
+        margin: 1.8rem 0 1.2rem;
     }}
     .page-title {{
-        font-size: 26px;
+        font-size: 28px;
         font-weight: 700;
         color: {C_TEXT};
         margin-bottom: 4px;
+        line-height: 1.3;
     }}
     .page-subtitle {{
-        font-size: 15px;
+        font-size: 17px;
         color: {C_TEXT_SEC};
-        margin-bottom: 1.6rem;
+        margin-bottom: 1.8rem;
+        line-height: 1.6;
     }}
+
+    /* Caixa de teoria — fundo com contraste suficiente */
     .teoria-box {{
-        background: linear-gradient(135deg, rgba(79,142,247,.08), rgba(124,92,191,.08));
-        border: 1px solid rgba(79,142,247,.25);
-        border-radius: 12px;
-        padding: 1.2rem 1.4rem;
-        margin-bottom: 1.2rem;
+        background: rgba(107,163,255,.1);
+        border: 2px solid rgba(107,163,255,.4);
+        border-radius: 14px;
+        padding: 1.4rem 1.6rem;
+        margin-bottom: 1.4rem;
     }}
     .teoria-box h4 {{
         color: {C_ACCENT};
-        font-size: 15px;
-        font-weight: 600;
-        margin-bottom: 6px;
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 8px;
     }}
     .teoria-box p, .teoria-box li {{
         color: {C_TEXT_SEC};
-        font-size: 14px;
-        line-height: 1.7;
+        font-size: 16px;
+        line-height: 1.8;
     }}
+
+    /* Steps do modo guiado */
     .step-indicator {{
         display: flex;
         align-items: center;
-        gap: 8px;
-        margin-bottom: 1.2rem;
+        gap: 10px;
+        margin-bottom: 1.4rem;
     }}
     .step-dot {{
-        width: 28px; height: 28px;
+        width: 32px; height: 32px;
         border-radius: 50%;
         display: flex; align-items: center; justify-content: center;
-        font-size: 12px; font-weight: 700;
+        font-size: 14px; font-weight: 700;
         flex-shrink: 0;
     }}
-    .step-dot.active {{ background: {C_ACCENT}; color: #fff; }}
-    .step-dot.done {{ background: {C_GREEN}; color: #fff; }}
-    .step-dot.pending {{ background: {C_SURFACE2}; color: {C_TEXT_MUTE}; border: 1px solid {C_BORDER}; }}
+    .step-dot.active  {{ background: {C_ACCENT};  color: #0A0E17; }}
+    .step-dot.done    {{ background: {C_GREEN};   color: #0A0E17; }}
+    .step-dot.pending {{ background: {C_SURFACE2}; color: {C_TEXT_MUTE}; border: 2px solid {C_BORDER}; }}
+
+    /* Barra de progresso */
     .progress-bar-wrap {{
         background: {C_SURFACE2};
-        border-radius: 4px;
-        height: 6px;
+        border-radius: 6px;
+        height: 10px;          /* mais grossa — mais visível */
         overflow: hidden;
-        margin: 6px 0;
+        margin: 8px 0;
+        border: 1px solid {C_BORDER};
     }}
     .progress-bar-fill {{
         height: 100%;
-        border-radius: 4px;
+        border-radius: 6px;
         background: linear-gradient(90deg, {C_ACCENT}, {C_TEAL});
-        transition: width .4s ease;
+        transition: width .5s ease;
     }}
+
+    /* Sidebar brand */
     .sidebar-brand {{
-        display: flex; align-items: center; gap: 12px;
-        padding: 8px 4px 16px;
-        border-bottom: 1px solid {C_BORDER};
-        margin-bottom: 16px;
+        display: flex; align-items: center; gap: 14px;
+        padding: 8px 4px 18px;
+        border-bottom: 2px solid {C_BORDER};
+        margin-bottom: 18px;
     }}
     .sidebar-brand-icon {{
-        width: 40px; height: 40px;
+        width: 44px; height: 44px;
         background: linear-gradient(135deg, {C_ACCENT}, {C_ACCENT2});
-        border-radius: 10px;
+        border-radius: 12px;
         display: flex; align-items: center; justify-content: center;
-        font-size: 20px; flex-shrink: 0;
+        font-size: 22px; flex-shrink: 0;
     }}
     .sidebar-brand-name {{
-        font-size: 17px; font-weight: 700; color: {C_TEXT};
+        font-size: 18px; font-weight: 700; color: {C_TEXT};
     }}
     .sidebar-brand-sub {{
-        font-size: 11px; color: {C_TEXT_MUTE};
+        font-size: 13px; color: {C_TEXT_MUTE};
     }}
+
+    /* User pill */
     .user-pill {{
-        display: flex; align-items: center; gap: 8px;
+        display: flex; align-items: center; gap: 10px;
         background: {C_SURFACE2};
-        border: 1px solid {C_BORDER};
-        border-radius: 20px;
-        padding: 6px 12px;
-        margin-bottom: 16px;
+        border: 2px solid {C_BORDER};
+        border-radius: 22px;
+        padding: 8px 14px;
+        margin-bottom: 18px;
     }}
     .user-avatar {{
-        width: 28px; height: 28px;
+        width: 32px; height: 32px;
         background: linear-gradient(135deg, {C_ACCENT}, {C_ACCENT2});
         border-radius: 50%;
         display: flex; align-items: center; justify-content: center;
-        font-size: 13px; font-weight: 700; color: #fff;
+        font-size: 15px; font-weight: 700; color: #0A0E17;
         flex-shrink: 0;
     }}
-    .user-name {{ font-size: 13px; font-weight: 600; color: {C_TEXT}; }}
-    .user-role {{ font-size: 11px; color: {C_TEXT_MUTE}; }}
+    .user-name {{ font-size: 14px; font-weight: 700; color: {C_TEXT}; }}
+    .user-role {{ font-size: 12px; color: {C_TEXT_MUTE}; }}
+
+    /* Caixas de info/sucesso/aviso/erro — ícones grandes + texto legível */
+    .df-info-box {{
+        background: rgba(107,163,255,.12);
+        border: 2px solid rgba(107,163,255,.45);
+        border-left: 5px solid {C_ACCENT};
+        border-radius: 10px;
+        padding: 1rem 1.2rem;
+        color: {C_TEXT};
+        font-size: 16px;
+        margin-bottom: 1rem;
+        line-height: 1.7;
+    }}
+    .df-success-box {{
+        background: rgba(74,222,128,.12);
+        border: 2px solid rgba(74,222,128,.45);
+        border-left: 5px solid {C_GREEN};
+        border-radius: 10px;
+        padding: 1rem 1.2rem;
+        color: {C_TEXT};
+        font-size: 16px;
+        margin-bottom: 1rem;
+        line-height: 1.7;
+    }}
+    .df-warning-box {{
+        background: rgba(255,193,7,.12);
+        border: 2px solid rgba(255,193,7,.45);
+        border-left: 5px solid {C_AMBER};
+        border-radius: 10px;
+        padding: 1rem 1.2rem;
+        color: {C_TEXT};
+        font-size: 16px;
+        margin-bottom: 1rem;
+        line-height: 1.7;
+    }}
+    .df-error-box {{
+        background: rgba(255,107,107,.12);
+        border: 2px solid rgba(255,107,107,.45);
+        border-left: 5px solid {C_RED};
+        border-radius: 10px;
+        padding: 1rem 1.2rem;
+        color: {C_TEXT};
+        font-size: 16px;
+        margin-bottom: 1rem;
+        line-height: 1.7;
+    }}
     </style>
     """, unsafe_allow_html=True)
 
@@ -351,7 +495,7 @@ def get_historico_modelos(username: str) -> list:
 # ══════════════════════════════════════════════════════
 def page_header(titulo: str, subtitulo: str = "", icone: str = ""):
     st.markdown(f"""
-    <div style="margin-bottom:1.6rem;">
+    <div style="margin-bottom:1.8rem;">
         <div class="page-title">{icone} {titulo}</div>
         <div class="page-subtitle">{subtitulo}</div>
     </div>
@@ -378,8 +522,9 @@ def teoria_box(titulo: str, conteudo: str):
 def progresso_bar(valor: float, label: str = ""):
     pct = int(valor * 100)
     st.markdown(f"""
-    <div style="margin-bottom:.6rem;">
-        <div style="display:flex;justify-content:space-between;font-size:12px;color:{C_TEXT_MUTE};margin-bottom:4px;">
+    <div style="margin-bottom:.8rem;">
+        <div style="display:flex;justify-content:space-between;font-size:14px;
+        color:{C_TEXT_MUTE};margin-bottom:6px;font-weight:600;">
             <span>{label}</span><span>{pct}%</span>
         </div>
         <div class="progress-bar-wrap">
@@ -389,7 +534,6 @@ def progresso_bar(valor: float, label: str = ""):
     """, unsafe_allow_html=True)
 
 def metricas_row(items: list):
-    """items = [{"label": str, "valor": str, "delta": str, "cor": str}]"""
     cols = st.columns(len(items))
     for col, item in zip(cols, items):
         with col:
@@ -400,28 +544,16 @@ def metricas_row(items: list):
             )
 
 def info_box(msg: str):
-    st.markdown(f"""
-    <div style="background:rgba(79,142,247,.1);border:1px solid rgba(79,142,247,.3);
-    border-radius:10px;padding:.8rem 1rem;color:{C_TEXT_SEC};font-size:14px;margin-bottom:.8rem;">
-    ℹ️ {msg}</div>""", unsafe_allow_html=True)
+    st.markdown(f'<div class="df-info-box">ℹ️ &nbsp;{msg}</div>', unsafe_allow_html=True)
 
 def sucesso_box(msg: str):
-    st.markdown(f"""
-    <div style="background:rgba(46,204,113,.1);border:1px solid rgba(46,204,113,.3);
-    border-radius:10px;padding:.8rem 1rem;color:{C_TEXT_SEC};font-size:14px;margin-bottom:.8rem;">
-    ✅ {msg}</div>""", unsafe_allow_html=True)
+    st.markdown(f'<div class="df-success-box">✅ &nbsp;{msg}</div>', unsafe_allow_html=True)
 
 def aviso_box(msg: str):
-    st.markdown(f"""
-    <div style="background:rgba(243,156,18,.1);border:1px solid rgba(243,156,18,.3);
-    border-radius:10px;padding:.8rem 1rem;color:{C_TEXT_SEC};font-size:14px;margin-bottom:.8rem;">
-    ⚠️ {msg}</div>""", unsafe_allow_html=True)
+    st.markdown(f'<div class="df-warning-box">⚠️ &nbsp;{msg}</div>', unsafe_allow_html=True)
 
 def erro_box(msg: str):
-    st.markdown(f"""
-    <div style="background:rgba(231,76,60,.1);border:1px solid rgba(231,76,60,.3);
-    border-radius:10px;padding:.8rem 1rem;color:{C_TEXT_SEC};font-size:14px;margin-bottom:.8rem;">
-    ❌ {msg}</div>""", unsafe_allow_html=True)
+    st.markdown(f'<div class="df-error-box">❌ &nbsp;{msg}</div>', unsafe_allow_html=True)
 
 
 # ══════════════════════════════════════════════════════
@@ -455,55 +587,45 @@ def carregar_dataset_embutido(nome: str) -> tuple:
         df = d.frame
         df["target"] = df["target"].map({0: "setosa", 1: "versicolor", 2: "virginica"})
         desc = "150 flores de 3 espécies. Clássico para classificação multiclasse. 4 features numéricas."
-
     elif chave == "titanic":
         df = sns.load_dataset("titanic")[["survived","pclass","sex","age","sibsp","parch","fare"]].dropna()
-        desc = "Dados dos passageiros do Titanic. Preve sobrevivência. Mix de features numéricas e categóricas."
-
+        desc = "Dados dos passageiros do Titanic. Prevê sobrevivência. Mix de features numéricas e categóricas."
     elif chave == "wine":
         d = datasets.load_wine(as_frame=True)
         df = d.frame
         desc = "178 vinhos com 13 propriedades químicas. 3 classes de qualidade."
-
     elif chave == "breast":
         d = datasets.load_breast_cancer(as_frame=True)
         df = d.frame
         df["target"] = df["target"].map({0: "maligno", 1: "benigno"})
         desc = "569 tumores com 30 features. Classifica tumores como malignos ou benignos."
-
     elif chave == "boston":
         d = datasets.fetch_california_housing(as_frame=True)
         df = d.frame
         desc = "Dados de habitação da Califórnia. Prevê o preço médio de casas. 8 features."
-
     elif chave == "diabetes":
         d = datasets.load_diabetes(as_frame=True)
         df = d.frame
         desc = "442 pacientes com 10 features clínicas. Prevê progressão da diabetes ao fim de 1 ano."
-
     elif chave == "digits":
         d = datasets.load_digits(as_frame=True)
         df = d.frame
         desc = "1797 imagens 8x8 de dígitos escritos à mão (0-9). 64 features de pixels."
-
     elif chave == "moons":
         X, y = datasets.make_moons(n_samples=300, noise=0.1, random_state=42)
         df = pd.DataFrame(X, columns=["x1","x2"])
         df["target"] = y
         desc = "300 pontos em forma de meias-luas. Ideal para visualizar clustering não-linear."
-
     elif chave == "circles":
         X, y = datasets.make_circles(n_samples=300, noise=0.05, random_state=42)
         df = pd.DataFrame(X, columns=["x1","x2"])
         df["target"] = y
         desc = "300 pontos em dois círculos concêntricos. Bom para DBSCAN vs KMeans."
-
     elif chave == "blobs":
         X, y = datasets.make_blobs(n_samples=300, centers=4, random_state=42)
         df = pd.DataFrame(X, columns=["x1","x2"])
         df["target"] = y
         desc = "300 pontos em 4 grupos. Dataset simples para aprender clustering básico."
-
     else:
         return None, "", ""
 
@@ -577,7 +699,7 @@ TEORIA = {
     "Naive Bayes": {
         "nome": "Naive Bayes",
         "tipo": "Supervisionado — Classificação",
-        "analogia": "Baseado no Teorema de Bayes. 'Naive' porque assume que todas as features são independentes entre si — o que raramente é verdade, mas funciona surpreendentemente bem.",
+        "analogia": "'Naive' porque assume que todas as features são independentes entre si — o que raramente é verdade, mas funciona surpreendentemente bem para texto.",
         "como_funciona": "Calcula a probabilidade de cada classe dado os valores das features, usando o Teorema de Bayes e assumindo independência condicional entre features.",
         "quando_usar": "Classificação de texto (spam, sentimento). Datasets com muitas features. Quando velocidade é prioritária.",
         "cuidados": "A assunção de independência raramente é verdade. Pode ter problemas com features correlacionadas.",
