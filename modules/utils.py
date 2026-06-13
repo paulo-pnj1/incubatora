@@ -25,8 +25,8 @@ C_GREEN      = "#4ADE80"   # verde — 10.8:1 vs fundo
 C_AMBER      = "#FFC107"   # âmbar — 11.6:1 vs fundo
 C_RED        = "#FF6B6B"   # vermelho — 6.8:1 vs fundo
 C_TEAL       = "#2DD4BF"   # teal acessível
-C_TEXT       = "#F0F4FF"   # texto principal — 17.2:1 vs fundo
-C_TEXT_SEC   = "#B8C4D8"   # texto secundário — 8.1:1 vs fundo
+C_TEXT       = "#FFFFFF"   # texto principal — 17.2:1 vs fundo
+C_TEXT_SEC   = "#D0D8F0"   # texto secundário — 8.1:1 vs fundo
 C_TEXT_MUTE  = "#7A8BA8"   # texto muted — 4.6:1 vs fundo (AA mínimo)
 
 PALETTE = [C_ACCENT, C_TEAL, C_AMBER, C_RED, C_ACCENT2, C_GREEN]
@@ -44,7 +44,8 @@ def inject_css():
         background-color: {C_BG} !important;
         color: {C_TEXT} !important;
         font-family: 'Atkinson Hyperlegible', Arial, sans-serif !important;
-        font-size: 17px !important;         /* maior que o padrão 15px */
+        font-size: 17px !important;
+        font-weight: 600 !important;         /* maior que o padrão 15px */
         line-height: 1.7 !important;        /* espaçamento entre linhas */
         letter-spacing: 0.01em !important;  /* ligeiro espaçamento entre letras */
     }}
@@ -429,6 +430,48 @@ def inject_css():
         margin-bottom: 1rem;
         line-height: 1.7;
     }}
+
+    /* ══ FORÇA BRANCO E NEGRITO EM TODA A INTERFACE ══ */
+    p, span, div, li, td, th {{ color: #FFFFFF; }}
+    .stMarkdown p, .stMarkdown div, .stMarkdown span {{
+        color: #FFFFFF !important;
+        font-weight: 600 !important;
+    }}
+    [data-testid="stSidebarContent"] * {{
+        color: #FFFFFF !important;
+        font-weight: 600 !important;
+    }}
+    .stTextInput label, .stSelectbox label, .stNumberInput label,
+    .stTextArea label, .stMultiSelect label, .stSlider label,
+    .stCheckbox label, .stRadio label {{
+        color: #FFFFFF !important;
+        font-weight: 700 !important;
+        font-size: 15px !important;
+    }}
+    .stTabs [data-baseweb="tab"] {{
+        color: #D0D8F0 !important;
+        font-weight: 700 !important;
+    }}
+    .stTabs [aria-selected="true"] {{ color: #0A0E17 !important; }}
+    [data-testid="stMetricValue"] {{ color: #FFFFFF !important; font-weight: 800 !important; }}
+    [data-testid="stMetricLabel"] {{ color: #D0D8F0 !important; font-weight: 700 !important; }}
+    section[data-testid="stSidebar"] .stButton > button {{
+        background: transparent !important;
+        color: #D0D8F0 !important;
+        border: none !important;
+        text-align: left !important;
+        font-weight: 700 !important;
+        font-size: 14px !important;
+        padding: 8px 12px !important;
+        border-radius: 8px !important;
+    }}
+    section[data-testid="stSidebar"] .stButton > button:hover {{
+        background: rgba(107,163,255,.12) !important;
+        color: #FFFFFF !important;
+    }}
+    .streamlit-expanderHeader {{ color: #FFFFFF !important; font-weight: 700 !important; }}
+    .stSelectbox > div > div > div {{ color: #FFFFFF !important; font-weight: 600 !important; }}
+    input::placeholder, textarea::placeholder {{ color: #7A8BA8 !important; font-weight: 400 !important; }}
     </style>
     """, unsafe_allow_html=True)
 
