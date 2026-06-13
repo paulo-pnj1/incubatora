@@ -8,105 +8,81 @@ import os, sys
 
 sys.path.insert(0, os.path.dirname(__file__))
 
+# ── PAGE CONFIG ──────────────────────────────────────
 st.set_page_config(
     page_title="DataForge EDU",
-    page_icon="https://api.iconify.design/ph/brain-duotone.svg",
+    page_icon="🧠",
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
-from modules.utils import inject_css, C_TEXT_MUTE, C_BORDER, C_SURFACE, C_ACCENT, C_TEXT_SEC, C_TEXT, C_BG, C_SURFACE2
+from modules.utils import inject_css, C_TEXT_MUTE, C_BORDER, C_SURFACE, C_ACCENT, C_TEXT_SEC, C_TEXT
 from modules.auth import render_login_page, render_sidebar_user, get_user_role
 
+# ── CSS GLOBAL ───────────────────────────────────────
 inject_css()
 
-# ── ÍCONES SVG PROFISSIONAIS (Phosphor Icons) ────────
-# Inline SVG — sem dependência externa, carrega instantaneamente
-def icon(name: str, size: int = 18, color: str = "currentColor") -> str:
-    icons = {
-        "home":        '<path d="M218.83 103.77l-80-75.48a1.94 1.94 0 0 0-.06-.06 16 16 0 0 0-21.54 0l-.06.06-80 75.48A16 16 0 0 0 32 115.55V208a16 16 0 0 0 16 16H96a16 16 0 0 0 16-16V160h32v48a16 16 0 0 0 16 16h48a16 16 0 0 0 16-16V115.55a16 16 0 0 0-5.17-11.78z"/>',
-        "chart-bar":   '<path d="M224 200h-8V40a8 8 0 0 0-8-8H152a8 8 0 0 0-8 8v56H104a8 8 0 0 0-8 8v40H64a8 8 0 0 0-8 8v48H40a8 8 0 0 0 0 16h184a8 8 0 0 0 0-16z"/>',
-        "trend-up":    '<path d="M240 56a8 8 0 0 1-8 8h-51.06L155.7 98.35A8 8 0 0 1 152 101.4l-.1.09L104 138.84 50.35 97.76a8 8 0 1 1 9.3-13l48.35 36.29 46.83-35.78 1.68-1.57A8 8 0 0 1 160 82h72a8 8 0 0 1 8 8z" opacity=".2"/><path d="M240 56a8 8 0 0 1-8 8h-51.06L155.7 98.35A8 8 0 0 1 152 101.4l-.1.09L104 138.84 50.35 97.76a8 8 0 1 1 9.3-13l48.35 36.29 46.83-35.78.05-.05 1.62-1.54A8 8 0 0 1 160 82h72a8 8 0 0 1 8 8z"/>',
-        "circles":     '<circle cx="128" cy="128" r="96" fill="none" stroke-width="16"/><circle cx="128" cy="128" r="48" fill="none" stroke-width="16"/>',
-        "warning":     '<path d="M236.8 188.09 149.35 36.22a24.76 24.76 0 0 0-42.7 0L19.2 188.09a23.51 23.51 0 0 0 0 23.72A24.35 24.35 0 0 0 40.55 224h174.9a24.35 24.35 0 0 0 21.33-12.19 23.51 23.51 0 0 0 .02-23.72zM120 104a8 8 0 0 1 16 0v40a8 8 0 0 1-16 0zm8 88a12 12 0 1 1 12-12 12 12 0 0 1-12 12z"/>',
-        "brain":       '<path d="M248 124a56.11 56.11 0 0 0-32-50.61V72a48 48 0 0 0-88-26.49A48 48 0 0 0 40 72v1.39A56 56 0 0 0 64 180.6V208a16 16 0 0 0 16 16h96a16 16 0 0 0 16-16v-27.4A56.09 56.09 0 0 0 248 124z" opacity=".2"/><path d="M248 124a56.11 56.11 0 0 0-32-50.61V72a48 48 0 0 0-88-26.49A48 48 0 0 0 40 72v1.39A56 56 0 0 0 64 180.6V208a16 16 0 0 0 16 16h96a16 16 0 0 0 16-16v-27.4A56.09 56.09 0 0 0 248 124z" fill="none" stroke-width="16"/>',
-        "cpu":         '<rect x="80" y="80" width="96" height="96" rx="8" fill="none" stroke-width="16"/><path d="M160 80V48m-32 32V48m-32 32V48m0 160v32m32-32v32m32-32v32m48-80h32m-32 32h32m-32-64h32M48 160H16m32-32H16m32-64H16" fill="none" stroke-width="16"/>',
-        "network":     '<circle cx="200" cy="56" r="24" fill="none" stroke-width="16"/><circle cx="56" cy="128" r="24" fill="none" stroke-width="16"/><circle cx="200" cy="200" r="24" fill="none" stroke-width="16"/><path d="M80 128h96m-76.26-17.74L176 79.55M79.74 145.74 176 176.45" fill="none" stroke-width="16"/>',
-        "robot":       '<rect x="88" y="24" width="80" height="56" rx="16" fill="none" stroke-width="16"/><path d="M160 80h16a32 32 0 0 1 32 32v16H48V112A32 32 0 0 1 80 80h8" fill="none" stroke-width="16"/><path d="M48 128v72a8 8 0 0 0 8 8h144a8 8 0 0 0 8-8V128" fill="none" stroke-width="16"/><circle cx="104" cy="152" r="16"/><circle cx="152" cy="152" r="16"/>',
-        "clock":       '<circle cx="128" cy="128" r="96" fill="none" stroke-width="16"/><polyline points="128 72 128 128 184 128" fill="none" stroke-width="16"/>',
-        "sparkle":     '<path d="M208 144h-79.06l55.86-55.87A8 8 0 0 0 173.49 77l-96 40a8 8 0 0 0 0 14.78L152 159.06V208a8 8 0 0 0 14.78 4L211 116.52A8 8 0 0 0 208 104z" fill="none" stroke-width="16"/>',
-        "trophy":      '<path d="M96 208h64m-32-48v48m-80-48h160a16 16 0 0 0 16-16V64H32v80a16 16 0 0 0 16 16zm-32-96h-16a16 16 0 0 0-16 16v8a40 40 0 0 0 40 40h8m160-64h16a16 16 0 0 1 16 16v8a40 40 0 0 1-40 40h-8" fill="none" stroke-width="16"/>',
-        "compare":     '<path d="M128 48v160M88 88 48 128l40 40m80-80 40 40-40 40" fill="none" stroke-width="16"/>',
-        "history":     '<path d="M40 128a88 88 0 1 0 88-88 88.1 88.1 0 0 0-88 88z" fill="none" stroke-width="16"/><polyline points="128 88 128 128 160 160" fill="none" stroke-width="16"/>',
-        "book":        '<path d="M48 80h112v160H48a16 16 0 0 1-16-16V96a16 16 0 0 1 16-16zm112 0h48a16 16 0 0 1 16 16v128a16 16 0 0 1-16 16H160m-112-96h112m-112 40h112" fill="none" stroke-width="16"/>',
-        "eye":         '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" fill="none" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="none" stroke-width="2"/>',
-        "text":        '<path d="M48 48h160m-80 0v160M80 208h96" fill="none" stroke-width="16"/>',
-        "game":        '<rect x="32" y="80" width="192" height="112" rx="32" fill="none" stroke-width="16"/><path d="M96 128h64m-32-32v64m56-32h.01M64 128h.01" fill="none" stroke-width="16"/>',
-        "logout":      '<path d="M112 40H48a8 8 0 0 0-8 8v160a8 8 0 0 0 8 8h64m32-56 40-40-40-40m-104 40h144" fill="none" stroke-width="16"/>',
-        "menu":        '<path d="M40 128h176M40 64h176M40 192h176" fill="none" stroke-width="16"/>',
-        "down":        '<polyline points="208 96 128 176 48 96" fill="none" stroke-width="16"/>',
-    }
-    path = icons.get(name, icons["menu"])
-    stroke = f'stroke="{color}" stroke-linecap="round" stroke-linejoin="round"'
-    return f'<svg xmlns="http://www.w3.org/2000/svg" width="{size}" height="{size}" viewBox="0 0 256 256" fill="{color}" {stroke} style="vertical-align:middle;flex-shrink:0;">{path}</svg>'
-
-
-# ── PÁGINAS AUXILIARES ────────────────────────────────
-def _render_em_breve(titulo: str, descricao: str, icone_svg: str = ""):
+# ══════════════════════════════════════════════════════
+# PÁGINAS AUXILIARES (definidas antes de serem usadas)
+# ══════════════════════════════════════════════════════
+def _render_em_breve(titulo: str, descricao: str):
     from modules.utils import page_header
+    page_header(titulo, "Em desenvolvimento", "🚧")
     st.markdown(f"""
-    <div style="background:{C_SURFACE};border:2px solid {C_BORDER};border-radius:20px;
-    padding:3.5rem 2rem;text-align:center;margin-top:2rem;">
-        <div style="width:64px;height:64px;background:rgba(107,163,255,.15);border:2px solid {C_ACCENT};
-        border-radius:16px;display:flex;align-items:center;justify-content:center;
-        margin:0 auto 1.4rem;">{icone_svg}</div>
-        <div style="font-size:22px;font-weight:800;color:#FFFFFF;margin-bottom:.6rem;">{titulo}</div>
-        <div style="font-size:16px;color:#B8C4D8;margin-bottom:1.2rem;">{descricao}</div>
-        <div style="display:inline-block;background:rgba(107,163,255,.12);border:1px solid rgba(107,163,255,.3);
-        border-radius:8px;padding:.4rem 1rem;font-size:13px;font-weight:700;color:{C_ACCENT};">
-            Em desenvolvimento — Fase 2
+    <div style="background:{C_SURFACE};border:1px solid {C_BORDER};border-radius:16px;
+    padding:3rem;text-align:center;margin-top:2rem;">
+        <div style="font-size:48px;margin-bottom:1rem;">🚧</div>
+        <div style="font-size:20px;font-weight:700;color:#E8EBF0;margin-bottom:.6rem;">{titulo}</div>
+        <div style="font-size:14px;color:{C_TEXT_MUTE};">{descricao}</div>
+        <div style="font-size:12px;color:{C_TEXT_MUTE};margin-top:1rem;">
+            Volta ao Dashboard para ver o percurso de aprendizagem completo.
         </div>
     </div>
     """, unsafe_allow_html=True)
 
 
 def _render_historico(username: str):
-    from modules.utils import page_header, get_historico_modelos
-    page_header("Historial de Modelos", "Todos os modelos que treinaste", "")
+    from modules.utils import (page_header, section_title, get_historico_modelos)
+    page_header("Historial de Modelos", "Todos os modelos que treinaste", "📊")
+
     historico = get_historico_modelos(username)
     if not historico:
         st.markdown(f"""
-        <div style="text-align:center;padding:3rem;color:#B8C4D8;">
-            <div style="font-size:48px;margin-bottom:1rem;">📂</div>
-            Ainda sem modelos treinados. Vai a Classificação ou Regressão para começar.
+        <div style="text-align:center;padding:3rem;color:{C_TEXT_MUTE};">
+            Ainda sem modelos treinados. Vai a Classificação ou Regressão para começar! 🚀
         </div>
         """, unsafe_allow_html=True)
         return
+
     for h in reversed(historico[-20:]):
-        tipo  = h.get("tipo", "")
-        algo  = h.get("algo", h.get("algoritmo", ""))
-        data  = h.get("data", "")[:16].replace("T", " ")
+        tipo = h.get("tipo", "")
+        algo = h.get("algo", h.get("algoritmo", ""))
+        data = h.get("data", "")[:16].replace("T", " ")
+
         metricas = ""
         if tipo == "classificacao" and h.get("accuracy"):
             metricas = f"Accuracy: {h.get('accuracy',0):.1%} · F1: {h.get('f1',0):.1%}"
         elif tipo == "regressao" and h.get("r2"):
             metricas = f"R²: {h.get('r2',0):.4f} · RMSE: {h.get('rmse',0):.4f}"
-        tipo_icon = icon("chart-bar", 16, "#6BA3FF") if tipo == "classificacao" else icon("trend-up", 16, "#4ADE80")
+
+        icone = "🎯" if tipo == "classificacao" else "📈" if tipo == "regressao" else "🔵"
+
         st.markdown(f"""
-        <div style="background:{C_SURFACE};border:2px solid {C_BORDER};border-radius:12px;
-        padding:.9rem 1.2rem;margin-bottom:.7rem;display:flex;align-items:center;gap:14px;">
-            {tipo_icon}
+        <div style="background:{C_SURFACE};border:1px solid {C_BORDER};border-radius:10px;
+        padding:.8rem 1.1rem;margin-bottom:.6rem;display:flex;align-items:center;gap:12px;">
+            <span style="font-size:22px;">{icone}</span>
             <div style="flex:1;">
-                <div style="font-size:15px;font-weight:700;color:#FFFFFF;">{algo}</div>
-                <div style="font-size:13px;color:#7A8BA8;">{tipo.capitalize()} · {data}</div>
-                <div style="font-size:13px;color:#B8C4D8;margin-top:2px;">{metricas}</div>
+                <div style="font-size:14px;font-weight:600;color:{C_TEXT};">{algo}</div>
+                <div style="font-size:12px;color:{C_TEXT_MUTE};">{tipo.capitalize()} · {data}</div>
+                <div style="font-size:12px;color:{C_TEXT_SEC};margin-top:2px;">{metricas}</div>
             </div>
         </div>
         """, unsafe_allow_html=True)
 
 
-# ── AUTH ─────────────────────────────────────────────
+# ── AUTENTICAÇÃO ─────────────────────────────────────
 authenticator, auth_status, username, config = render_login_page()
+
 if auth_status is not True:
     st.stop()
 
@@ -117,68 +93,56 @@ role = get_user_role(username, config)
 with st.sidebar:
     render_sidebar_user(name, username, role, authenticator)
 
-    # Secções e itens com ícones SVG profissionais
-    MENU = [
-        # (label, key, secção, ícone_svg)
-        ("Dashboard",                 "dashboard",   None,              icon("home",    16, "#6BA3FF")),
-        ("Classificação",             "classificacao","SUPERVISIONADO",  icon("chart-bar",16,"#6BA3FF")),
-        ("Regressão",                 "regressao",   None,              icon("trend-up", 16,"#6BA3FF")),
-        ("Clustering",                "clustering",  "NÃO SUPERVISIONADO", icon("circles",16,"#6BA3FF")),
-        ("Redução Dimensionalidade",  "reducao",     None,              icon("network", 16,"#6BA3FF")),
-        ("Detecção de Anomalias",     "anomalias",   None,              icon("warning", 16,"#6BA3FF")),
-        ("MLP / Redes Neurais",       "mlp",         "REDES NEURAIS",   icon("brain",   16,"#6BA3FF")),
-        ("Visão Computacional",       "visao",       "DEEP LEARNING",   icon("eye",     16,"#6BA3FF")),
-        ("NLP",                       "nlp",         None,              icon("text",    16,"#6BA3FF")),
-        ("Séries Temporais",          "series",      None,              icon("clock",   16,"#6BA3FF")),
-        ("Modelos Generativos",       "generativo",  None,              icon("sparkle", 16,"#6BA3FF")),
-        ("Aprendizagem por Reforço",  "reforco",     "REFORÇO",         icon("game",    16,"#6BA3FF")),
-        ("Comparador de Modelos",     "comparador",  "FERRAMENTAS",     icon("compare", 16,"#6BA3FF")),
-        ("Meu Historial",             "historico",   None,              icon("history", 16,"#6BA3FF")),
-        ("Certificados",              "certificados",None,              icon("trophy",  16,"#6BA3FF")),
+    st.markdown(f'<div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:{C_TEXT_MUTE};padding:4px 0 8px;text-transform:uppercase;">Menu Principal</div>', unsafe_allow_html=True)
+
+    MENU_ITEMS = [
+        ("🏠 Dashboard",               "dashboard"),
+        ("── SUPERVISIONADO",           None),
+        ("🎯 Classificação",            "classificacao"),
+        ("📈 Regressão",                "regressao"),
+        ("── NÃO SUPERVISIONADO",       None),
+        ("🔵 Clustering",               "clustering"),
+        ("🔻 Redução Dimensionalidade", "reducao"),
+        ("🚨 Detecção de Anomalias",    "anomalias"),
+        ("── REDES NEURAIS",            None),
+        ("🧠 MLP / Redes Neurais",      "mlp"),
+        ("── DEEP LEARNING",            None),
+        ("👁️ Visão Computacional",      "visao"),
+        ("📝 NLP",                      "nlp"),
+        ("⏱️ Séries Temporais",         "series"),
+        ("🎨 Modelos Generativos",      "generativo"),
+        ("── REFORÇO",                  None),
+        ("🎮 Aprendizagem p/ Reforço",  "reforco"),
+        ("── FERRAMENTAS",              None),
+        ("⚔️ Comparador de Modelos",    "comparador"),
+        ("📊 Meu Historial",            "historico"),
+        ("🏆 Certificados",             "certificados"),
     ]
 
     if "pagina" not in st.session_state:
         st.session_state.pagina = "dashboard"
 
-    ultima_seccao = "__start__"
-    for label, key, seccao, icone_svg in MENU:
-        if seccao and seccao != ultima_seccao:
-            ultima_seccao = seccao
+    for label, key in MENU_ITEMS:
+        if key is None:
+            secao = label.replace("── ", "")
             st.markdown(f"""
-            <div style="font-size:10px;font-weight:800;letter-spacing:.14em;
-            color:#7A8BA8;padding:14px 0 4px;text-transform:uppercase;
-            border-top:1px solid {C_BORDER};margin-top:4px;">{seccao}</div>
+            <div style="font-size:10px;font-weight:700;letter-spacing:.1em;
+            color:{C_TEXT_MUTE};padding:10px 0 3px;text-transform:uppercase;
+            border-top:1px solid {C_BORDER};margin-top:6px;">{secao}</div>
             """, unsafe_allow_html=True)
-
-        ativo = st.session_state.pagina == key
-        bg    = f"background:rgba(107,163,255,.15);border-left:3px solid {C_ACCENT};" if ativo else ""
-        cor   = "#FFFFFF" if ativo else "#B8C4D8"
-        peso  = "800" if ativo else "600"
-
-        # Botão invisível com HTML de apresentação em cima
-        st.markdown(f"""
-        <div style="{bg}border-radius:8px;padding:0;margin-bottom:2px;">
-        </div>
-        """, unsafe_allow_html=True)
-
-        col_btn = st.container()
-        with col_btn:
-            if st.button(
-                f"  {label}",
-                key=f"nav_{key}",
-                use_container_width=True,
-                help=label
-            ):
+        else:
+            ativo = st.session_state.pagina == key
+            if st.button(label, key=f"nav_{key}", use_container_width=True):
                 st.session_state.pagina = key
                 if "guiado_step" in st.session_state:
                     st.session_state.guiado_step = 1
                 st.rerun()
 
     st.markdown("---")
-    st.markdown(f'<div style="font-size:11px;font-weight:600;color:#7A8BA8;text-align:center;padding:4px;">DataForge EDU v1.0 · Angola 🇦🇴</div>', unsafe_allow_html=True)
+    st.markdown(f'<div style="font-size:11px;color:{C_TEXT_MUTE};text-align:center;">DataForge EDU v1.0 · Angola 🇦🇴</div>', unsafe_allow_html=True)
 
 
-# ── ROTEADOR ─────────────────────────────────────────
+# ── ROTEADOR DE PÁGINAS ──────────────────────────────
 pagina = st.session_state.get("pagina", "dashboard")
 
 if pagina == "dashboard":
@@ -194,51 +158,40 @@ elif pagina == "regressao":
     render_regressao(username)
 
 elif pagina == "clustering":
-    _render_em_breve("Clustering", "KMeans, DBSCAN, HDBSCAN, Agglomerative, GMM",
-                     icon("circles", 32, "#6BA3FF"))
+    _render_em_breve("🔵 Clustering", "KMeans, DBSCAN, HDBSCAN, Agglomerative, GMM — Fase 2")
 
 elif pagina == "reducao":
-    _render_em_breve("Redução de Dimensionalidade", "PCA, t-SNE, UMAP, ICA",
-                     icon("network", 32, "#6BA3FF"))
+    _render_em_breve("🔻 Redução de Dimensionalidade", "PCA, t-SNE, UMAP, ICA — Fase 2")
 
 elif pagina == "anomalias":
-    _render_em_breve("Detecção de Anomalias", "Isolation Forest, LOF, One-Class SVM",
-                     icon("warning", 32, "#FFC107"))
+    _render_em_breve("🚨 Detecção de Anomalias", "Isolation Forest, LOF, One-Class SVM — Fase 2")
 
 elif pagina == "mlp":
-    _render_em_breve("MLP / Redes Neurais", "MLP Classifier/Regressor, PyTorch personalizado",
-                     icon("brain", 32, "#A78BFA"))
+    _render_em_breve("🧠 MLP / Redes Neurais", "MLP Classifier/Regressor, PyTorch personalizado — Fase 2")
 
 elif pagina == "visao":
-    _render_em_breve("Visão Computacional", "CNN, ResNet, VGG16, MobileNetV2, EfficientNet",
-                     icon("eye", 32, "#2DD4BF"))
+    _render_em_breve("👁️ Visão Computacional", "CNN, ResNet, VGG16, MobileNetV2, EfficientNet — Fase 2")
 
 elif pagina == "nlp":
-    _render_em_breve("NLP — Processamento de Linguagem", "BoW, TF-IDF, LSTM, Transformer, BERT",
-                     icon("text", 32, "#6BA3FF"))
+    _render_em_breve("📝 NLP", "BoW, TF-IDF, LSTM, Transformer, BERT — Fase 3")
 
 elif pagina == "series":
-    _render_em_breve("Séries Temporais", "LSTM, GRU, Prophet, ARIMA",
-                     icon("clock", 32, "#FFC107"))
+    _render_em_breve("⏱️ Séries Temporais", "LSTM, GRU, Prophet, ARIMA — Fase 3")
 
 elif pagina == "generativo":
-    _render_em_breve("Modelos Generativos", "VAE, GAN, DCGAN",
-                     icon("sparkle", 32, "#A78BFA"))
+    _render_em_breve("🎨 Modelos Generativos", "VAE, GAN, DCGAN — Fase 3")
 
 elif pagina == "reforco":
-    _render_em_breve("Aprendizagem por Reforço", "Q-Learning, DQN, Policy Gradient, CartPole",
-                     icon("game", 32, "#4ADE80"))
+    _render_em_breve("🎮 Aprendizagem por Reforço", "Q-Learning, DQN, Policy Gradient, CartPole — Fase 4")
 
 elif pagina == "comparador":
-    _render_em_breve("Comparador de Modelos", "Treina e compara até 3 algoritmos lado a lado",
-                     icon("compare", 32, "#6BA3FF"))
+    _render_em_breve("⚔️ Comparador de Modelos", "Treina e compara até 3 algoritmos lado a lado — Fase 2")
 
 elif pagina == "historico":
     _render_historico(username)
 
 elif pagina == "certificados":
-    _render_em_breve("Certificados", "Certificados PDF com QR code verificável",
-                     icon("trophy", 32, "#FFC107"))
+    _render_em_breve("🏆 Certificados", "Certificados PDF com QR code verificável — Fase 2")
 
 else:
     from modules.dashboard import render_dashboard
