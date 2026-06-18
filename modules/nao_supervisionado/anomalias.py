@@ -139,7 +139,7 @@ def render_anomalias(username: str):
                     x=X_pca[mask, 0], y=X_pca[mask, 1],
                     mode="markers", name=lbl,
                     marker=dict(color=cor, size=sz, opacity=0.85,
-                                line=dict(color="#FFFFFF" if lbl=="Anomalia" else "transparent", width=1.5))
+                                line=dict(color="#FFFFFF" if lbl=="Anomalia" else "rgba(0,0,0,0)", width=1.5))
                 ))
             fig.update_layout(
                 title=dict(text=f"{res['algo']} — Anomalias (PCA 2D)", font=dict(color="#FFFFFF", size=15)),
