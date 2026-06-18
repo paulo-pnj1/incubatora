@@ -1,5 +1,5 @@
 """
-DataForge EDU - Utilitários partilhados
+DataForge EDU — Utilitários partilhados
 Paleta, CSS, componentes reutilizáveis
 Design profissional: tema escuro consistente, WCAG AA/AAA
 """
@@ -12,7 +12,7 @@ import os
 import datetime
 
 # ══════════════════════════════════════════════════════
-# PALETA DE CORES - Design System
+# PALETA DE CORES — Design System
 # ══════════════════════════════════════════════════════
 C_BG         = "#0D1117"   # fundo principal (GitHub-dark inspired)
 C_SURFACE    = "#161B27"   # cards e painéis
@@ -34,7 +34,7 @@ C_TEXT_MUTE  = "#484F58"   # texto muted
 PALETTE = [C_ACCENT, C_TEAL, C_AMBER, C_RED, C_ACCENT2, C_GREEN]
 
 # ══════════════════════════════════════════════════════
-# CSS GLOBAL - Cobertura completa do Streamlit
+# CSS GLOBAL — Cobertura completa do Streamlit
 # ══════════════════════════════════════════════════════
 def inject_css():
     st.markdown(f"""
@@ -43,7 +43,7 @@ def inject_css():
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
     /* ══════════════════════════════════════════════
-       ROOT & RESET - força tema escuro em tudo
+       ROOT & RESET — força tema escuro em tudo
     ══════════════════════════════════════════════ */
     :root {{
         --bg: {C_BG};
@@ -83,7 +83,7 @@ def inject_css():
         font-family: 'Inter', sans-serif !important;
     }}
 
-    /* Ícones nativos do Streamlit (Material Symbols) - NUNCA usar Inter aqui,
+    /* Ícones nativos do Streamlit (Material Symbols) — NUNCA usar Inter aqui,
        senão o glifo do ícone aparece como texto literal (ex: "keyboard_arrow_right") */
     [data-testid="stIconMaterial"],
     span[data-testid="stIconMaterial"],
@@ -140,7 +140,7 @@ def inject_css():
     }}
 
     /* ══════════════════════════════════════════════
-       INPUTS - text, number, textarea, selectbox
+       INPUTS — text, number, textarea, selectbox
     ══════════════════════════════════════════════ */
     /* Wrappers */
     .stTextInput > div > div,
@@ -497,7 +497,7 @@ def inject_css():
     ::-webkit-scrollbar-thumb:hover {{ background: {C_ACCENT}; }}
 
     /* ══════════════════════════════════════════════
-       COMPONENTES CUSTOM - Design System
+       COMPONENTES CUSTOM — Design System
     ══════════════════════════════════════════════ */
 
     /* ── Cards ── */
@@ -863,16 +863,16 @@ def metricas_row(items: list):
             )
 
 def info_box(msg: str):
-    st.markdown(f'<div class="df-info-box"><span style="font-weight:700;">Info</span> - {msg}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="df-info-box"><span style="font-weight:700;">Info</span> — {msg}</div>', unsafe_allow_html=True)
 
 def sucesso_box(msg: str):
-    st.markdown(f'<div class="df-success-box"><span style="font-weight:700;">OK</span> - {msg}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="df-success-box"><span style="font-weight:700;">OK</span> — {msg}</div>', unsafe_allow_html=True)
 
 def aviso_box(msg: str):
-    st.markdown(f'<div class="df-warning-box"><span style="font-weight:700;">Aviso</span> - {msg}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="df-warning-box"><span style="font-weight:700;">Aviso</span> — {msg}</div>', unsafe_allow_html=True)
 
 def erro_box(msg: str):
-    st.markdown(f'<div class="df-error-box"><span style="font-weight:700;">Erro</span> - {msg}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="df-error-box"><span style="font-weight:700;">Erro</span> — {msg}</div>', unsafe_allow_html=True)
 
 
 # ══════════════════════════════════════════════════════
@@ -884,16 +884,16 @@ def carregar_dataset_embutido(nome: str) -> tuple:
     import seaborn as sns
 
     catalogo = {
-        "Iris - Classificação de flores":       ("iris",       "classificacao"),
-        "Titanic - Sobrevivência":               ("titanic",    "classificacao"),
-        "Vinho - Qualidade":                     ("wine",       "classificacao"),
-        "Cancro - Diagnóstico":                 ("breast",     "classificacao"),
-        "Boston Housing - Preços":               ("boston",     "regressao"),
-        "Diabetes - Progressão":                ("diabetes",   "regressao"),
-        "Dígitos - Reconhecimento":              ("digits",     "classificacao"),
-        "Meias-luas - Clustering":               ("moons",      "clustering"),
-        "Círculos - Clustering":                 ("circles",    "clustering"),
-        "Blobs - Clustering básico":             ("blobs",      "clustering"),
+        "Iris — Classificação de flores":       ("iris",       "classificacao"),
+        "Titanic — Sobrevivência":               ("titanic",    "classificacao"),
+        "Vinho — Qualidade":                     ("wine",       "classificacao"),
+        "Cancro — Diagnóstico":                 ("breast",     "classificacao"),
+        "Boston Housing — Preços":               ("boston",     "regressao"),
+        "Diabetes — Progressão":                ("diabetes",   "regressao"),
+        "Dígitos — Reconhecimento":              ("digits",     "classificacao"),
+        "Meias-luas — Clustering":               ("moons",      "clustering"),
+        "Círculos — Clustering":                 ("circles",    "clustering"),
+        "Blobs — Clustering básico":             ("blobs",      "clustering"),
     }
 
     if nome not in catalogo:
@@ -957,27 +957,27 @@ def carregar_dataset_embutido(nome: str) -> tuple:
 TEORIA = {
     "KNN": {
         "nome": "K-Nearest Neighbors (KNN)",
-        "tipo": "Supervisionado - Classificação / Regressão",
+        "tipo": "Supervisionado — Classificação / Regressão",
         "analogia": "Imagina que chegas a uma cidade nova e queres saber se um bairro é seguro. Perguntas aos K vizinhos mais próximos. Se a maioria diz que é seguro, assumes que é seguro.",
         "como_funciona": "Para classificar um novo ponto, o KNN calcula a distância a todos os pontos de treino e escolhe os K mais próximos. A classe mais comum entre esses K vizinhos é a previsão.",
         "quando_usar": "Datasets pequenos/médios, quando os dados têm clusters naturais, quando precisas de um modelo simples e interpretável.",
-        "cuidados": "Lento para datasets grandes. Muito afectado por features com escalas diferentes - normaliza sempre. K pequeno = overfitting, K grande = underfitting.",
+        "cuidados": "Lento para datasets grandes. Muito afectado por features com escalas diferentes — normaliza sempre. K pequeno = overfitting, K grande = underfitting.",
         "hiperparametros": {"n_neighbors": "Número de vizinhos. Valores típicos: 3, 5, 7, 11", "metric": "Distância euclidiana (padrão), manhattan, minkowski"},
         "badge": "blue"
     },
     "Decision Tree": {
         "nome": "Árvore de Decisão",
-        "tipo": "Supervisionado - Classificação / Regressão",
+        "tipo": "Supervisionado — Classificação / Regressão",
         "analogia": "Como um jogo de 20 perguntas. O modelo aprende a sequência de perguntas que melhor divide os dados em grupos puros.",
         "como_funciona": "Divide recursivamente os dados baseando-se na feature que mais reduz a impureza (Gini ou Entropia). Cada divisão cria um nó na árvore.",
         "quando_usar": "Quando precisas de interpretabilidade total. Quando os dados têm relações não-lineares. Bom ponto de partida antes de ensembles.",
-        "cuidados": "Overfit facilmente sem poda (max_depth). Instável - pequenas mudanças nos dados mudam muito a árvore.",
+        "cuidados": "Overfit facilmente sem poda (max_depth). Instável — pequenas mudanças nos dados mudam muito a árvore.",
         "hiperparametros": {"max_depth": "Profundidade máxima. None = overfitting. Começa com 3-5.", "min_samples_split": "Mínimo de amostras para dividir um nó"},
         "badge": "green"
     },
     "Random Forest": {
         "nome": "Random Forest",
-        "tipo": "Supervisionado - Classificação / Regressão",
+        "tipo": "Supervisionado — Classificação / Regressão",
         "analogia": "Em vez de perguntar a um especialista, perguntas a 100 especialistas diferentes (cada um viu dados diferentes) e fazes uma votação. A decisão colectiva é mais robusta.",
         "como_funciona": "Treina N árvores de decisão, cada uma em subconjuntos aleatórios dos dados e das features (bagging). A previsão final é a votação (classificação) ou média (regressão).",
         "quando_usar": "Um dos melhores algoritmos para uso geral. Robusto a overfitting, lida bem com muitas features, dá importância das variáveis.",
@@ -987,7 +987,7 @@ TEORIA = {
     },
     "Gradient Boosting": {
         "nome": "Gradient Boosting",
-        "tipo": "Supervisionado - Classificação / Regressão",
+        "tipo": "Supervisionado — Classificação / Regressão",
         "analogia": "Aprender com os erros. Treinas um modelo fraco, vês onde errou, treinas outro modelo focado nos erros, e assim sucessivamente. Cada modelo corrige o anterior.",
         "como_funciona": "Treina modelos sequencialmente, onde cada novo modelo tenta corrigir os erros residuais do anterior, usando o gradiente do erro como sinal de aprendizagem.",
         "quando_usar": "Quando precisas de alta performance. Competições de ML. Datasets tabulares estruturados.",
@@ -997,7 +997,7 @@ TEORIA = {
     },
     "SVM": {
         "nome": "Support Vector Machine (SVM)",
-        "tipo": "Supervisionado - Classificação / Regressão",
+        "tipo": "Supervisionado — Classificação / Regressão",
         "analogia": "Imagina separar laranjas de maçãs numa mesa. O SVM encontra a linha (ou plano) que separa as duas classes com a maior margem possível dos pontos mais próximos.",
         "como_funciona": "Encontra o hiperplano de separação com margem máxima entre classes. Com o kernel trick, consegue separar dados não-lineares mapeando para dimensões superiores.",
         "quando_usar": "Dados de alta dimensão (texto, imagens). Datasets pequenos a médios. Quando as classes são claramente separáveis.",
@@ -1007,8 +1007,8 @@ TEORIA = {
     },
     "Logistic Regression": {
         "nome": "Regressão Logística",
-        "tipo": "Supervisionado - Classificação",
-        "analogia": "Apesar do nome, é um classificador. Estima a probabilidade de pertencer a uma classe usando uma função sigmoide - transforma qualquer número real em probabilidade entre 0 e 1.",
+        "tipo": "Supervisionado — Classificação",
+        "analogia": "Apesar do nome, é um classificador. Estima a probabilidade de pertencer a uma classe usando uma função sigmoide — transforma qualquer número real em probabilidade entre 0 e 1.",
         "como_funciona": "Aprende pesos para cada feature que, combinados com a função sigmoide, produzem uma probabilidade. Usa máxima verossimilhança para optimizar os pesos.",
         "quando_usar": "Classificação binária simples. Quando precisas de probabilidades calibradas. Benchmark rápido antes de modelos complexos.",
         "cuidados": "Assume relação linear entre features e log-odds. Não captura relações não-lineares sem feature engineering.",
@@ -1017,8 +1017,8 @@ TEORIA = {
     },
     "Naive Bayes": {
         "nome": "Naive Bayes",
-        "tipo": "Supervisionado - Classificação",
-        "analogia": "'Naive' porque assume que todas as features são independentes entre si - o que raramente é verdade, mas funciona surpreendentemente bem para texto.",
+        "tipo": "Supervisionado — Classificação",
+        "analogia": "'Naive' porque assume que todas as features são independentes entre si — o que raramente é verdade, mas funciona surpreendentemente bem para texto.",
         "como_funciona": "Calcula a probabilidade de cada classe dado os valores das features, usando o Teorema de Bayes e assumindo independência condicional entre features.",
         "quando_usar": "Classificação de texto (spam, sentimento). Datasets com muitas features. Quando velocidade é prioritária.",
         "cuidados": "A assunção de independência raramente é verdade. Pode ter problemas com features correlacionadas.",
@@ -1027,17 +1027,17 @@ TEORIA = {
     },
     "KMeans": {
         "nome": "K-Means Clustering",
-        "tipo": "Não Supervisionado - Clustering",
+        "tipo": "Não Supervisionado — Clustering",
         "analogia": "Tens 100 pessoas numa sala e queres formar K grupos. Colocas K representantes aleatórios, cada pessoa junta-se ao mais próximo, depois os representantes movem-se para o centro do grupo. Repete até estabilizar.",
         "como_funciona": "Inicializa K centróides aleatoriamente. Assign cada ponto ao centróide mais próximo. Recalcula centróides como média do cluster. Repete até convergir.",
         "quando_usar": "Quando sabes o número de clusters. Dados com clusters esféricos e tamanhos similares. Boa performance em grandes datasets.",
-        "cuidados": "Precisas definir K antes. Sensível a outliers. Assume clusters esféricos - não funciona bem com formas irregulares.",
+        "cuidados": "Precisas definir K antes. Sensível a outliers. Assume clusters esféricos — não funciona bem com formas irregulares.",
         "hiperparametros": {"n_clusters": "Número de clusters K. Usa o método do cotovelo para escolher.", "init": "KMeans++ (padrão) dá melhores resultados que 'random'"},
         "badge": "teal"
     },
     "DBSCAN": {
         "nome": "DBSCAN",
-        "tipo": "Não Supervisionado - Clustering",
+        "tipo": "Não Supervisionado — Clustering",
         "analogia": "Imagina explorar uma floresta. Começas num ponto, expandes para todos os vizinhos próximos, e continuas a expansão. Regiões densas formam clusters, pontos isolados são ruído.",
         "como_funciona": "Define clusters como regiões de alta densidade separadas por regiões de baixa densidade. Não precisa de K definido. Detecta automaticamente outliers como ruído.",
         "quando_usar": "Quando não sabes o número de clusters. Clusters com formas arbitrárias. Quando há outliers nos dados.",
@@ -1047,7 +1047,7 @@ TEORIA = {
     },
     "Linear Regression": {
         "nome": "Regressão Linear",
-        "tipo": "Supervisionado - Regressão",
+        "tipo": "Supervisionado — Regressão",
         "analogia": "A reta que melhor se ajusta a uma nuvem de pontos. Minimiza a soma dos quadrados das distâncias verticais entre os pontos e a reta.",
         "como_funciona": "Encontra os coeficientes da equação y = β₀ + β₁x₁ + ... + βₙxₙ que minimizam o erro quadrático médio (MSE).",
         "quando_usar": "Relação linear entre features e target. Baseline simples para qualquer problema de regressão. Interpretabilidade total.",
@@ -1057,8 +1057,8 @@ TEORIA = {
     },
     "Ridge": {
         "nome": "Ridge Regression (L2)",
-        "tipo": "Supervisionado - Regressão",
-        "analogia": "Regressão Linear com penalização. Como a Linear mas com um imposto sobre coeficientes grandes - força o modelo a ser mais simples e menos propenso a overfitting.",
+        "tipo": "Supervisionado — Regressão",
+        "analogia": "Regressão Linear com penalização. Como a Linear mas com um imposto sobre coeficientes grandes — força o modelo a ser mais simples e menos propenso a overfitting.",
         "como_funciona": "Adiciona penalização L2 (soma dos quadrados dos coeficientes × alpha) à função de custo. Encolhe todos os coeficientes mas não os zera.",
         "quando_usar": "Quando tens multicolinearidade. Quando tens muitas features. Regularização suave.",
         "cuidados": "Alpha alto = mais regularização = underfitting. Não faz selecção de variáveis (todos os coeficientes permanecem).",
@@ -1067,9 +1067,9 @@ TEORIA = {
     },
     "Lasso": {
         "nome": "Lasso Regression (L1)",
-        "tipo": "Supervisionado - Regressão",
-        "analogia": "Como Ridge mas mais agressivo - força alguns coeficientes a zero, fazendo selecção automática de variáveis. Útil quando suspeitas que poucas features são realmente importantes.",
-        "como_funciona": "Adiciona penalização L1 (soma dos valores absolutos dos coeficientes × alpha). Produz coeficientes esparsos - muitos exactamente zero.",
+        "tipo": "Supervisionado — Regressão",
+        "analogia": "Como Ridge mas mais agressivo — força alguns coeficientes a zero, fazendo selecção automática de variáveis. Útil quando suspeitas que poucas features são realmente importantes.",
+        "como_funciona": "Adiciona penalização L1 (soma dos valores absolutos dos coeficientes × alpha). Produz coeficientes esparsos — muitos exactamente zero.",
         "quando_usar": "Feature selection automática. Quando suspeitas que poucas features são relevantes. Alta dimensionalidade.",
         "cuidados": "Pode descartar features correlacionadas de forma arbitrária. Instável com features altamente correlacionadas.",
         "hiperparametros": {"alpha": "Força da regularização L1. Valores maiores = mais coeficientes zerados"},
@@ -1077,7 +1077,7 @@ TEORIA = {
     },
     "AdaBoost": {
         "nome": "AdaBoost",
-        "tipo": "Supervisionado - Classificação / Regressão",
+        "tipo": "Supervisionado — Classificação / Regressão",
         "analogia": "Aprende com os erros dando mais atenção aos casos difíceis. Cada novo classificador foca-se nos exemplos que os anteriores erraram mais.",
         "como_funciona": "Treina classificadores fracos sequencialmente. Os exemplos mal classificados recebem mais peso na iteração seguinte. A previsão final é uma combinação ponderada.",
         "quando_usar": "Quando o modelo base é fraco (stumps). Boa alternativa ao Gradient Boosting quando há menos overfitting.",
@@ -1087,7 +1087,7 @@ TEORIA = {
     },
     "XGBoost": {
         "nome": "XGBoost",
-        "tipo": "Supervisionado - Classificação / Regressão",
+        "tipo": "Supervisionado — Classificação / Regressão",
         "analogia": "Gradient Boosting optimizado para velocidade e performance. Vencedor de dezenas de competições Kaggle. Regularização incorporada evita overfitting.",
         "como_funciona": "Gradient Boosting com optimizações: regularização L1/L2 incorporada, tratamento nativo de valores nulos, processamento paralelo, poda de árvores.",
         "quando_usar": "Datasets tabulares estruturados. Competições de ML. Quando precisas do melhor resultado possível.",
@@ -1097,7 +1097,7 @@ TEORIA = {
     },
     "LightGBM": {
         "nome": "LightGBM",
-        "tipo": "Supervisionado - Classificação / Regressão",
+        "tipo": "Supervisionado — Classificação / Regressão",
         "analogia": "XGBoost mais rápido. Usa crescimento de árvore leaf-wise (vertical) em vez de level-wise (horizontal), tornando-o muito mais eficiente em datasets grandes.",
         "como_funciona": "Gradient Boosting com GOSS (Gradient-based One-Side Sampling) e EFB (Exclusive Feature Bundling). Muito mais rápido que XGBoost em datasets grandes.",
         "quando_usar": "Datasets grandes (>10k linhas). Quando velocidade é importante. Resultados comparáveis ao XGBoost.",

@@ -1,5 +1,5 @@
 """
-DataForge EDU - Entry Point
+DataForge EDU — Entry Point
 Plataforma de Aprendizagem de Machine Learning para Universidades
 """
 
@@ -21,7 +21,7 @@ from modules.auth import render_login_page, render_sidebar_user, get_user_role
 inject_css()
 
 # ── ÍCONES SVG PROFISSIONAIS (Phosphor Icons) ────────
-# Inline SVG - sem dependência externa, carrega instantaneamente
+# Inline SVG — sem dependência externa, carrega instantaneamente
 def icon(name: str, size: int = 18, color: str = "currentColor") -> str:
     icons = {
         "home":        '<path d="M218.83 103.77l-80-75.48a1.94 1.94 0 0 0-.06-.06 16 16 0 0 0-21.54 0l-.06.06-80 75.48A16 16 0 0 0 32 115.55V208a16 16 0 0 0 16 16H96a16 16 0 0 0 16-16V160h32v48a16 16 0 0 0 16 16h48a16 16 0 0 0 16-16V115.55a16 16 0 0 0-5.17-11.78z"/>',
@@ -54,7 +54,7 @@ def icon(name: str, size: int = 18, color: str = "currentColor") -> str:
 # ── PÁGINAS AUXILIARES ────────────────────────────────
 def _render_em_breve(titulo: str, descricao: str, icone_svg: str = ""):
     from modules.utils import page_header
-    st.markdown(f"""<div style="background:{C_SURFACE};border:2px solid {C_BORDER};border-radius:20px; padding:3.5rem 2rem;text-align:center;margin-top:2rem;"><div style="width:64px;height:64px;background:rgba(107,163,255,.15);border:2px solid {C_ACCENT}; border-radius:16px;display:flex;align-items:center;justify-content:center; margin:0 auto 1.4rem;">{icone_svg}</div><div style="font-size:22px;font-weight:800;color:#FFFFFF;margin-bottom:.6rem;">{titulo}</div><div style="font-size:16px;color:#B8C4D8;margin-bottom:1.2rem;">{descricao}</div><div style="display:inline-block;background:rgba(107,163,255,.12);border:1px solid rgba(107,163,255,.3); border-radius:8px;padding:.4rem 1rem;font-size:13px;font-weight:700;color:{C_ACCENT};">Em desenvolvimento - Fase 2</div></div>""", unsafe_allow_html=True)
+    st.markdown(f"""<div style="background:{C_SURFACE};border:2px solid {C_BORDER};border-radius:20px; padding:3.5rem 2rem;text-align:center;margin-top:2rem;"><div style="width:64px;height:64px;background:rgba(107,163,255,.15);border:2px solid {C_ACCENT}; border-radius:16px;display:flex;align-items:center;justify-content:center; margin:0 auto 1.4rem;">{icone_svg}</div><div style="font-size:22px;font-weight:800;color:#FFFFFF;margin-bottom:.6rem;">{titulo}</div><div style="font-size:16px;color:#B8C4D8;margin-bottom:1.2rem;">{descricao}</div><div style="display:inline-block;background:rgba(107,163,255,.12);border:1px solid rgba(107,163,255,.3); border-radius:8px;padding:.4rem 1rem;font-size:13px;font-weight:700;color:{C_ACCENT};">Em desenvolvimento — Fase 2</div></div>""", unsafe_allow_html=True)
 
 
 def _render_historico(username: str):
