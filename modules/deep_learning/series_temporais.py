@@ -1,5 +1,5 @@
 """
-DataForge EDU — Séries Temporais
+DataForge EDU - Séries Temporais
 LSTM, GRU, ARIMA (statsmodels), previsão interactiva
 """
 
@@ -249,7 +249,7 @@ def render_series_temporais(username: str):
                     "<strong>RMSE</strong> (Root Mean Squared Error): penaliza mais os erros grandes. "
                     "Bom quando grandes desvios são inaceitáveis. "
                     "<strong>MAE</strong> (Mean Absolute Error): erro médio absoluto. "
-                    "Mais intuitivo — 'em média, erro X unidades'.")
+                    "Mais intuitivo - 'em média, erro X unidades'.")
             else:
                 st.markdown(f"""<div style="text-align:center;padding:5rem;color:#7A8BA8; border:2px dashed {C_BORDER};border-radius:16px;margin-top:1rem;"><div style="font-size:48px;margin-bottom:1rem;">&#128200;</div><div style="font-size:16px;font-weight:700;color:#FFFFFF;">Configura e clica em <strong>Treinar e Prever</strong></div></div>""", unsafe_allow_html=True)
 
@@ -275,9 +275,9 @@ def render_series_temporais(username: str):
             valores_a = serie_a.to_numpy(dtype=float)
 
             section_title("Parâmetros ARIMA(p,d,q)")
-            p = st.slider("p — AutoRegressivo", 0, 5, 2, key="ar_p")
-            d = st.slider("d — Integração (diferenciação)", 0, 2, 1, key="ar_d")
-            q = st.slider("q — Média Móvel", 0, 5, 2, key="ar_q")
+            p = st.slider("p - AutoRegressivo", 0, 5, 2, key="ar_p")
+            d = st.slider("d - Integração (diferenciação)", 0, 2, 1, key="ar_d")
+            q = st.slider("q - Média Móvel", 0, 5, 2, key="ar_q")
             n_prev = st.slider("Passos a prever", 5, 50, 20, key="ar_np")
             test_a = st.slider("% Teste", 10, 30, 20, key="ar_ts") / 100
 
@@ -341,7 +341,7 @@ def _train_lstm_gru(valores, modelo_tipo, seq_len, hidden_sz, n_layers,
             if (epoch + 1) % max(1, epochs // 10) == 0 or epoch == epochs - 1:
                 progress.progress((epoch + 1) / epochs)
                 status.markdown(
-                    f'<div style="color:#FFFFFF;font-weight:700;">Época {epoch+1}/{epochs} — Loss: {loss.item():.6f}</div>',
+                    f'<div style="color:#FFFFFF;font-weight:700;">Época {epoch+1}/{epochs} - Loss: {loss.item():.6f}</div>',
                     unsafe_allow_html=True
                 )
 
@@ -355,7 +355,7 @@ def _train_lstm_gru(valores, modelo_tipo, seq_len, hidden_sz, n_layers,
         mae  = mean_absolute_error(y_real_test, y_pred)
 
         y_real_all = scaler.inverse_transform(y.reshape(-1, 1)).flatten()
-        fig_pred   = _plot_previsao(y_real_all, y_pred, n_train, f"{modelo_tipo} — Real vs Previsto")
+        fig_pred   = _plot_previsao(y_real_all, y_pred, n_train, f"{modelo_tipo} - Real vs Previsto")
 
         # Loss curve
         fig_loss = go.Figure()
@@ -432,7 +432,7 @@ def _train_arima(valores, p, d, q, n_prev, test_pct, username):
             name="Futuro previsto"
         ))
         fig.update_layout(
-            title=dict(text=f"ARIMA({p},{d},{q}) — Previsão", font=dict(color="#FFFFFF", size=15)),
+            title=dict(text=f"ARIMA({p},{d},{q}) - Previsão", font=dict(color="#FFFFFF", size=15)),
             xaxis=dict(color="#FFFFFF", gridcolor=C_BORDER),
             yaxis=dict(color="#FFFFFF", gridcolor=C_BORDER),
             plot_bgcolor=C_SURFACE, paper_bgcolor=C_SURFACE,

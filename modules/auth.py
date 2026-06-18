@@ -57,7 +57,7 @@ def get_authenticator():
 def render_login_page():
     inject_css()
 
-    # Header da página de login — centrado e com espaço generoso
+    # Header da página de login - centrado e com espaço generoso
     st.markdown(f"""<div style=" display:flex; flex-direction:column; align-items:center; padding: 3rem 1rem 2rem; "><div style=" width:72px; height:72px; background: linear-gradient(135deg, {C_ACCENT}, #BC8CFF); border-radius:20px; display:flex; align-items:center; justify-content:center; font-size:22px; font-weight:900; color:#0D1117; letter-spacing:-1px; margin-bottom:1.2rem; box-shadow: 0 8px 32px rgba(88,166,255,0.3); font-family: Inter, sans-serif; ">DF</div><div style=" font-size:32px; font-weight:800; color:{C_TEXT}; letter-spacing:-.5px; margin-bottom:.4rem; ">DataForge EDU</div><div style=" font-size:15px; color:{C_TEXT_SEC}; font-weight:500; margin-bottom:2.4rem; ">Plataforma de Aprendizagem de Machine Learning</div><div style=" font-size:15px; font-weight:600; color:{C_TEXT_SEC}; margin-bottom:.8rem; text-transform:uppercase; letter-spacing:.06em; font-size:12px; ">Entra na tua conta</div></div>""", unsafe_allow_html=True)
 
     authenticator, config = get_authenticator()

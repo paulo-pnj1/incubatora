@@ -1,7 +1,7 @@
 """
-DataForge EDU — Visão Computacional
+DataForge EDU - Visão Computacional
 CNN personalizada + Transfer Learning (ResNet18, MobileNetV2)
-PyTorch — sem GPU necessária (CPU mode)
+PyTorch - sem GPU necessária (CPU mode)
 """
 
 import streamlit as st
@@ -208,7 +208,7 @@ def render_visao(username: str):
                 dropout   = st.slider("Dropout", 0.0, 0.5, 0.3, 0.1, key="vis_drop")
             else:
                 n_conv, n_filters, dropout = 2, 32, 0.3
-                info_box(f"{arch} — Transfer Learning. Arquitectura pré-definida, fine-tuning nas últimas camadas.")
+                info_box(f"{arch} - Transfer Learning. Arquitectura pré-definida, fine-tuning nas últimas camadas.")
 
             section_title("Treino")
             epochs    = st.slider("Épocas", 3, 30, 10, key="vis_ep")
@@ -254,7 +254,7 @@ def render_visao(username: str):
                 teoria_box("Interpretar as curvas",
                     "Se a <strong>loss desce</strong> e a <strong>accuracy sobe</strong>, o modelo está a aprender. "
                     "Se a accuracy de validação fica muito abaixo da de treino, há <strong>overfitting</strong> "
-                    "— experimenta mais dropout ou menos épocas.")
+                    "- experimenta mais dropout ou menos épocas.")
             else:
                 st.markdown(f"""<div style="text-align:center;padding:5rem;color:#7A8BA8; border:2px dashed {C_BORDER};border-radius:16px;margin-top:1rem;"><div style="font-size:48px;margin-bottom:1rem;">&#128247;</div><div style="font-size:16px;font-weight:700;color:#FFFFFF;">Carrega um ZIP e clica em <strong>Treinar CNN</strong></div></div>""", unsafe_allow_html=True)
 
@@ -384,8 +384,8 @@ def _train_cnn(classes_data, arch, n_conv, n_filters, dropout,
 
             progress_bar.progress((epoch + 1) / epochs)
             status_txt.markdown(
-                f'<div style="color:#FFFFFF;font-weight:700;">Época {epoch+1}/{epochs} — '
-                f'Loss: {epoch_loss:.4f} — Acc treino: {epoch_acc:.1%} — Acc val: {val_acc:.1%}</div>',
+                f'<div style="color:#FFFFFF;font-weight:700;">Época {epoch+1}/{epochs} - '
+                f'Loss: {epoch_loss:.4f} - Acc treino: {epoch_acc:.1%} - Acc val: {val_acc:.1%}</div>',
                 unsafe_allow_html=True
             )
 
