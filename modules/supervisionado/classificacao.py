@@ -1,5 +1,5 @@
 """
-DataForge EDU — Módulo Supervisionado: Classificação
+DataForge EDU - Módulo Supervisionado: Classificação
 KNN, Decision Tree, Random Forest, SVM, GB, XGBoost, LightGBM,
 AdaBoost, Naive Bayes, Logistic Regression + teoria integrada
 """
@@ -343,7 +343,7 @@ def plot_cv_scores(scores):
 def render_classificacao(username: str):
     page_header(
         "Classificação",
-        "Aprendizagem supervisionada — prever categorias e classes"
+        "Aprendizagem supervisionada - prever categorias e classes"
     )
 
     tab_guiado, tab_livre = st.tabs(["  Modo Guiado", "  Modo Livre"])
@@ -361,30 +361,30 @@ def render_classificacao(username: str):
 # MODO GUIADO
 # ══════════════════════════════════════════════════════
 def _render_modo_guiado(username: str):
-    st.markdown(f"""<div style="background:rgba(79,142,247,.07);border:1px solid rgba(79,142,247,.2); border-radius:12px;padding:1rem 1.2rem;margin-bottom:1.4rem;font-size:14px;color:{C_TEXT_SEC};"><strong style="color:{C_ACCENT};">Modo Guiado</strong> — O sistema orienta-te passo a passo. Aprende a teoria antes de praticar e recebe feedback automático sobre os teus resultados.</div>""", unsafe_allow_html=True)
+    st.markdown(f"""<div style="background:rgba(79,142,247,.07);border:1px solid rgba(79,142,247,.2); border-radius:12px;padding:1rem 1.2rem;margin-bottom:1.4rem;font-size:14px;color:{C_TEXT_SEC};"><strong style="color:{C_ACCENT};">Modo Guiado</strong> - O sistema orienta-te passo a passo. Aprende a teoria antes de praticar e recebe feedback automático sobre os teus resultados.</div>""", unsafe_allow_html=True)
 
     if "guiado_step" not in st.session_state:
         st.session_state.guiado_step = 1
 
     step = st.session_state.guiado_step
 
-    # STEP 1 — Dataset
+    # STEP 1 - Dataset
     _render_step_header(1, "Escolher Dataset", step)
     if step >= 1:
         with st.container():
             _step1_dataset(username)
 
-    # STEP 2 — Algoritmo e teoria
+    # STEP 2 - Algoritmo e teoria
     if step >= 2:
         _render_step_header(2, "Escolher Algoritmo", step)
         _step2_algoritmo(username)
 
-    # STEP 3 — Pré-processamento
+    # STEP 3 - Pré-processamento
     if step >= 3:
         _render_step_header(3, "Pré-processamento", step)
         _step3_preprocessamento(username)
 
-    # STEP 4 — Treino
+    # STEP 4 - Treino
     if step >= 4:
         _render_step_header(4, "Treinar Modelo", step)
         _step4_treino(username)
@@ -403,11 +403,11 @@ def _render_step_header(n: int, titulo: str, step_actual: int):
 
 def _step1_dataset(username: str):
     catalogo = [
-        "Iris — Classificação de flores",
-        "Titanic — Sobrevivência",
-        "Vinho — Qualidade",
-        "Cancro — Diagnóstico",
-        "Dígitos — Reconhecimento",
+        "Iris - Classificação de flores",
+        "Titanic - Sobrevivência",
+        "Vinho - Qualidade",
+        "Cancro - Diagnóstico",
+        "Dígitos - Reconhecimento",
     ]
     fonte = st.radio("Fonte dos dados", ["Dataset embutido", "Upload CSV"], horizontal=True)
     df, desc, _ = None, "", ""
@@ -416,7 +416,7 @@ def _step1_dataset(username: str):
         escolha = st.selectbox("Escolhe o dataset", catalogo)
         df, desc, _ = carregar_dataset_embutido(escolha)
         if desc:
-            info_box(f"**{escolha.split('—')[0].strip()}:** {desc}")
+            info_box(f"**{escolha.split('-')[0].strip()}:** {desc}")
 
     else:
         ficheiro = st.file_uploader("Carrega o teu CSV", type=["csv"])
@@ -449,7 +449,7 @@ def _step2_algoritmo(username: str):
 
     algos = get_algoritmos()
     chave = st.selectbox("Algoritmo", list(algos.keys()),
-                         format_func=lambda k: f"{k}  —  {algos[k]}")
+                         format_func=lambda k: f"{k}  -  {algos[k]}")
 
     # TEORIA INTEGRADA
     if chave in TEORIA:
@@ -498,7 +498,7 @@ def _step3_preprocessamento(username: str):
 
     cat_cols = df_sub[features_sel].select_dtypes(include="object").columns.tolist()
     if cat_cols:
-        info_box(f"Colunas categóricas detectadas: **{', '.join(cat_cols)}** — serão codificadas automaticamente (LabelEncoder).")
+        info_box(f"Colunas categóricas detectadas: **{', '.join(cat_cols)}** - serão codificadas automaticamente (LabelEncoder).")
 
     st.session_state["clf_target"] = target
     st.session_state["clf_features"] = features_sel
@@ -547,7 +547,7 @@ def _step4_treino(username: str):
 # MODO LIVRE
 # ══════════════════════════════════════════════════════
 def _render_modo_livre(username: str):
-    st.markdown(f"""<div style="background:rgba(46,204,113,.07);border:1px solid rgba(46,204,113,.2); border-radius:12px;padding:1rem 1.2rem;margin-bottom:1.4rem;font-size:14px;color:{C_TEXT_SEC};"><strong style="color:{C_GREEN};">Modo Livre</strong> — Controlo total. Configura tudo manualmente e experimenta sem restrições.</div>""", unsafe_allow_html=True)
+    st.markdown(f"""<div style="background:rgba(46,204,113,.07);border:1px solid rgba(46,204,113,.2); border-radius:12px;padding:1rem 1.2rem;margin-bottom:1.4rem;font-size:14px;color:{C_TEXT_SEC};"><strong style="color:{C_GREEN};">Modo Livre</strong> - Controlo total. Configura tudo manualmente e experimenta sem restrições.</div>""", unsafe_allow_html=True)
 
     # Upload / Dataset
     col_fonte, _ = st.columns([2, 1])
@@ -557,11 +557,11 @@ def _render_modo_livre(username: str):
     df, desc = None, ""
     if fonte == "Dataset embutido":
         catalogo_clf = [k for k in [
-            "Iris — Classificação de flores",
-            "Titanic — Sobrevivência",
-            "Vinho — Qualidade",
-            "Cancro — Diagnóstico",
-            "Dígitos — Reconhecimento",
+            "Iris - Classificação de flores",
+            "Titanic - Sobrevivência",
+            "Vinho - Qualidade",
+            "Cancro - Diagnóstico",
+            "Dígitos - Reconhecimento",
         ]]
         escolha = st.selectbox("Dataset", catalogo_clf, key="livre_ds")
         df, desc, _ = carregar_dataset_embutido(escolha)
@@ -598,7 +598,7 @@ def _render_modo_livre(username: str):
 
     algos = get_algoritmos()
     algo = st.selectbox("Algoritmo", list(algos.keys()),
-                        format_func=lambda k: f"{k}  —  {algos[k]}", key="livre_algo")
+                        format_func=lambda k: f"{k}  -  {algos[k]}", key="livre_algo")
 
     section_title("HIPERPARÂMETROS")
     params = render_hiperparametros(algo, prefix="livre")
@@ -711,7 +711,7 @@ def _executar_treino(df, features, target, algo, params,
         "f1": round(f1, 4),
         "dataset_shape": list(df.shape),
     })
-    add_pontos(username, 10, f"Treinou {algo} — accuracy {acc:.1%}")
+    add_pontos(username, 10, f"Treinou {algo} - accuracy {acc:.1%}")
     save_user_progress(username, "supervisionado_classificacao", {
         "ultimo_algo": algo, "ultima_accuracy": round(acc, 4)
     })
@@ -771,7 +771,7 @@ def _render_resultados(r: dict, algo: str, username: str):
         if hasattr(r["model"], "predict_proba"):
             st.pyplot(plot_roc_curve(r["model"], r["X_test"], r["y_test"], np.unique(r["y_test"])))
         else:
-            info_box("Este algoritmo não suporta probabilidades — curva ROC não disponível.")
+            info_box("Este algoritmo não suporta probabilidades - curva ROC não disponível.")
 
     with t3:
         fig_imp = plot_feature_importance(r["model"], r["feature_names"], algo)

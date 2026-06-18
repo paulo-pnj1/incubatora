@@ -1,5 +1,5 @@
 """
-DataForge EDU — Clustering
+DataForge EDU - Clustering
 KMeans, KMeans++, DBSCAN, HDBSCAN, Agglomerative, GMM, Birch, MeanShift, Spectral
 """
 
@@ -92,7 +92,7 @@ def _elbow_plot(X_scaled, max_k=10):
                              line=dict(color=C_ACCENT, width=3),
                              marker=dict(size=8, color=C_ACCENT)))
     fig.update_layout(
-        title=dict(text="Método do Cotovelo — Escolha de K", font=dict(color="#FFFFFF", size=16)),
+        title=dict(text="Método do Cotovelo - Escolha de K", font=dict(color="#FFFFFF", size=16)),
         xaxis=dict(title="Número de Clusters (K)", color="#FFFFFF", gridcolor=C_BORDER),
         yaxis=dict(title="Inércia", color="#FFFFFF", gridcolor=C_BORDER),
         plot_bgcolor=C_SURFACE, paper_bgcolor=C_SURFACE,
@@ -146,18 +146,18 @@ def render_clustering(username: str):
 
         # ── PASSO 1: DATASET ─────────────────────────
         if st.session_state.cl_step == 1:
-            section_title("Passo 1 — Escolher Dataset")
+            section_title("Passo 1 - Escolher Dataset")
             teoria_box("O que é Clustering?",
-                "Clustering é aprendizagem <strong>não supervisionada</strong> — não há rótulos. "
+                "Clustering é aprendizagem <strong>não supervisionada</strong> - não há rótulos. "
                 "O algoritmo descobre grupos (clusters) naturais nos dados. "
                 "Usa-se para segmentação de clientes, detecção de padrões, compressão de dados.")
 
             fonte = st.radio("Fonte dos dados", ["Dataset embutido", "Upload CSV"], horizontal=True, key="cl_fonte")
 
             if fonte == "Dataset embutido":
-                opcoes_cl = ["Meias-luas — Clustering", "Círculos — Clustering",
-                             "Blobs — Clustering básico", "Iris — Classificação de flores",
-                             "Vinho — Qualidade"]
+                opcoes_cl = ["Meias-luas - Clustering", "Círculos - Clustering",
+                             "Blobs - Clustering básico", "Iris - Classificação de flores",
+                             "Vinho - Qualidade"]
                 nome_ds = st.selectbox("Dataset", opcoes_cl, key="cl_ds_nome")
                 df, desc, _ = carregar_dataset_embutido(nome_ds)
                 if df is not None:
@@ -181,7 +181,7 @@ def render_clustering(username: str):
 
         # ── PASSO 2: ALGORITMO ───────────────────────
         elif st.session_state.cl_step == 2:
-            section_title("Passo 2 — Escolher Algoritmo")
+            section_title("Passo 2 - Escolher Algoritmo")
             algo_label = st.selectbox("Algoritmo de Clustering", list(ALGORITMOS.keys()), key="cl_algo_sel")
             st.session_state.cl_algo = ALGORITMOS[algo_label]
             st.session_state.cl_algo_label = algo_label
@@ -189,7 +189,7 @@ def render_clustering(username: str):
             algo_key = ALGORITMOS[algo_label]
             info = {
                 "kmeans":       ("K-Means", "Divide em K grupos minimizando a inércia intracluster. Rápido e eficiente para clusters esféricos.", C_ACCENT),
-                "kmeanspp":     ("K-Means++", "K-Means com inicialização inteligente — centróides espaçados para convergência mais rápida.", C_ACCENT),
+                "kmeanspp":     ("K-Means++", "K-Means com inicialização inteligente - centróides espaçados para convergência mais rápida.", C_ACCENT),
                 "dbscan":       ("DBSCAN", "Encontra clusters por densidade. Detecta outliers automaticamente. Não precisa definir K.", C_GREEN),
                 "hdbscan":      ("HDBSCAN", "Versão hierárquica do DBSCAN. Mais robusto a variações de densidade.", C_GREEN),
                 "agglomerative":("Agglomerative", "Clustering hierárquico bottom-up. Começa com N clusters e vai fundindo.", C_AMBER),
@@ -211,7 +211,7 @@ def render_clustering(username: str):
 
         # ── PASSO 3: PARÂMETROS ──────────────────────
         elif st.session_state.cl_step == 3:
-            section_title("Passo 3 — Configurar Parâmetros")
+            section_title("Passo 3 - Configurar Parâmetros")
             algo = st.session_state.get("cl_algo", "kmeans")
             df   = st.session_state.get("cl_df", pd.DataFrame())
 
@@ -260,7 +260,7 @@ def render_clustering(username: str):
 
         # ── PASSO 4: TREINAR ─────────────────────────
         elif st.session_state.cl_step == 4:
-            section_title("Passo 4 — A Treinar...")
+            section_title("Passo 4 - A Treinar...")
             df       = st.session_state.get("cl_df", pd.DataFrame())
             features = st.session_state.get("cl_features", [])
             params   = st.session_state.get("cl_params", {})
@@ -316,7 +316,7 @@ def render_clustering(username: str):
 
         # ── PASSO 5: RESULTADOS ──────────────────────
         elif st.session_state.cl_step == 5:
-            section_title("Passo 5 — Resultados")
+            section_title("Passo 5 - Resultados")
             res = st.session_state.get("cl_result", {})
             if not res:
                 aviso_box("Executa o treino primeiro.")
@@ -338,7 +338,7 @@ def render_clustering(username: str):
                 # Scatter PCA
                 st.plotly_chart(
                     _scatter_clusters(X_pca, labels,
-                                      f"Clusters — {st.session_state.get('cl_algo_label','')} (PCA 2D)"),
+                                      f"Clusters - {st.session_state.get('cl_algo_label','')} (PCA 2D)"),
                     width='stretch'
                 )
 
@@ -365,7 +365,7 @@ def render_clustering(username: str):
                     "<strong>Silhouette Score</strong> (-1 a 1): quanto mais próximo de 1, melhor a separação dos clusters. "
                     "Acima de 0.5 é bom, acima de 0.7 é excelente.<br>"
                     "<strong>Davies-Bouldin</strong>: quanto menor, melhor. Mede a compacidade e separação dos clusters.<br>"
-                    "<strong>Pontos de ruído</strong> (DBSCAN/HDBSCAN): pontos que não pertencem a nenhum cluster — possivelmente outliers.")
+                    "<strong>Pontos de ruído</strong> (DBSCAN/HDBSCAN): pontos que não pertencem a nenhum cluster - possivelmente outliers.")
 
                 col1, col2 = st.columns(2)
                 with col1:
@@ -379,14 +379,14 @@ def render_clustering(username: str):
     # MODO LIVRE
     # ════════════════════════════════════════════════
     with tab_livre:
-        st.markdown(f'<div style="font-size:17px;font-weight:800;color:#FFFFFF;margin-bottom:1rem;">Modo Livre — Controlo Total</div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="font-size:17px;font-weight:800;color:#FFFFFF;margin-bottom:1rem;">Modo Livre - Controlo Total</div>', unsafe_allow_html=True)
 
         col_cfg, col_res = st.columns([1, 2])
         with col_cfg:
             fonte_l = st.radio("Dados", ["Embutido", "Upload"], horizontal=True, key="cl_l_fonte")
             if fonte_l == "Embutido":
-                opcoes_l = ["Blobs — Clustering básico", "Meias-luas — Clustering",
-                            "Círculos — Clustering", "Iris — Classificação de flores"]
+                opcoes_l = ["Blobs - Clustering básico", "Meias-luas - Clustering",
+                            "Círculos - Clustering", "Iris - Classificação de flores"]
                 nm = st.selectbox("Dataset", opcoes_l, key="cl_l_ds")
                 df_l, _, _ = carregar_dataset_embutido(nm)
             else:
@@ -439,7 +439,7 @@ def render_clustering(username: str):
                 c1.metric("Clusters", res_l["nc"])
                 c2.metric("Silhouette", f"{res_l['sil']:.3f}" if res_l['sil'] else "N/A")
                 st.plotly_chart(
-                    _scatter_clusters(res_l["Xp"], res_l["lbl"], f"{res_l['algo']} — PCA 2D"),
+                    _scatter_clusters(res_l["Xp"], res_l["lbl"], f"{res_l['algo']} - PCA 2D"),
                     width='stretch'
                 )
             else:

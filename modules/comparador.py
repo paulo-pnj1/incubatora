@@ -1,5 +1,5 @@
 """
-DataForge EDU — Comparador de Modelos
+DataForge EDU - Comparador de Modelos
 Treina até 3 algoritmos lado a lado e compara métricas
 """
 
@@ -127,10 +127,10 @@ def render_comparador(username: str):
         fonte = st.radio("Fonte", ["Embutido", "Upload"], horizontal=True, key="cmp_fonte")
         if fonte == "Embutido":
             if tipo == "Classificação":
-                opcoes = ["Iris — Classificação de flores", "Vinho — Qualidade",
-                          "Cancro — Diagnóstico", "Titanic — Sobrevivência"]
+                opcoes = ["Iris - Classificação de flores", "Vinho - Qualidade",
+                          "Cancro - Diagnóstico", "Titanic - Sobrevivência"]
             else:
-                opcoes = ["Diabetes — Progressão", "Boston Housing — Preços"]
+                opcoes = ["Diabetes - Progressão", "Boston Housing - Preços"]
             nm = st.selectbox("Dataset", opcoes, key="cmp_ds")
             df, desc, _ = carregar_dataset_embutido(nm)
             if df is not None and desc:
@@ -251,10 +251,10 @@ def _show_comparison_result(tipo):
 
         # Gráficos
         st.plotly_chart(_bar_comparison(nomes, df_res["Accuracy"].tolist(),
-                                         "Accuracy — Conjunto de Teste", "Accuracy"),
+                                         "Accuracy - Conjunto de Teste", "Accuracy"),
                          width='stretch')
         st.plotly_chart(_bar_comparison(nomes, df_res["CV Accuracy"].tolist(),
-                                         f"Accuracy — Cross-Validation", "CV Accuracy"),
+                                         f"Accuracy - Cross-Validation", "CV Accuracy"),
                          width='stretch')
 
         if len(nomes) >= 2:
@@ -270,10 +270,10 @@ def _show_comparison_result(tipo):
         sucesso_box(f"Melhor modelo: <strong>{melhor_idx}</strong> com R² de {melhor_val:.4f}")
 
         st.plotly_chart(_bar_comparison(nomes, df_res["R²"].tolist(),
-                                         "R² — Conjunto de Teste", "R²"),
+                                         "R² - Conjunto de Teste", "R²"),
                          width='stretch')
         st.plotly_chart(_bar_comparison(nomes, df_res["RMSE"].tolist(),
-                                         "RMSE — quanto menor melhor", "RMSE"),
+                                         "RMSE - quanto menor melhor", "RMSE"),
                          width='stretch')
 
     teoria_box("Qual escolher?",

@@ -1,5 +1,5 @@
 """
-DataForge EDU — MLP / Redes Neurais
+DataForge EDU - MLP / Redes Neurais
 MLP Classifier e Regressor (scikit-learn) + visualizações educativas
 """
 
@@ -127,7 +127,7 @@ def _network_diagram(hidden_layers, n_inputs, n_outputs):
 
 def render_mlp(username: str):
     inject_css()
-    page_header("MLP — Redes Neurais Multicamada",
+    page_header("MLP - Redes Neurais Multicamada",
                 "Aprende padrões complexos através de camadas de neurónios", "")
 
     teoria_box("O que é uma Rede Neural MLP?",
@@ -149,8 +149,8 @@ def render_mlp(username: str):
             section_title("Dados")
             fonte = st.radio("Fonte", ["Embutido", "Upload"], horizontal=True, key="mlp_c_fonte")
             if fonte == "Embutido":
-                opcoes = ["Iris — Classificação de flores", "Vinho — Qualidade",
-                          "Cancro — Diagnóstico", "Dígitos — Reconhecimento"]
+                opcoes = ["Iris - Classificação de flores", "Vinho - Qualidade",
+                          "Cancro - Diagnóstico", "Dígitos - Reconhecimento"]
                 nm = st.selectbox("Dataset", opcoes, key="mlp_c_ds")
                 df, desc, _ = carregar_dataset_embutido(nm)
                 if df is not None and desc:
@@ -170,7 +170,7 @@ def render_mlp(username: str):
                 n_layers = st.slider("Nº camadas ocultas", 1, 5, 2, key="mlp_c_nl")
                 hidden = []
                 for i in range(n_layers):
-                    n = st.slider(f"Neurónios — Camada {i+1}", 8, 256, [64, 32, 16, 8, 4][i], key=f"mlp_c_h{i}")
+                    n = st.slider(f"Neurónios - Camada {i+1}", 8, 256, [64, 32, 16, 8, 4][i], key=f"mlp_c_h{i}")
                     hidden.append(n)
 
                 section_title("Hiperparâmetros")
@@ -210,7 +210,7 @@ def render_mlp(username: str):
             section_title("Dados")
             fonte2 = st.radio("Fonte", ["Embutido", "Upload"], horizontal=True, key="mlp_r_fonte")
             if fonte2 == "Embutido":
-                opcoes2 = ["Diabetes — Progressão", "Boston Housing — Preços"]
+                opcoes2 = ["Diabetes - Progressão", "Boston Housing - Preços"]
                 nm2 = st.selectbox("Dataset", opcoes2, key="mlp_r_ds")
                 df2, desc2, _ = carregar_dataset_embutido(nm2)
                 if df2 is not None and desc2:
@@ -230,7 +230,7 @@ def render_mlp(username: str):
                 nl2    = st.slider("Camadas ocultas", 1, 4, 2, key="mlp_r_nl")
                 hid2   = []
                 for i in range(nl2):
-                    n = st.slider(f"Neurónios — Camada {i+1}", 8, 256, [64,32,16,8][i], key=f"mlp_r_h{i}")
+                    n = st.slider(f"Neurónios - Camada {i+1}", 8, 256, [64,32,16,8][i], key=f"mlp_r_h{i}")
                     hid2.append(n)
 
                 act2   = st.selectbox("Activação", ["relu","tanh","logistic"], key="mlp_r_act")

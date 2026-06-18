@@ -1,7 +1,7 @@
 """
-DataForge EDU — Modelos Generativos
+DataForge EDU - Modelos Generativos
 Autoencoder, VAE (Variational Autoencoder), GAN simples
-PyTorch — versão educativa com visualizações claras
+PyTorch - versão educativa com visualizações claras
 """
 
 import streamlit as st
@@ -179,7 +179,7 @@ def _scatter_2d(X, title, color=None, colorscale="Viridis"):
 def render_generativo(username: str):
     inject_css()
     page_header("Modelos Generativos",
-                "Autoencoder, VAE e GAN — aprende a gerar dados", "")
+                "Autoencoder, VAE e GAN - aprende a gerar dados", "")
 
     if not HAS_TORCH:
         aviso_box("PyTorch necessário. Adiciona <code>torch</code> ao requirements.txt")
@@ -187,9 +187,9 @@ def render_generativo(username: str):
 
     teoria_box("O que são modelos generativos?",
         "Modelos generativos <strong>aprendem a distribuição dos dados</strong> e podem gerar novos exemplos. "
-        "<strong>Autoencoder</strong>: comprime e reconstrói dados — útil para redução de ruído e anomalias. "
-        "<strong>VAE</strong>: aprende um espaço latente contínuo e amostrado — gera variações suaves. "
-        "<strong>GAN</strong>: dois adversários (gerador vs discriminador) — produz amostras muito realistas.")
+        "<strong>Autoencoder</strong>: comprime e reconstrói dados - útil para redução de ruído e anomalias. "
+        "<strong>VAE</strong>: aprende um espaço latente contínuo e amostrado - gera variações suaves. "
+        "<strong>GAN</strong>: dois adversários (gerador vs discriminador) - produz amostras muito realistas.")
 
     tab_ae, tab_vae, tab_gan = st.tabs(["  Autoencoder  ", "  VAE  ", "  GAN  "])
 
@@ -259,7 +259,7 @@ def render_generativo(username: str):
     with tab_vae:
         col1v, col2v = st.columns([1, 2])
         with col1v:
-            section_title("VAE — Variational Autoencoder")
+            section_title("VAE - Variational Autoencoder")
             tipo_v    = st.selectbox("Dados", ["gaussiano", "espiral", "mistura_gaussianas"], key="vae_dados")
             n_v       = st.slider("Amostras", 200, 2000, 500, key="vae_n")
             ld_v      = st.slider("Dimensão latente", 1, 8, 2, key="vae_ld")
@@ -312,7 +312,7 @@ def render_generativo(username: str):
     with tab_gan:
         col1g, col2g = st.columns([1, 2])
         with col1g:
-            section_title("GAN — Generative Adversarial Network")
+            section_title("GAN - Generative Adversarial Network")
             tipo_g   = st.selectbox("Dados reais", ["gaussiano", "espiral", "mistura_gaussianas"], key="gan_dados")
             n_g      = st.slider("Amostras reais", 200, 1000, 500, key="gan_n")
             noise_g  = st.slider("Dimensão do ruído (z)", 4, 64, 16, key="gan_noise")
@@ -363,7 +363,7 @@ def render_generativo(username: str):
                 teoria_box("Loss do GAN",
                     "No treino ideal, as losses do <strong>Gerador</strong> e <strong>Discriminador</strong> "
                     "convergem para valores próximos (equilíbrio de Nash). "
-                    "Se a loss do Gerador sobe muito, o discriminador está a ganhar — experimenta "
+                    "Se a loss do Gerador sobe muito, o discriminador está a ganhar - experimenta "
                     "reduzir o learning rate ou aumentar a dimensão do ruído.")
             else:
                 st.markdown(f"""<div style="text-align:center;padding:4rem;color:#7A8BA8; border:2px dashed {C_BORDER};border-radius:16px;margin-top:1rem;"><div style="font-size:48px;margin-bottom:1rem;">&#127917;</div><div style="font-size:16px;font-weight:700;color:#FFFFFF;">Clica em <strong>Treinar GAN</strong></div></div>""", unsafe_allow_html=True)
@@ -389,7 +389,7 @@ def _train_autoencoder(X, latent_dim, hidden_dims, epochs, lr, username):
             losses.append(loss.item())
             if (ep + 1) % max(1, epochs // 10) == 0:
                 prog.progress((ep + 1) / epochs)
-                stat.markdown(f'<div style="color:#FFFFFF;font-weight:700;">Época {ep+1}/{epochs} — Loss: {loss.item():.6f}</div>', unsafe_allow_html=True)
+                stat.markdown(f'<div style="color:#FFFFFF;font-weight:700;">Época {ep+1}/{epochs} - Loss: {loss.item():.6f}</div>', unsafe_allow_html=True)
 
         model.eval()
         with torch.no_grad():
@@ -425,7 +425,7 @@ def _train_vae(X, latent_dim, hidden_dim, epochs, lr, n_gen, username):
             losses.append(loss.item())
             if (ep + 1) % max(1, epochs // 10) == 0:
                 prog.progress((ep + 1) / epochs)
-                stat.markdown(f'<div style="color:#FFFFFF;font-weight:700;">Época {ep+1}/{epochs} — Loss: {loss.item():.2f}</div>', unsafe_allow_html=True)
+                stat.markdown(f'<div style="color:#FFFFFF;font-weight:700;">Época {ep+1}/{epochs} - Loss: {loss.item():.2f}</div>', unsafe_allow_html=True)
 
         model.eval()
         with torch.no_grad():
@@ -486,7 +486,7 @@ def _train_gan(X, noise_dim, hidden_dim, epochs, lr, n_gen, username):
             if (ep + 1) % max(1, epochs // 10) == 0:
                 prog.progress((ep + 1) / epochs)
                 stat.markdown(
-                    f'<div style="color:#FFFFFF;font-weight:700;">Época {ep+1}/{epochs} — '
+                    f'<div style="color:#FFFFFF;font-weight:700;">Época {ep+1}/{epochs} - '
                     f'G: {loss_G.item():.4f} | D: {loss_D.item():.4f}</div>',
                     unsafe_allow_html=True
                 )
