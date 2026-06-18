@@ -83,6 +83,15 @@ def inject_css():
         font-family: 'Inter', sans-serif !important;
     }}
 
+    /* Ícones nativos do Streamlit (Material Symbols) — NUNCA usar Inter aqui,
+       senão o glifo do ícone aparece como texto literal (ex: "keyboard_arrow_right") */
+    [data-testid="stIconMaterial"],
+    span[data-testid="stIconMaterial"],
+    [data-testid="stExpanderToggleIcon"] [data-testid="stIconMaterial"] {{
+        font-family: 'Material Symbols Rounded', 'Material Icons', sans-serif !important;
+        color: {C_TEXT_SEC} !important;
+    }}
+
     h1, h2, h3, h4, h5, h6,
     .stMarkdown h1, .stMarkdown h2,
     .stMarkdown h3, .stMarkdown h4 {{
@@ -299,7 +308,6 @@ def inject_css():
        EXPANDER
     ══════════════════════════════════════════════ */
     .streamlit-expanderHeader,
-    [data-testid="stExpanderToggleIcon"],
     [data-baseweb="accordion"] {{
         background: {C_SURFACE2} !important;
         border-radius: 8px !important;
@@ -307,6 +315,9 @@ def inject_css():
         color: {C_TEXT} !important;
         font-weight: 600 !important;
         font-size: 15px !important;
+    }}
+    [data-testid="stExpanderToggleIcon"] {{
+        color: {C_TEXT_SEC} !important;
     }}
     .streamlit-expanderHeader:hover {{
         border-color: {C_ACCENT} !important;
@@ -364,10 +375,6 @@ def inject_css():
         border: 1px solid {C_BORDER} !important;
         border-radius: 10px !important;
         overflow: hidden !important;
-    }}
-    /* glide data grid headers */
-    .dvn-scroller {{
-        background: {C_SURFACE} !important;
     }}
 
     /* ══════════════════════════════════════════════
