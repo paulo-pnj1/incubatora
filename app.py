@@ -20,6 +20,36 @@ from modules.auth import render_login_page, render_sidebar_user, get_user_role
 
 inject_css()
 
+# ── FORÇAR SIDEBAR SEMPRE ABERTA ─────────────────────
+# Injeta JS que clica no botão de colapso se a sidebar estiver fechada
+st.markdown("""
+<script>
+(function() {
+    function ensureSidebarOpen() {
+        // Detecta se a sidebar está colapsada
+        const sidebar = document.querySelector('section[data-testid="stSidebar"]');
+        if (!sidebar) return;
+        const isCollapsed = sidebar.getAttribute('aria-expanded') === 'false'
+            || getComputedStyle(sidebar).transform.includes('matrix')
+            && getComputedStyle(sidebar).transform !== 'matrix(1, 0, 0, 1, 0, 0)';
+        if (isCollapsed) {
+            const btn = document.querySelector('[data-testid="collapsedControl"] button');
+            if (btn) btn.click();
+        }
+    }
+    // Executa quando a página carrega
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', ensureSidebarOpen);
+    } else {
+        setTimeout(ensureSidebarOpen, 300);
+    }
+    // Observer para re-runs do Streamlit
+    const obs = new MutationObserver(() => setTimeout(ensureSidebarOpen, 200));
+    obs.observe(document.body, { childList: true, subtree: true });
+})();
+</script>
+""", unsafe_allow_html=True)
+
 # ── ÍCONES SVG PROFISSIONAIS (Phosphor Icons) ────────
 # Inline SVG — sem dependência externa, carrega instantaneamente
 def icon(name: str, size: int = 18, color: str = "currentColor") -> str:
