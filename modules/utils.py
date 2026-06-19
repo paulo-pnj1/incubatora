@@ -121,7 +121,7 @@ def inject_css():
     }}
 
     /* ══════════════════════════════════════════════
-       SIDEBAR — sempre visível, desktop e mobile
+       SIDEBAR — estilo apenas, fechar/abrir nativo
     ══════════════════════════════════════════════ */
     section[data-testid="stSidebar"],
     section[data-testid="stSidebar"] > div,
@@ -131,12 +131,6 @@ def inject_css():
     }}
     section[data-testid="stSidebar"] {{
         border-right: 1px solid {C_BORDER} !important;
-        /* Garante que a sidebar nunca desaparece */
-        display: block !important;
-        transform: none !important;
-        min-width: 240px !important;
-        visibility: visible !important;
-        opacity: 1 !important;
     }}
     section[data-testid="stSidebar"] p,
     section[data-testid="stSidebar"] span,
@@ -145,44 +139,31 @@ def inject_css():
         color: {C_TEXT} !important;
     }}
 
-    /* Botão de colapso nativo (×) — torna-o num ícone de menu hamburger
-       e impede que a sidebar fique permanentemente fechada */
+    /* Botão hamburger — SEMPRE visível para poder reabrir */
     [data-testid="collapsedControl"] {{
         display: flex !important;
         visibility: visible !important;
         opacity: 1 !important;
+        pointer-events: all !important;
         background: {C_SURFACE} !important;
         border: 1px solid {C_BORDER} !important;
         border-radius: 8px !important;
-        color: {C_TEXT} !important;
         z-index: 9999 !important;
     }}
+    [data-testid="collapsedControl"] button,
+    [data-testid="collapsedControl"] svg {{
+        color: {C_TEXT} !important;
+        fill: {C_TEXT} !important;
+    }}
 
-    /* Mobile — força sidebar visível e acessível */
+    /* Mobile — botão hamburger fixo no topo-esquerdo */
     @media (max-width: 768px) {{
-        section[data-testid="stSidebar"] {{
-            display: block !important;
-            position: fixed !important;
-            left: 0 !important;
-            top: 0 !important;
-            height: 100vh !important;
-            z-index: 1000 !important;
-            transform: none !important;
-            min-width: 260px !important;
-            max-width: 80vw !important;
-            overflow-y: auto !important;
-            box-shadow: 4px 0 24px rgba(0,0,0,0.5) !important;
-        }}
-        /* Botão hamburger fixo no topo-esquerdo em mobile */
         [data-testid="collapsedControl"] {{
             position: fixed !important;
-            top: 12px !important;
-            left: 12px !important;
-            z-index: 1100 !important;
-            background: {C_SURFACE} !important;
-            border: 1px solid {C_BORDER} !important;
-            border-radius: 8px !important;
-            padding: 6px 10px !important;
+            top: 10px !important;
+            left: 10px !important;
+            z-index: 10000 !important;
+            padding: 4px 8px !important;
         }}
     }}
 
