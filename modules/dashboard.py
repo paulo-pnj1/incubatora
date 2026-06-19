@@ -1,5 +1,5 @@
 """
-DataForge EDU - Dashboard Principal
+DataForge EDU — Dashboard Principal
 """
 import streamlit as st
 from modules.utils import (
@@ -166,7 +166,7 @@ def render_dashboard(name: str, username: str):
     if historico:
         for h in reversed(historico[-5:]):
             data   = h.get("data", "")[:10]
-            motivo = h.get("motivo", "-")
+            motivo = h.get("motivo", "—")
             pts    = h.get("pontos", 0)
             st.markdown(f"""<div style="display:flex;align-items:center;gap:12px; padding:.65rem 0;border-bottom:1px solid {C_BORDER};"><div style="width:32px;height:32px;background:rgba(88,166,255,.1); border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">{_ico("star", 15, C_AMBER)}</div><div style="flex:1;"><div style="font-size:13px;color:{C_TEXT};">{motivo}</div><div style="font-size:11px;color:{C_TEXT_MUTE};margin-top:2px;">{data}</div></div><div style="font-size:13px;font-weight:700;color:{C_ACCENT};">+{pts} pts</div></div>""", unsafe_allow_html=True)
     else:
@@ -175,11 +175,11 @@ def render_dashboard(name: str, username: str):
     # ── DICA DO DIA ───────────────────────────────────
     dicas = [
         "Normaliza sempre as features antes de usar KNN ou SVM.",
-        "Random Forest raramente precisa de tuning intensivo - excelente ponto de partida.",
+        "Random Forest raramente precisa de tuning intensivo — excelente ponto de partida.",
         "Overfitting? Adiciona regularização (Ridge/Lasso) ou reduz a complexidade do modelo.",
         "Usa curvas de aprendizagem para diagnosticar overfitting vs underfitting.",
         "Para dados desbalanceados, usa F1-score em vez de accuracy.",
-        "t-SNE é óptimo para visualizar - nunca uses as suas coordenadas como features.",
+        "t-SNE é óptimo para visualizar — nunca uses as suas coordenadas como features.",
         "Gradient Boosting com learning_rate baixo e mais árvores tende a generalizar melhor.",
         "Em séries temporais, nunca mistures dados de treino e teste por ordem cronológica.",
     ]

@@ -1,5 +1,5 @@
 """
-DataForge EDU - Sistema de Ícones SVG Profissionais
+DataForge EDU — Sistema de Ícones SVG Profissionais
 Ícones Lucide-style: limpos, consistentes, sem emojis
 """
 
