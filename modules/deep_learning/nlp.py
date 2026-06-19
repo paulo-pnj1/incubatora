@@ -1,5 +1,5 @@
 """
-DataForge EDU — NLP (Processamento de Linguagem Natural)
+DataForge EDU - NLP (Processamento de Linguagem Natural)
 BoW, TF-IDF, Word2Vec (sklearn), LSTM (PyTorch)
 """
 
@@ -188,7 +188,7 @@ def _wordcloud_bar(vectorizer, feature_names, tfidf_matrix, labels, label_names)
 
 def render_nlp(username: str):
     inject_css()
-    page_header("NLP — Processamento de Linguagem Natural",
+    page_header("NLP - Processamento de Linguagem Natural",
                 "Classifica texto com BoW, TF-IDF e LSTM", "")
 
     teoria_box("Como os computadores entendem texto?",
@@ -440,8 +440,8 @@ def _train_lstm(texts, labels_raw, embed_dim, hidden_dim, n_layers, dropout, epo
 
             progress.progress((epoch + 1) / epochs)
             status.markdown(
-                f'<div style="color:#FFFFFF;font-weight:700;">Época {epoch+1}/{epochs} — '
-                f'Loss: {loss.item():.4f} — Acc: {acc:.1%}</div>',
+                f'<div style="color:#FFFFFF;font-weight:700;">Época {epoch+1}/{epochs} - '
+                f'Loss: {loss.item():.4f} - Acc: {acc:.1%}</div>',
                 unsafe_allow_html=True
             )
 
@@ -452,7 +452,7 @@ def _train_lstm(texts, labels_raw, embed_dim, hidden_dim, n_layers, dropout, epo
         fig_loss.add_trace(go.Scatter(x=ep_list, y=accs, mode="lines",
                                       name="Accuracy", line=dict(color=C_GREEN, width=2)))
         fig_loss.update_layout(
-            title=dict(text="LSTM — Curvas de Treino", font=dict(color="#FFFFFF", size=14)),
+            title=dict(text="LSTM - Curvas de Treino", font=dict(color="#FFFFFF", size=14)),
             xaxis=dict(title="Época", color="#FFFFFF", gridcolor=C_BORDER),
             yaxis=dict(color="#FFFFFF", gridcolor=C_BORDER),
             plot_bgcolor=C_SURFACE, paper_bgcolor=C_SURFACE,

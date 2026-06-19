@@ -1,5 +1,5 @@
 """
-DataForge EDU — Detecção de Anomalias
+DataForge EDU - Detecção de Anomalias
 Isolation Forest, Local Outlier Factor, One-Class SVM, Elliptic Envelope
 """
 
@@ -46,8 +46,8 @@ def render_anomalias(username: str):
 
         fonte = st.radio("Dados", ["Embutido", "Upload CSV"], horizontal=True, key="an_fonte")
         if fonte == "Embutido":
-            opcoes = ["Iris — Classificação de flores", "Vinho — Qualidade",
-                      "Diabetes — Progressão", "Blobs — Clustering básico"]
+            opcoes = ["Iris - Classificação de flores", "Vinho - Qualidade",
+                      "Diabetes - Progressão", "Blobs - Clustering básico"]
             nm = st.selectbox("Dataset", opcoes, key="an_ds")
             df, _, _ = carregar_dataset_embutido(nm)
         else:
@@ -142,7 +142,7 @@ def render_anomalias(username: str):
                                 line=dict(color="#FFFFFF" if lbl=="Anomalia" else "rgba(0,0,0,0)", width=1.5))
                 ))
             fig.update_layout(
-                title=dict(text=f"{res['algo']} — Anomalias (PCA 2D)", font=dict(color="#FFFFFF", size=15)),
+                title=dict(text=f"{res['algo']} - Anomalias (PCA 2D)", font=dict(color="#FFFFFF", size=15)),
                 xaxis=dict(title="PC1", color="#FFFFFF", gridcolor=C_BORDER),
                 yaxis=dict(title="PC2", color="#FFFFFF", gridcolor=C_BORDER),
                 plot_bgcolor=C_SURFACE, paper_bgcolor=C_SURFACE,
@@ -166,8 +166,8 @@ def render_anomalias(username: str):
             st.plotly_chart(fig_pie, width='stretch')
 
             teoria_box("Como interpretar",
-                "Pontos <strong style='color:#FF6B6B;'>vermelhos</strong> são anomalias — afastam-se do padrão aprendido. "
+                "Pontos <strong style='color:#FF6B6B;'>vermelhos</strong> são anomalias - afastam-se do padrão aprendido. "
                 "Ajusta a <strong>contaminação</strong> conforme a percentagem real de outliers que esperas. "
-                "Usa <strong>PCA 2D</strong> apenas para visualização — o modelo foi treinado no espaço original.")
+                "Usa <strong>PCA 2D</strong> apenas para visualização - o modelo foi treinado no espaço original.")
         else:
             st.markdown(f"""<div style="text-align:center;padding:5rem;color:#7A8BA8; border:2px dashed {C_BORDER};border-radius:16px;margin-top:1rem;"><div style="font-size:40px;margin-bottom:1rem;"></div><div style="font-size:16px;font-weight:700;color:#FFFFFF;">Configura e clica em <strong>Detectar Anomalias</strong></div></div>""", unsafe_allow_html=True)

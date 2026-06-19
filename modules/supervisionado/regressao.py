@@ -1,5 +1,5 @@
 """
-DataForge EDU — Módulo Supervisionado: Regressão
+DataForge EDU - Módulo Supervisionado: Regressão
 Linear, Ridge, Lasso, ElasticNet, SVR, KNN, RF, GB + teoria
 """
 
@@ -261,7 +261,7 @@ def _plot_cv_scores_reg(scores):
 def render_regressao(username: str):
     page_header(
         "Regressão",
-        "Aprendizagem supervisionada — prever valores contínuos",
+        "Aprendizagem supervisionada - prever valores contínuos",
         ""
     )
 
@@ -269,8 +269,8 @@ def render_regressao(username: str):
 
     # Dados
     catalogo_reg = [
-        "Boston Housing — Preços",
-        "Diabetes — Progressão",
+        "Boston Housing - Preços",
+        "Diabetes - Progressão",
     ]
     fonte = st.radio("Fonte dos dados", ["Dataset embutido", "Upload CSV"], horizontal=True, key="reg_fonte")
     df = None
@@ -314,7 +314,7 @@ def render_regressao(username: str):
         cv_k = st.slider("CV Folds", 2, 10, 5, key="reg_cv")
 
     algo = st.selectbox("Algoritmo", list(algos.keys()),
-                        format_func=lambda k: f"{k}  —  {algos[k]}", key="reg_algo")
+                        format_func=lambda k: f"{k}  -  {algos[k]}", key="reg_algo")
 
     # Teoria
     t = TEORIA_REG.get(algo)
@@ -397,7 +397,7 @@ def _treinar_regressao(df, features, target, algo, params,
         "r2": round(r2, 4), "rmse": round(rmse, 4),
         "dataset_shape": list(df.shape),
     })
-    add_pontos(username, 10, f"Treinou regressão {algo} — R²={r2:.3f}")
+    add_pontos(username, 10, f"Treinou regressão {algo} - R²={r2:.3f}")
     save_user_progress(username, "supervisionado_regressao", {"ultimo_algo": algo, "ultimo_r2": round(r2, 4)})
 
     # Resultados
@@ -410,13 +410,13 @@ def _treinar_regressao(df, features, target, algo, params,
 
     # Diagnóstico
     if r2 < 0:
-        erro_box("R² negativo — o modelo é pior que uma linha horizontal (média). Verifica os dados ou tenta outro algoritmo.")
+        erro_box("R² negativo - o modelo é pior que uma linha horizontal (média). Verifica os dados ou tenta outro algoritmo.")
     elif r2 < 0.4:
         aviso_box(f"R² = {r2:.3f} é baixo. O modelo explica pouca variância. Considera feature engineering ou modelos mais complexos.")
     elif r2 > 0.95:
         aviso_box(f"R² = {r2:.3f} muito alto. Verifica se há data leakage (features que directamente codificam o target).")
     else:
-        sucesso_box(f"R² = {r2:.3f} — bom resultado! O modelo explica {r2:.1%} da variância do target.")
+        sucesso_box(f"R² = {r2:.3f} - bom resultado! O modelo explica {r2:.1%} da variância do target.")
 
     section_title("VALIDAÇÃO CRUZADA")
     c1, c2 = st.columns(2)

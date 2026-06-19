@@ -97,8 +97,8 @@ dataforge-edu/
 │   ├── dashboard.py                # Dashboard e percurso de aprendizagem
 │   │
 │   └── supervisionado/
-│       ├── classificacao.py        # ✅ Fase 1 — 13+ algoritmos
-│       └── regressao.py            # ✅ Fase 1 — 12+ algoritmos
+│       ├── classificacao.py        # ✅ Fase 1 - 13+ algoritmos
+│       └── regressao.py            # ✅ Fase 1 - 12+ algoritmos
 │
 └── data/
     ├── db.json                     # TinyDB (criado automaticamente)
@@ -119,7 +119,7 @@ dataforge-edu/
 
 ---
 
-## 🎯 Algoritmos disponíveis — Fase 1
+## 🎯 Algoritmos disponíveis - Fase 1
 
 ### Classificação (13 algoritmos)
 KNN · Decision Tree · Random Forest · Extra Trees · Gradient Boosting ·

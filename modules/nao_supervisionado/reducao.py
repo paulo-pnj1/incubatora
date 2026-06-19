@@ -1,5 +1,5 @@
 """
-DataForge EDU — Redução de Dimensionalidade
+DataForge EDU - Redução de Dimensionalidade
 PCA, Kernel PCA, t-SNE, UMAP, ICA, Factor Analysis
 """
 
@@ -20,10 +20,10 @@ from modules.utils import (
 )
 
 ALGORITMOS = {
-    "PCA — Principal Component Analysis":   "pca",
+    "PCA - Principal Component Analysis":   "pca",
     "Kernel PCA":                           "kpca",
     "t-SNE":                                "tsne",
-    "ICA — Independent Component Analysis": "ica",
+    "ICA - Independent Component Analysis": "ica",
     "Factor Analysis":                      "fa",
 }
 try:
@@ -122,9 +122,9 @@ def render_reducao(username: str):
 
         fonte = st.radio("Dados", ["Embutido", "Upload CSV"], horizontal=True, key="rd_fonte")
         if fonte == "Embutido":
-            opcoes = ["Iris — Classificação de flores", "Vinho — Qualidade",
-                      "Cancro — Diagnóstico", "Dígitos — Reconhecimento",
-                      "Blobs — Clustering básico"]
+            opcoes = ["Iris - Classificação de flores", "Vinho - Qualidade",
+                      "Cancro - Diagnóstico", "Dígitos - Reconhecimento",
+                      "Blobs - Clustering básico"]
             nm = st.selectbox("Dataset", opcoes, key="rd_ds")
             df, desc, _ = carregar_dataset_embutido(nm)
             if df is not None and desc:
@@ -218,16 +218,16 @@ def render_reducao(username: str):
             algo_lbl = res["algo"]
             n_comp   = res["n_comp"]
 
-            section_title(f"Resultado — {algo_lbl}")
+            section_title(f"Resultado - {algo_lbl}")
 
             if n_comp == 2:
                 st.plotly_chart(
-                    _scatter2d(X_red, labels, f"{algo_lbl} — Projecção 2D"),
+                    _scatter2d(X_red, labels, f"{algo_lbl} - Projecção 2D"),
                     width='stretch'
                 )
             else:
                 st.plotly_chart(
-                    _scatter3d(X_red, labels, f"{algo_lbl} — Projecção 3D"),
+                    _scatter3d(X_red, labels, f"{algo_lbl} - Projecção 3D"),
                     width='stretch'
                 )
 
